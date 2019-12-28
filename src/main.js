@@ -4,6 +4,8 @@ import App from './App.vue'
 import '@/utils/rem.js'
 
 import router from '@/router'
+
+import '@/filters'
 Vue.config.productionTip = false
 
 

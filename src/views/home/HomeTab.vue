@@ -13,7 +13,13 @@
 
 <script>
 export default {
-
+    data(){
+        return {
+            homebg:{
+                background:'#fff'
+            }
+        }
+    },
 }
 </script>
 
@@ -23,9 +29,8 @@ export default {
     height .35rem
     padding .09rem 0 
     width 100%
-    background #fff
     align-items center
-    background lightgreen
+    background url(./../../assets/img/home_top_bg1.jpg)
     .logo 
         flex 44 
         img 
