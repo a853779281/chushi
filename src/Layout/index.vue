@@ -5,7 +5,7 @@
             <router-view></router-view>
         </keep-alive>
         <!-- <Mine></Mine> -->
-        <TabBar></TabBar>
+        <TabBar v-if="flag"></TabBar>
     </div>
 </template>
 
@@ -24,6 +24,23 @@ import TabBar from 'components/TabBar'
 export default {
     components:{
         TabBar
+    },
+    data(){
+        return{
+            flag:true
+        }
+    },
+    watch:{
+        $route:{
+            deep:true,
+            handler(){
+                if(this.$route.name=='shop'||       this.$route.name=='goods'){
+                    this.flag=false
+                }else{
+                    this.flag=true
+                }
+            }
+        }
     }
 }
 </script>

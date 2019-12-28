@@ -1,6 +1,6 @@
 <template>
-  <div class="catagory_tab">
-    <h3>产品分类</h3>
+  <div class="list_tab">
+    <h3>List</h3>
     <img src="../../assets/img/ico/ia_100000002.png" alt />
   </div>
 </template>
@@ -8,7 +8,7 @@
 <style lang="stylus" scoped>
 @import '~@/assets/stylesheets/border.styl';
 
-.catagory_tab {
+.list_tab {
   display: flex;
   width: 100%;
   height: 0.44rem;
