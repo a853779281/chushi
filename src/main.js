@@ -6,7 +6,13 @@ import '@/utils/rem.js'
 import router from '@/router'
 Vue.config.productionTip = false
 
+<<<<<<< HEAD
 import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell } from 'vant'
+=======
+import { Button } from 'vant';
+Vue.use(Button)
+
+>>>>>>> 5b51947bb736f55bec4a99f4bcbd83bce0358c7a
 
 Vue.use(TreeSelect)
     .use(Image)
@@ -15,6 +21,7 @@ Vue.use(TreeSelect)
     .use(Button)
     .use(SwitchCell)
 
+<<<<<<< HEAD
 
 
 
@@ -25,3 +32,9 @@ new Vue({
     render: h => h(App),
 
 }).$mount('#app')
+=======
+}).$mount('#app')
+
+
+
+>>>>>>> 5b51947bb736f55bec4a99f4bcbd83bce0358c7a

@@ -12,6 +12,9 @@ const Details = () => import( /* webpackChunkName: "group-jwj" */ '@/views/detai
 
 
 
+const Collect=()=>import(/* webpackChunkName:"group-jwj" */ '@/views/collect/index.vue')
+
+const Footprint=()=>import(/* webpackChunkName:"group-jwj" */ '@/views/footprint/index.vue')
 
 const routerTable = [{
         path: '/',
@@ -25,6 +28,7 @@ const routerTable = [{
             include: 'Home'
         }
     },
+
     {
         path: '/category',
         component: Category,
@@ -55,6 +59,9 @@ const routerTable = [{
             include: 'Shopcar'
         }
     },
+
+
+    // 个人中心
     {
         path: '/mine',
         component: Mine,
@@ -62,6 +69,38 @@ const routerTable = [{
             include: 'Mine'
         }
     },
+    // 商品/店铺收藏
+    {
+        path:'/collect',
+        component:Collect,
+        meta:{
+            include:'collect'
+        },
+        children:[
+            {
+                path:'goods',
+                meta:{
+                    include:'goods'
+                },
+                name:'goods'
+            },
+            {
+                path:'shop',
+                meta:{
+                    include:'shop'
+                },
+                name:'shop'
+            }
+        ],
+    },
+    // 我的足迹
+    {
+        path:'/footprint',
+        component:Footprint,
+        meta: { 
+            include:'footprint'
+        },
+    }
 ]
 
 export default routerTable
