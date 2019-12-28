@@ -11,6 +11,19 @@ const Shopcar = () => import(/* webpackChunkName: "group-jwj" */ '@/views/shopca
 const Mine = () => import(/* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
 
 
+const Login = () => import(/* webpackChunkName: "group-jwj" */ '@/views/login/index.vue')
+
+
+const AccountLogin = () => import(/* webpackChunkName: "group-jwj" */ '@/views/login/AccountLogin.vue')
+
+
+const PhoneLogin = () => import(/* webpackChunkName: "group-jwj" */ '@/views/login/PhoneLogin.vue')
+
+
+const Register = () => import(/* webpackChunkName: "group-jwj" */ '@/views/register/index.vue')
+
+
+const ForgetPassword = () => import(/* webpackChunkName: "group-jwj" */ '@/views/forgetPassword/index.vue')
 
 
 
@@ -23,6 +36,7 @@ const routerTable=[
     {
         path:'/home',
         component:Home,
+        name:'home',
         meta: {
             include:'Home'
         }
@@ -30,6 +44,7 @@ const routerTable=[
     {
         path: '/category',
         component: Category,
+        name:'category',
         meta: {
             include: 'Category'
         }
@@ -37,6 +52,7 @@ const routerTable=[
     {
         path: '/shopcar',
         component: Shopcar,
+        name:'shopcar',
         meta: {
             include: 'Shopcar'
         }
@@ -44,10 +60,55 @@ const routerTable=[
     {
         path: '/mine',
         component: Mine,
+        name:'mine',
         meta: {
             include: 'Mine'
         }
     },
+    {
+        path: '/login/account',
+        component: Login,
+        name:'login',
+        meta: {
+            include: 'Login'
+        },
+        children:[
+            {
+                path:'/login/account',
+                component: AccountLogin,
+                name:'AccountLogin',
+                meta: {
+                    include: 'AccountLogin'
+                },
+            },
+            {
+                path:'/login/phone',
+                component: PhoneLogin,
+                name:'PhoneLogin',
+                meta: {
+                    include: 'PhoneLogin'
+                },
+            },
+           
+        ]
+    },
+    {
+        path: '/register',
+        component: Register,
+        name:'register',
+        meta: {
+            include: 'Register'
+        }
+    },
+    {
+        path: '/forgetPassword',
+        component: ForgetPassword,
+        name:'forgetPassword',
+        meta: {
+            include: 'ForgetPassword'
+        }
+    },
+
 ]
 
 export default routerTable
