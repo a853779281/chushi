@@ -10,6 +10,8 @@ const Shopcar = () => import(/* webpackChunkName: "group-jwj" */ '@/views/shopca
 
 const Mine = () => import(/* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
 
+const Search = () => import(/* webpackChunkName: "group-jwj" */ '@/views/search/index.vue')
+
 
 
 
@@ -48,6 +50,14 @@ const routerTable=[
             include: 'Mine'
         }
     },
+    {
+        path:'/search',
+        component:Search,
+        name:'search',
+        meta :{
+            include:'Search'
+        }
+    }
 ]
 
 export default routerTable
