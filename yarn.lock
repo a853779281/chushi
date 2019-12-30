@@ -670,7 +670,11 @@
     js-levenshtein "^1.1.3"
     semver "^5.5.0"
 
+<<<<<<< HEAD
 "@babel/runtime@7.x", "@babel/runtime@^7.7.4":
+=======
+"@babel/runtime@7.x", "@babel/runtime@^7.0.0", "@babel/runtime@^7.7.4":
+>>>>>>> lijiale
   version "7.7.7"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.7.tgz#194769ca8d6d7790ec23605af9ee3e42a0aa79cf"
   integrity sha512-uCnC2JEVAu8AKB5do1WRIsvrdJ0flYx/A/9f/6chdacnEZ7LmavjdsDXr5ksYBegxtuTPR5Va9/+13QF/kFkCA==
@@ -815,12 +819,17 @@
 "@vant/icons@1.2.0":
   version "1.2.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/@vant/icons/download/@vant/icons-1.2.0.tgz?cache=0&sync_timestamp=1576034134230&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vant%2Ficons%2Fdownload%2F%40vant%2Ficons-1.2.0.tgz#ed31f367185704fa2ef9b437a0c8d3ee5e4f5f58"
   integrity sha1-7THzZxhXBPou+bQ3oMjT7l5PX1g=
 =======
   resolved "https://registry.yarnpkg.com/@vant/icons/-/icons-1.2.0.tgz#ed31f367185704fa2ef9b437a0c8d3ee5e4f5f58"
   integrity sha512-japcEMXv5BWyWNwjL52WX9pdMWB2wrZtvF0p0CwhbKJyoz/WxuvHVsNjzbeCtkBlofa+0txfJTt22qyz5BABaA==
 >>>>>>> 5b51947bb736f55bec4a99f4bcbd83bce0358c7a
+=======
+  resolved "https://registry.npm.taobao.org/@vant/icons/download/@vant/icons-1.2.0.tgz#ed31f367185704fa2ef9b437a0c8d3ee5e4f5f58"
+  integrity sha1-7THzZxhXBPou+bQ3oMjT7l5PX1g=
+>>>>>>> lijiale
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
@@ -1523,6 +1532,14 @@ babel-plugin-dynamic-import-node@^2.2.0, babel-plugin-dynamic-import-node@^2.3.0
   integrity sha512-o6qFkpeQEBxcqt0XYlWzAVxNCSCZdUgcR8IRlhD/8DylxjjO4foPcvTW0GGKa/cVt3rvxZ7o5ippJ+/0nvLhlQ==
   dependencies:
     object.assign "^4.1.0"
+
+babel-plugin-import@^1.13.0:
+  version "1.13.0"
+  resolved "https://registry.npm.taobao.org/babel-plugin-import/download/babel-plugin-import-1.13.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fbabel-plugin-import%2Fdownload%2Fbabel-plugin-import-1.13.0.tgz#c532fd533df9db53b47d4d4db3676090fc5c07a5"
+  integrity sha1-xTL9Uz3521O0fU1Ns2dgkPxcB6U=
+  dependencies:
+    "@babel/helper-module-imports" "^7.0.0"
+    "@babel/runtime" "^7.0.0"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -7788,12 +7805,17 @@ validate-npm-package-license@^3.0.1:
 vant@^2.3.3:
   version "2.3.3"
 <<<<<<< HEAD
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/vant/download/vant-2.3.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvant%2Fdownload%2Fvant-2.3.3.tgz#f01eb215f21055f72c0091dbb585f5aa0da1984f"
   integrity sha1-8B6yFfIQVfcsAJHbtYX1qg2hmE8=
 =======
   resolved "https://registry.yarnpkg.com/vant/-/vant-2.3.3.tgz#f01eb215f21055f72c0091dbb585f5aa0da1984f"
   integrity sha512-F0XSQjOk6D0LhV4+KN3mPeTLBlgW9FNkkhYgCj/0knbTtbqVu2XgBOUdAERPQWZ88VhbdJgaB92dpqrERQtR+w==
 >>>>>>> 5b51947bb736f55bec4a99f4bcbd83bce0358c7a
+=======
+  resolved "https://registry.npm.taobao.org/vant/download/vant-2.3.3.tgz#f01eb215f21055f72c0091dbb585f5aa0da1984f"
+  integrity sha1-8B6yFfIQVfcsAJHbtYX1qg2hmE8=
+>>>>>>> lijiale
   dependencies:
     "@babel/runtime" "7.x"
     "@vant/icons" "1.2.0"
@@ -7852,12 +7874,17 @@ vue-hot-reload-api@^2.3.0:
 vue-lazyload@1.2.3:
   version "1.2.3"
 <<<<<<< HEAD
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
   integrity sha1-kB+ewVx+bKeHgaK65KNDaGve2yw=
 =======
   resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
   integrity sha512-DC0ZwxanbRhx79tlA3zY5OYJkH8FYp3WBAnAJbrcuoS8eye1P73rcgAZhyxFSPUluJUTelMB+i/+VkNU/qVm7g==
 >>>>>>> 5b51947bb736f55bec4a99f4bcbd83bce0358c7a
+=======
+  resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
+  integrity sha1-kB+ewVx+bKeHgaK65KNDaGve2yw=
+>>>>>>> lijiale
 
 vue-loader@^15.7.2:
   version "15.8.3"

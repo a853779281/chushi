@@ -34,9 +34,9 @@ export default {
         $route:{
             deep:true,
             handler(){
-                if(this.$route.name=='shop'||       this.$route.name=='goods'){
+                if(this.$route.name=='shop'||       this.$route.name=='goods' || this.$route.name == 'search'){
                     this.flag=false
-                }else{
+                } else {
                     this.flag=true
                 }
             }

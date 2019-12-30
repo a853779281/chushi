@@ -13,6 +13,8 @@ const Details = () => import( /* webpackChunkName: "group-jwj" */ '@/views/detai
 
 
 const Collect=()=>import(/* webpackChunkName:"group-jwj" */ '@/views/collect/index.vue')
+const Search = () => import(/* webpackChunkName: "group-jwj" */ '@/views/search/index.vue')
+
 
 const Footprint=()=>import(/* webpackChunkName:"group-jwj" */ '@/views/footprint/index.vue')
 
@@ -26,6 +28,14 @@ const routerTable = [{
         component: Home,
         meta: {
             include: 'Home'
+        }
+    },
+    {
+        path:'/search',
+        component:Search,
+        name:'search',
+        meta :{
+            include:'Search'
         }
     },
 

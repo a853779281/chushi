@@ -3,10 +3,14 @@ import App from './App.vue'
 
 import '@/utils/rem.js'
 
+import { Search } from 'vant'
+
+
 import router from '@/router'
 
 import '@/filters'
 Vue.config.productionTip = false
+Vue.use(Search);
 
 <<<<<<< HEAD
 import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell } from 'vant'
