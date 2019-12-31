@@ -140,7 +140,59 @@ const routerTable=[
         meta :{
             include:'Orders'
         }
-    }
+    },
+    {
+        path: '/login',
+        redirect:'/login/account',
+        component: Login,
+        name:'login',
+        meta: {
+            include: 'Login'
+        },
+        children:[
+            {
+                path:'/login/account',
+                component: AccountLogin,
+                name:'AccountLogin',
+                meta: {
+                    include: 'AccountLogin'
+                },
+            },
+            {
+                path:'/login/phone',
+                component: PhoneLogin,
+                name:'PhoneLogin',
+                meta: {
+                    include: 'PhoneLogin'
+                },
+            },
+           
+        ]
+    },
+    {
+        path: '/register',
+        component: Register,
+        name:'register',
+        meta: {
+            include: 'Register'
+        }
+    },
+    {
+        path: '/forgetPassword',
+        component: ForgetPassword,
+        name:'forgetPassword',
+        meta: {
+            include: 'ForgetPassword'
+        }
+    },
+    {
+        path: '/uCenter',
+        component: UCenter,
+        name:'uCenter',
+        meta: {
+            include: 'UCenter'
+        }
+    },
 ]
 
 export default routerTable
