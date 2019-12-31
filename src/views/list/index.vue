@@ -17,7 +17,17 @@
         </div>
       </div>
       <ul class="goods_list">
-        <li v-for="(item, index) in dataList" :key="index">
+        <router-link
+          :to="{
+          name:'Details',
+          params:{
+            id:item.goods_id
+          }
+        }"
+          v-for="(item, index) in dataList"
+          :key="index"
+          tag="li"
+        >
           <div class="img_box">
             <img :src="item.common_image" :alt="item.common_name" />
           </div>
@@ -32,9 +42,8 @@
               <span class="common_evaluate">评论 {{item.common_evaluate}}</span>
             </div>
           </div>
-        </li>
+        </router-link>
       </ul>
-      <!--  -->
     </div>
   </div>
 </template>
@@ -123,6 +132,7 @@ export default {
           width: 0.88rem;
           height: 0.88rem;
           padding: 0.1rem;
+          overflow: hidden;
 
           img {
             width: 0.88rem;
@@ -131,11 +141,13 @@ export default {
         }
 
         .content_box {
+          width: 2.5rem;
           padding: 0.1rem 0.1rem;
           margin-right: 0.1rem;
 
           h1 {
             font-size: 0.143rem;
+            height: 0.4rem;
             line-height: 0.2rem;
             white-space: 0.1rem;
             word-wrap: break-word;

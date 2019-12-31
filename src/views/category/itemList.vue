@@ -80,29 +80,32 @@ export default {
       margin-bottom: 0.2rem;
 
       li {
-        display: flex;
-        flex-direction: column;
         width: 0.7rem;
         margin-bottom: 0.06rem;
         width: 33%;
         padding: 0 0.05rem;
         box-sizing: border-box;
 
-        .imgbox {
-          width: 100%;
-          height: 0.7rem;
+        a {
+          display: flex;
+          flex-direction: column;
 
-          img {
-            // width: 0.7rem;
+          .imgbox {
             width: 100%;
-          }
-        }
+            height: 0.7rem;
 
-        span {
-          text-align: center;
-          font-size: 0.13rem;
-          color: #444;
-          margin-top: 0.1rem;
+            img {
+              width: 100%;
+            }
+          }
+
+          span {
+            text-align: center;
+            width: 100%;
+            font-size: 0.13rem;
+            color: #444;
+            margin-top: 0.1rem;
+          }
         }
       }
     }

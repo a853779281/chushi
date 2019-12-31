@@ -43,26 +43,6 @@ export default {
     });
     this.items = data;
   }
-  //   watch: {
-  //     activeIndex() {
-  //       this.getData();
-  //     }
-  //   },
-  //   methods: {
-  //     async getData() {
-  //       const data = await request({
-  //         url: `/index.php`,
-  //         params: {
-  //           ctl: "Goods_Cat",
-  //           met: "tree",
-  //           typ: "json",
-  //           cat_parent_id: 94
-  //         }
-  //       });
-  //       this.dataList = data.data.data.items;
-  //       //   console.log(data);
-  //     }
-  //   }
 };
 </script>
 

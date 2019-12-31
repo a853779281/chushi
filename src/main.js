@@ -3,18 +3,17 @@ import App from './App.vue'
 
 import '@/utils/rem.js'
 
+// 引入store
+import store from '@/store/index.js'
+
+
+
 import router from '@/router'
 
 import '@/filters'
 Vue.config.productionTip = false
 
-<<<<<<< HEAD
-import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell } from 'vant'
-=======
-import { Button } from 'vant';
-Vue.use(Button)
-
->>>>>>> 5b51947bb736f55bec4a99f4bcbd83bce0358c7a
+import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell, Icon, Swipe, SwipeItem, Tag, Popup, Sku } from 'vant'
 
 Vue.use(TreeSelect)
     .use(Image)
@@ -22,8 +21,12 @@ Vue.use(TreeSelect)
     .use(DropdownItem)
     .use(Button)
     .use(SwitchCell)
-
-<<<<<<< HEAD
+    .use(Icon)
+    .use(Swipe)
+    .use(SwipeItem)
+    .use(Tag)
+    .use(Popup)
+    .use(Sku)
 
 
 
@@ -31,12 +34,7 @@ Vue.use(TreeSelect)
 
 new Vue({
     router,
+    store,
     render: h => h(App),
 
 }).$mount('#app')
-=======
-}).$mount('#app')
-
-
-
->>>>>>> 5b51947bb736f55bec4a99f4bcbd83bce0358c7a

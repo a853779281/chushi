@@ -9,12 +9,17 @@ const Shopcar = () => import( /* webpackChunkName: "group-jwj" */ '@/views/shopc
 const Mine = () => import( /* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
 const List = () => import( /* webpackChunkName: "group-jwj" */ '@/views/list/index.vue')
 const Details = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
+// 
+const DetailsGoods = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsGoods.vue')
+const DetailsImg = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsImg.vue')
+const DetailsComments = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsComments.vue')
+const DetailsRecommend = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsRecommend.vue')
 
 
 
-const Collect=()=>import(/* webpackChunkName:"group-jwj" */ '@/views/collect/index.vue')
+const Collect = () => import( /* webpackChunkName:"group-jwj" */ '@/views/collect/index.vue')
 
-const Footprint=()=>import(/* webpackChunkName:"group-jwj" */ '@/views/footprint/index.vue')
+const Footprint = () => import( /* webpackChunkName:"group-jwj" */ '@/views/footprint/index.vue')
 
 const routerTable = [{
         path: '/',
@@ -36,21 +41,64 @@ const routerTable = [{
             include: 'Category'
         }
     },
+    // 列表路由
     {
         path: '/list:id',
         component: List,
         name: 'List',
         meta: {
             include: 'List'
-        }
+        },
+
     },
+    // 详情页路由
     {
         path: '/details:id',
         component: Details,
         name: 'Details',
         meta: {
             include: 'Details'
-        }
+        },
+        redirect: '/details:id/detailsgoods',
+        children: [{
+                path: 'detailsgoods',
+                component: DetailsGoods,
+                name: 'DetailsGoods',
+                meta: {
+                    include: 'DetailsGoods'
+                }
+            },
+            {
+                path: 'detailsimg',
+                component: DetailsImg,
+                name: 'DetailsImg',
+                meta: {
+                    include: 'DetailsImg'
+                }
+            },
+            {
+                path: 'detailscomments',
+                component: DetailsComments,
+                name: 'DetailsComments',
+                meta: {
+                    include: 'DetailsComments'
+                }
+            },
+            {
+                path: 'detailsrecommend',
+                component: DetailsRecommend,
+                name: 'DetailsRecommend',
+                meta: {
+                    include: 'DetailsRecommend'
+                }
+            },
+
+
+
+
+        ]
+
+
     },
     {
         path: '/shopcar',
@@ -71,34 +119,33 @@ const routerTable = [{
     },
     // 商品/店铺收藏
     {
-        path:'/collect',
-        component:Collect,
-        meta:{
-            include:'collect'
+        path: '/collect',
+        component: Collect,
+        meta: {
+            include: 'collect'
         },
-        children:[
-            {
-                path:'goods',
-                meta:{
-                    include:'goods'
+        children: [{
+                path: 'goods',
+                meta: {
+                    include: 'goods'
                 },
-                name:'goods'
+                name: 'goods'
             },
             {
-                path:'shop',
-                meta:{
-                    include:'shop'
+                path: 'shop',
+                meta: {
+                    include: 'shop'
                 },
-                name:'shop'
+                name: 'shop'
             }
         ],
     },
     // 我的足迹
     {
-        path:'/footprint',
-        component:Footprint,
-        meta: { 
-            include:'footprint'
+        path: '/footprint',
+        component: Footprint,
+        meta: {
+            include: 'footprint'
         },
     }
 ]

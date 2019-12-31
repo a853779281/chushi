@@ -1,24 +1,13 @@
 const path = require('path')
 
-<<<<<<< HEAD
-module.exports={
-    devServer:{
-        open:true,
-        proxy:{
-            '/index.php':{
-                target:'http://www.jushifang.cn',
-                changeOrigin:true
-            }
-=======
 module.exports = {
     devServer: {
         open: true,
         proxy: {
             '/index.php': {
-                target: 'http://www.jushifang.cn',
+                target: 'http://www.qinqin.net',
                 changeOrigin: true
-            },
->>>>>>> 358b4d8ee7b54ed03154211e6d74eefc239bd883
+            }
         }
     },
 
