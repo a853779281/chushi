@@ -17,28 +17,38 @@
                 <i class="fas fa-eye-slash account_username_right" @click= "passwordFlag"></i>
             </div>
         </div>
-        <button class="btn">登录</button>
+        <button class="btn"  @click= "ALogin(username)">登录</button>
         <Register></Register>
     </div>
 </template>
 
 <script>
 import Register from './Register'
+
+import {mapState,mapActions} from 'vuex'
 export default {
     data(){
         return {
             tiggle:true,
             username:'',
-            password:''
+            password:'',
+            token:''
         }
     },
+    computed:{
+        ...mapState({
+            person:state=>state.accountLoginStore.person
+        })
+    },
     methods:{
+        
         passwordFlag(){
             return this.tiggle=!this.tiggle
         },
         clearUsername(){
            return this.username=''
-        }
+        },
+        ...mapActions(['ALogin'])
     },
     components:{
         Register

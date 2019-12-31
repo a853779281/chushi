@@ -2,16 +2,18 @@
     <div class="register">
         <RegisterTab></RegisterTab>
         <div class="register_body">
-            
+          <RegisterBody></RegisterBody>  
         </div>
     </div>
 </template>
 
 <script>
 import RegisterTab from './RegisterTab'
+import RegisterBody from './RegisterBody'
 export default {
     components:{
-        RegisterTab
+        RegisterTab,
+        RegisterBody
     }
 }
 </script>

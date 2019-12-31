@@ -26,6 +26,9 @@ const Register = () => import(/* webpackChunkName: "group-jwj" */ '@/views/regis
 const ForgetPassword = () => import(/* webpackChunkName: "group-jwj" */ '@/views/forgetPassword/index.vue')
 
 
+const UCenter = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
+
+
 
 const routerTable=[
     {
@@ -66,7 +69,8 @@ const routerTable=[
         }
     },
     {
-        path: '/login/account',
+        path: '/login',
+        redirect:'/login/account',
         component: Login,
         name:'login',
         meta: {
@@ -108,7 +112,14 @@ const routerTable=[
             include: 'ForgetPassword'
         }
     },
-
+    {
+        path: '/uCenter',
+        component: UCenter,
+        name:'uCenter',
+        meta: {
+            include: 'UCenter'
+        }
+    },
 ]
 
 export default routerTable

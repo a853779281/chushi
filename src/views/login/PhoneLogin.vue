@@ -22,6 +22,8 @@
 <script>
     import Register from './Register'
 
+    import  {mapState,mapActions} from 'vuex'
+
 export default {
     data(){
         return {
@@ -30,10 +32,16 @@ export default {
             phone_code:''
         }
     },
+    computed:{
+        ...mapState({
+            person:state=>state.phoneLoginStore.person
+        })
+    },
     methods:{
         clearPhone(){
             this.phone=''
-        }
+        },
+         ...mapActions(['PLogin'])
     },
     components:{
         Register

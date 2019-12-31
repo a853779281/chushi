@@ -5,29 +5,33 @@
             <router-view></router-view>
         </keep-alive>
         <!-- <Mine></Mine> -->
-        <TabBar v-if ="flag"></TabBar>
+        <TabBar v-if= "flag"></TabBar>
         
     </div>
 </template>
 
 <script>
+import TabBar from 'components/TabBar'
 export default {
-    data(){
+     data(){
         return {
-            flag:true,
+            flag:true
         }
     },
     watch:{
         $route:{
             deep:true,
             handler(){
-                if(this.$route.name=='login'){
+                if(this.$route.name=='AccountLogin'||this.$route.name=='PhoneLogin'||this.$route.name=='register'||this.$route.name=='forgetPassword'){
                     this.flag=false
                 }else{
                     this.flag=true
                 }
             }
         }
+    },
+    components:{
+        TabBar
     }
 }
 </script>
@@ -40,13 +44,3 @@ export default {
 
 
 </style>
-<script>
-import TabBar from 'components/TabBar'
-// import Tab from 'components/Tab'
-// import Mine from '@/views/mine'
-export default {
-    components:{
-        TabBar
-    }
-}
-</script>
