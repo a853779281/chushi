@@ -671,10 +671,14 @@
     semver "^5.5.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@babel/runtime@7.x", "@babel/runtime@^7.7.4":
 =======
 "@babel/runtime@7.x", "@babel/runtime@^7.0.0", "@babel/runtime@^7.7.4":
 >>>>>>> f90835f4e2c582300b94f0b530c0fb7b9bc74789
+=======
+"@babel/runtime@7.x", "@babel/runtime@^7.0.0", "@babel/runtime@^7.7.4":
+>>>>>>> wangyongsong
   version "7.7.7"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.7.7.tgz#194769ca8d6d7790ec23605af9ee3e42a0aa79cf"
   integrity sha1-GUdpyo1td5DsI2Ba+e4+QqCqec8=
@@ -818,6 +822,7 @@
 
 "@vant/icons@1.2.0":
   version "1.2.0"
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/@vant/icons/download/@vant/icons-1.2.0.tgz?cache=0&sync_timestamp=1576034134230&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vant%2Ficons%2Fdownload%2F%40vant%2Ficons-1.2.0.tgz#ed31f367185704fa2ef9b437a0c8d3ee5e4f5f58"
   integrity sha1-7THzZxhXBPou+bQ3oMjT7l5PX1g=
 
@@ -825,6 +830,10 @@
   version "1.2.0"
   resolved "https://registry.npm.taobao.org/@vant/icons/download/@vant/icons-1.2.0.tgz#ed31f367185704fa2ef9b437a0c8d3ee5e4f5f58"
   integrity sha1-7THzZxhXBPou+bQ3oMjT7l5PX1g=
+=======
+  resolved "https://registry.yarnpkg.com/@vant/icons/-/icons-1.2.0.tgz#ed31f367185704fa2ef9b437a0c8d3ee5e4f5f58"
+  integrity sha512-japcEMXv5BWyWNwjL52WX9pdMWB2wrZtvF0p0CwhbKJyoz/WxuvHVsNjzbeCtkBlofa+0txfJTt22qyz5BABaA==
+>>>>>>> wangyongsong
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
   version "1.0.0"
@@ -7982,8 +7991,13 @@ validate-npm-package-license@^3.0.1:
 
 vant@^2.3.3:
   version "2.3.3"
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/vant/download/vant-2.3.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvant%2Fdownload%2Fvant-2.3.3.tgz#f01eb215f21055f72c0091dbb585f5aa0da1984f"
   integrity sha1-8B6yFfIQVfcsAJHbtYX1qg2hmE8=
+=======
+  resolved "https://registry.yarnpkg.com/vant/-/vant-2.3.3.tgz#f01eb215f21055f72c0091dbb585f5aa0da1984f"
+  integrity sha512-F0XSQjOk6D0LhV4+KN3mPeTLBlgW9FNkkhYgCj/0knbTtbqVu2XgBOUdAERPQWZ88VhbdJgaB92dpqrERQtR+w==
+>>>>>>> wangyongsong
   dependencies:
     "@babel/runtime" "7.x"
     "@vant/icons" "1.2.0"
@@ -8041,6 +8055,7 @@ vue-hot-reload-api@^2.3.0:
 
 vue-lazyload@1.2.3:
   version "1.2.3"
+<<<<<<< HEAD
   resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
   integrity sha1-kB+ewVx+bKeHgaK65KNDaGve2yw=
 
@@ -8048,6 +8063,10 @@ vue-lazyload@1.2.3:
   version "1.2.3"
   resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz?cache=0&sync_timestamp=1568801961628&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-lazyload%2Fdownload%2Fvue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
   integrity sha1-kB+ewVx+bKeHgaK65KNDaGve2yw=
+=======
+  resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
+  integrity sha512-DC0ZwxanbRhx79tlA3zY5OYJkH8FYp3WBAnAJbrcuoS8eye1P73rcgAZhyxFSPUluJUTelMB+i/+VkNU/qVm7g==
+>>>>>>> wangyongsong
 
 vue-loader@^15.7.2:
   version "15.8.3"
@@ -8090,6 +8109,11 @@ vue@^2.6.10:
   version "2.6.11"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha1-dllNh31LEiNEBuhONSdcbVFBJcU=
+
+vuex@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.npm.taobao.org/vuex/download/vuex-3.1.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvuex%2Fdownload%2Fvuex-3.1.2.tgz#a2863f4005aa73f2587e55c3fadf3f01f69c7d4d"
+  integrity sha1-ooY/QAWqc/JYflXD+t8/AfacfU0=
 
 vuex@^3.1.2:
   version "3.1.2"

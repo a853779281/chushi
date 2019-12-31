@@ -6,17 +6,10 @@ import '@/utils/rem.js'
 import { Search } from 'vant'
 import { Tab, Tabs } from 'vant'
 import { Toast } from 'vant'
-
+// 引入store
+import store from '@/store/index.js'
 
 import router from '@/router'
-import store from '@/store'
-
-import {
-  Button
-} from 'vant' //引入vant 插件
-
-Vue.use(Button)
-
 
 import '@/filters'
 Vue.config.productionTip = false
@@ -24,7 +17,23 @@ Vue.use(Search)
 Vue.use(Tab).use(Tabs)
 Vue.use(Toast)
 
-import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell } from 'vant'
+import {
+    TreeSelect,
+    Image,
+    DropdownMenu,
+    DropdownItem,
+    Button,
+    SwitchCell,
+    Icon,
+    Swipe,
+    SwipeItem,
+    Tag,
+    Popup,
+    Sku,
+    GoodsAction,
+    GoodsActionIcon,
+    GoodsActionButton
+} from 'vant'
 
 Vue.use(TreeSelect)
     .use(Image)
@@ -32,16 +41,23 @@ Vue.use(TreeSelect)
     .use(DropdownItem)
     .use(Button)
     .use(SwitchCell)
+    .use(Icon)
+    .use(Swipe)
+    .use(SwipeItem)
+    .use(Tag)
+    .use(Popup)
+    .use(Sku)
+    .use(GoodsAction)
+    .use(GoodsActionIcon)
+    .use(GoodsActionButton)
 
 
 
 
 
-
-new Vue({ 
-  router,
-  store,
-  render: h => h(App),
+new Vue({
+    router,
+    store,
+    render: h => h(App),
 
 }).$mount('#app')
-

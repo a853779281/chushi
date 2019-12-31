@@ -1,14 +1,24 @@
+import Vuex from 'vuex'
 import Vue from 'vue'
 
-import Vuex from 'vuex'
-
-import accountLoginStore from '@/views/login/storeAccount'
 Vue.use(Vuex)
+import accountLoginStore from '@/views/login/storeAccount'
 
-const store= new Vuex.Store({
-    modules:{
-        accountLoginStore,   
+import detailsGoods from '@/views/details/store'
+
+
+
+const store = new Vuex.Store({
+    modules: {
+        detailsGoods,
+        accountLoginStore
+
     }
 })
+
+
+
+
+
 
 export default store
