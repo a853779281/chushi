@@ -20,22 +20,22 @@ const Collect = () => import( /* webpackChunkName:"group-jwj" */ '@/views/collec
 
 const Footprint = () => import( /* webpackChunkName:"group-jwj" */ '@/views/footprint/index.vue')
 
-// const Login = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/index.vue')
+const Login = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/index.vue')
 
 
-// const AccountLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/AccountLogin.vue')
+const AccountLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/AccountLogin.vue')
 
 
-// const PhoneLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/PhoneLogin.vue')
+const PhoneLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/PhoneLogin.vue')
 
 
-// const Register = () => import( /* webpackChunkName: "group-jwj" */ '@/views/register/index.vue')
+const Register = () => import( /* webpackChunkName: "group-jwj" */ '@/views/register/index.vue')
 
 
-// const ForgetPassword = () => import( /* webpackChunkName: "group-jwj" */ '@/views/forgetPassword/index.vue')
+const ForgetPassword = () => import( /* webpackChunkName: "group-jwj" */ '@/views/forgetPassword/index.vue')
 
 
-// const UCenter = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
+const UCenter = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
 
 
 
@@ -177,7 +177,58 @@ const routerTable = [{
         meta: {
             include: 'Orders'
         }
-    }
+    },
+    {
+        path: '/login',
+        redirect: '/login/account',
+        component: Login,
+        name: 'login',
+        meta: {
+            include: 'Login'
+        },
+        children: [{
+                path: '/login/account',
+                component: AccountLogin,
+                name: 'AccountLogin',
+                meta: {
+                    include: 'AccountLogin'
+                },
+            },
+            {
+                path: '/login/phone',
+                component: PhoneLogin,
+                name: 'PhoneLogin',
+                meta: {
+                    include: 'PhoneLogin'
+                },
+            },
+
+        ]
+    },
+    {
+        path: '/register',
+        component: Register,
+        name: 'register',
+        meta: {
+            include: 'Register'
+        }
+    },
+    {
+        path: '/forgetPassword',
+        component: ForgetPassword,
+        name: 'forgetPassword',
+        meta: {
+            include: 'ForgetPassword'
+        }
+    },
+    {
+        path: '/uCenter',
+        component: UCenter,
+        name: 'uCenter',
+        meta: {
+            include: 'UCenter'
+        }
+    },
 ]
 
 export default routerTable
