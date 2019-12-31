@@ -1,31 +1,84 @@
 <template>
-    <div class="category">
-        <CategoryTab></CategoryTab>
-        <div class="category_body">
-                分类主体
-        </div>
+  <div class="category">
+    <CategoryTab></CategoryTab>
+    <div class="category_body">
+      <van-tree-select height="100%" :items="items" :main-active-index.sync="activeIndex">
+        <template slot="content">
+          <ItemList :floors="items[activeIndex]" />
+        </template>
+      </van-tree-select>
     </div>
+  </div>
 </template>
 
-<style lang="stylus" scoped>
-.category 
-    flex 1
-    height 100%
-    display flex
-    flex-direction column
-    .category_body 
-        // padding-top .53rem
-        width 100%
-        flex 1
-        overflow auto
-        
-</style>
-
 <script>
-import CategoryTab from './CategoryTab'
+import CategoryTab from "./CategoryTab";
+import ItemList from "./itemList";
+import request from "@/utils/request.js";
 export default {
-    components:{
-        CategoryTab
-    }
-}
+  components: {
+    CategoryTab,
+    ItemList
+  },
+  data() {
+    return {
+      activeIndex: 0,
+      items: []
+      //   dataList: []
+    };
+  },
+  async mounted() {
+    const result = await request({
+      url: "/index.php",
+      params: {
+        ctl: "Goods_Cat",
+        met: "cat",
+        typ: "json",
+        cat_parent_id: 0
+      }
+    });
+    let data = result.data.data.items.map(item => {
+      item.text = item.cat_name;
+      return item;
+    });
+    this.items = data;
+  }
+  //   watch: {
+  //     activeIndex() {
+  //       this.getData();
+  //     }
+  //   },
+  //   methods: {
+  //     async getData() {
+  //       const data = await request({
+  //         url: `/index.php`,
+  //         params: {
+  //           ctl: "Goods_Cat",
+  //           met: "tree",
+  //           typ: "json",
+  //           cat_parent_id: 94
+  //         }
+  //       });
+  //       this.dataList = data.data.data.items;
+  //       //   console.log(data);
+  //     }
+  //   }
+};
 </script>
+
+
+<style lang="stylus" scoped>
+.category {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  .category_body {
+    width: 100%;
+    flex: 1;
+    overflow: auto;
+  }
+}
+</style>

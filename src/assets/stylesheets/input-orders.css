@@ -1,0 +1,70 @@
+.van-field__body>input{
+    width: 2.2rem
+}
+.van-tab__text, .van-tabs{
+    width: 100%
+}
+
+.van-tab{
+    border-radius: .1rem;
+    width: .2rem
+    
+}
+.van-tabs__nav--line{
+    justify-content:center
+}
+.title-box{
+   position: relative;
+   width: 100%;
+   height: 100%
+}
+.wrapper{
+    position: absolute;
+    left: .7rem;
+    top: 1.69rem;
+    text-align: center;
+    display: flex;
+    flex-direction:column;
+    align-items: center
+}
+.wrapper>.go{
+    display: block;
+    border: 1px #ccc solid;
+    border-radius: .1rem;
+    width: .7rem;
+    padding: .04rem;
+    color: #696969;
+    font-size: .12rem
+}
+.wrapper>p,span{
+    margin: .1rem 0;
+
+}
+.gohere{
+    font-size: 0.12rem;
+    color: #999;
+}
+
+.fab{
+    font-size: .6rem
+}
+.fa-ellipsis-h{
+    position: relative;
+}
+.list{
+    width: 1.2rem;
+    z-index: 1;
+    position: absolute;
+    right: .2rem;
+    background: #ffffff;
+    border: 1px solid #ccc;
+}
+.list>li{
+    border-bottom: 1px solid #ccc;
+    padding: .08rem 0;
+    font-size:.14rem
+}
+.list>li>i{
+    margin-left: .1rem;
+    margin-right: .2rem
+}
