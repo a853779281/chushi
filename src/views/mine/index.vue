@@ -49,10 +49,10 @@
             <div class="order">
                 <h2>
                     <span>我的订单</span>
-                    <a>
+                    <router-link :to= "{name:'orders'}">
                         查看全部订单
                         <span class="fas fa-angle-right"></span>
-                    </a>
+                    </router-link>
                 </h2>
                 <ul>
                     <li v-for="(item,index) of wait " :key="index">
