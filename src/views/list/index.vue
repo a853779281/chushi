@@ -19,27 +19,30 @@
       <ul class="goods_list">
         <router-link
           :to="{
-          name:'Details',
-          params:{
-            id:item.goods_id
-          }
-        }"
-          v-for="(item, index) in dataList"
-          :key="index"
+                name:'Details',
+                params:{
+                    id: item.id
+                },
+                query:{
+                    ...item
+                }
+                }"
+          v-for="item in goodsList"
+          :key="item.id"
           tag="li"
         >
           <div class="img_box">
-            <img :src="item.common_image" :alt="item.common_name" />
+            <img :src="item.pic" :alt="item.d_title" />
           </div>
           <div class="content_box">
-            <h1>{{item.common_name}}</h1>
+            <h1>{{item.d_title}}</h1>
             <span class="price">
               ￥
-              <b class="price_num">{{item.common_price}}</b>
+              <b class="price_num">{{item.jiage}}</b>
             </span>
             <div class="common_footer">
-              <span class="common_salenum">销量 {{item.common_salenum}}</span>
-              <span class="common_evaluate">评论 {{item.common_evaluate}}</span>
+              <span class="common_salenum">销量 {{item.xiaoliang |UnitConversion}}</span>
+              <span class="common_evaluate">评论 {{item.comment |UnitConversion}}</span>
             </div>
           </div>
         </router-link>
@@ -75,26 +78,21 @@ export default {
         { text: "好评排序", value: "b" },
         { text: "销量排序", value: "c" }
       ],
-      dataList: []
+      goodsList: []
     };
   },
   async mounted() {
-    const data = await request({
+    const result = await request({
       url: "/index.php",
       params: {
-        ctl: "Goods_Goods",
-        met: "goodslist",
-        typ: "json",
-        ua: "wap",
-        sub_site_id: 0,
-        cat_id: this.$route.params.id,
-        pagesize: 10,
-        curpage: 1,
-        firstRow: 0,
-        pos: 1
+        r: "class/cyajaxsub",
+        page: 1,
+        cid: this.$route.params.id,
+        px: "t",
+        cac_id: ""
       }
     });
-    this.dataList = data.data.data.items;
+    this.goodsList = result.data.data.content;
   },
   methods: {
     onConfirm() {

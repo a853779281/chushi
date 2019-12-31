@@ -1,14 +1,14 @@
 <template>
   <div id="itemList">
-    <div v-for="item of dataList" :key="item.cat_id" class="box">
-      <h3>{{item.cat_name}}</h3>
+    <div v-for="(item,index) of getFloorsData" :key="index" class="box">
+      <h3>{{item.name}}</h3>
       <ul>
-        <li v-for="el of item.child" :key="el.id">
+        <li v-for="el of item.list" :key="el.api_cid">
           <routerLink
             :to="{
                         name:'List',
                         params:{
-                            id:el.id
+                            id: el.api_cid,
                         },
                         query:{
                             a:1
@@ -16,9 +16,9 @@
                              }"
           >
             <div class="imgbox">
-              <img :src="el.cat_pic" :alt="el.cat_name" />
+              <img :src="el.img" :alt="el.name" />
             </div>
-            <span>{{el.cat_name}}</span>
+            <span>{{el.name}}</span>
           </routerLink>
         </li>
       </ul>
@@ -26,31 +26,11 @@
   </div>
 </template>
 <script>
-import request from "@/utils/request.js";
 export default {
-  data() {
-    return {
-      dataList: []
-    };
-  },
   props: ["floors"],
-  watch: {
-    floors() {
-      this.getData();
-    }
-  },
-  methods: {
-    async getData() {
-      const data = await request({
-        url: `/index.php`,
-        params: {
-          ctl: "Goods_Cat",
-          met: "tree",
-          typ: "json",
-          cat_parent_id: this.floors.id
-        }
-      });
-      this.dataList = data.data.data.items;
+  computed: {
+    getFloorsData() {
+      return this.floors && this.floors.floors;
     }
   }
 };

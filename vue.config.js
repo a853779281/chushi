@@ -7,6 +7,10 @@ module.exports = {
             '/index.php': {
                 target: 'http://www.qinqin.net',
                 changeOrigin: true
+            },
+            '/api/goods/get-goods-detail-img': {
+                target: 'http://cmsjapi.ffquan.cn/',
+                changeOrigin: true
             }
         }
     },

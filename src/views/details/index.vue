@@ -2,30 +2,25 @@
   <div class="details">
     <ListTab></ListTab>
     <div class="details_body">
-      <!-- <keep-alive :include="$route.meta.include">
-        <transition
-          mode="out-in"
-          enter-active-class="animated slideInLeft"
-          leave-active-class="animated slideOutLeft"
-        >
-          <router-view></router-view>
-        </transition>
-      </keep-alive>-->
-      <router-view></router-view>
+      <keep-alive :include="$route.meta.include">
+        <router-view :goodsList="goodsList"></router-view>
+      </keep-alive>
+      <FooterNav />
     </div>
   </div>
 </template>
 
 <script>
 import ListTab from "./ListTab";
-
+import FooterNav from "./footerNav";
 export default {
   components: {
-    ListTab
+    ListTab,
+    FooterNav
   },
   data() {
     return {
-      // goods: this.$route.query
+      goodsList: this.$route.query
     };
   }
 };

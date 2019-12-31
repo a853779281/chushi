@@ -13,7 +13,23 @@ import router from '@/router'
 import '@/filters'
 Vue.config.productionTip = false
 
-import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell, Icon, Swipe, SwipeItem, Tag, Popup, Sku } from 'vant'
+import {
+    TreeSelect,
+    Image,
+    DropdownMenu,
+    DropdownItem,
+    Button,
+    SwitchCell,
+    Icon,
+    Swipe,
+    SwipeItem,
+    Tag,
+    Popup,
+    Sku,
+    GoodsAction,
+    GoodsActionIcon,
+    GoodsActionButton
+} from 'vant'
 
 Vue.use(TreeSelect)
     .use(Image)
@@ -27,6 +43,9 @@ Vue.use(TreeSelect)
     .use(Tag)
     .use(Popup)
     .use(Sku)
+    .use(GoodsAction)
+    .use(GoodsActionIcon)
+    .use(GoodsActionButton)
 
 
 

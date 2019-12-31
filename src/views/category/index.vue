@@ -24,21 +24,18 @@ export default {
     return {
       activeIndex: 0,
       items: []
-      //   dataList: []
     };
   },
   async mounted() {
     const result = await request({
       url: "/index.php",
       params: {
-        ctl: "Goods_Cat",
-        met: "cat",
-        typ: "json",
-        cat_parent_id: 0
+        r: "class/category",
+        type: 1
       }
     });
-    let data = result.data.data.items.map(item => {
-      item.text = item.cat_name;
+    const data = result.data.data.data.map(item => {
+      item.text = item.name;
       return item;
     });
     this.items = data;
