@@ -2,7 +2,6 @@
     <div class="home">
         <HomeTab></HomeTab>
         <div class="home_body">
-<<<<<<< HEAD
             <div class="top_bg"></div>
             <div class="apple_bg">
                 <div class="new_pro_title">
@@ -58,7 +57,6 @@
                     </li>
                 </ul>
             </div>
-=======
             首页主体
             <p>首页主体</p>
             <p>首页主体</p>
@@ -129,7 +127,6 @@
             <p>首页主体</p>
             <p>首页主体</p>
             <p>首页主体</p>
->>>>>>> 358b4d8ee7b54ed03154211e6d74eefc239bd883
         </div>
     </div>
 </template>
