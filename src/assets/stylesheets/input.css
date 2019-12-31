@@ -4,3 +4,15 @@
 .tabbar{
     display: none
 }
+.van-tab__text, .van-tabs{
+    width: 100%
+}
+.van-tab{
+    border-radius: .1rem
+    flex 0;
+    width: .2rem
+    
+}
+.van-tabs__nav--line{
+    justify-content:center
+}

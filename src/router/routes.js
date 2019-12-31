@@ -12,6 +12,8 @@ const Mine = () => import(/* webpackChunkName: "group-jwj" */ '@/views/mine/inde
 
 const Search = () => import(/* webpackChunkName: "group-jwj" */ '@/views/search/index.vue')
 
+const Orders = () => import(/* webpackChunkName: "group-jwj" */ '@/views/orders/index.vue')
+
 
 
 
@@ -56,6 +58,14 @@ const routerTable=[
         name:'search',
         meta :{
             include:'Search'
+        }
+    },
+    {
+        path:'/orders',
+        component:Orders,
+        name:'orders',
+        meta :{
+            include:'Orders'
         }
     }
 ]

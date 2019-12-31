@@ -11,7 +11,9 @@
         >
   
 </van-search>
-<a href=""> 搜索</a>
+<router-link :to= "{
+    name:'orders'
+}"> 搜索</router-link>
 </div>
 <div slot="action" @click="onSearch" class="search-bottom">
     <p class="hot">热门搜索</p>
@@ -54,7 +56,7 @@ export default {
         height .45rem
         width 100%
         border 0 0 1px 0,#696969
-        span 
+        .fa-angle-left:before 
           line-height .45rem
           margin-left .15rem
           font-size .20rem
