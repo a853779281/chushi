@@ -1,44 +1,61 @@
-const Home = () => import( /* webpackChunkName: "group-jwj" */ '@/views/home/index.vue')
-
-const Category = () => import( /* webpackChunkName: "group-jwj" */ '@/views/category/index.vue')
 
 
-const Shopcar = () => import( /* webpackChunkName: "group-jwj" */ '@/views/shopcar/index.vue')
+const Home = () => import(/* webpackChunkName: "group-jwj" */ '@/views/home/index.vue')
+
+const Category = () => import(/* webpackChunkName: "group-jwj" */ '@/views/category/index.vue')
 
 
-const Mine = () => import( /* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
-const List = () => import( /* webpackChunkName: "group-jwj" */ '@/views/list/index.vue')
-const Details = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
+const Shopcar = () => import(/* webpackChunkName: "group-jwj" */ '@/views/shopcar/index.vue')
 
 
+const Mine = () => import(/* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
 
-const Collect=()=>import(/* webpackChunkName:"group-jwj" */ '@/views/collect/index.vue')
 const Search = () => import(/* webpackChunkName: "group-jwj" */ '@/views/search/index.vue')
 
+const Orders = () => import(/* webpackChunkName: "group-jwj" */ '@/views/orders/index.vue')
 
-const Footprint=()=>import(/* webpackChunkName:"group-jwj" */ '@/views/footprint/index.vue')
+const List = () => import(/* webpackChunkName: "group-jwj" */ '@/views/list/index.vue')
 
-const routerTable = [{
-        path: '/',
-        redirect: '/home'
-    },
+const Footprint = () => import(/* webpackChunkName: "group-jwj" */ '@/views/footprint/index.vue')
 
+const Collect = () => import(/* webpackChunkName: "group-jwj" */ '@/views/collect/index.vue')
+
+const Details = () => import(/* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
+
+
+
+
+
+const routerTable=[
     {
-        path: '/home',
-        component: Home,
+        path:'/',
+        redirect:'/home'
+    },
+    
+    {
+        path:'/home',
+        component:Home,
+        name:'home',
         meta: {
-            include: 'Home'
+            include:'Home'
         }
     },
     {
-        path:'/search',
-        component:Search,
-        name:'search',
-        meta :{
-            include:'Search'
+            path: 'list:id',
+            component: List,
+            name: 'List',
+            meta: {
+                include: 'List'
+            }
+    },
+    {
+        path: 'details:id',
+        component: Details,
+        name: 'Details',
+        meta: {
+            include: 'Details'
         }
     },
-
     {
         path: '/category',
         component: Category,
@@ -47,39 +64,13 @@ const routerTable = [{
         }
     },
     {
-        path: '/list:id',
-        component: List,
-        name: 'List',
-        meta: {
-            include: 'List'
-        }
-    },
-    {
-        path: '/details:id',
-        component: Details,
-        name: 'Details',
-        meta: {
-            include: 'Details'
-        }
-    },
-    {
         path: '/shopcar',
         component: Shopcar,
+        name:'shopcar',
         meta: {
             include: 'Shopcar'
         }
     },
-
-
-    // 个人中心
-    {
-        path: '/mine',
-        component: Mine,
-        meta: {
-            include: 'Mine'
-        }
-    },
-    // 商品/店铺收藏
     {
         path:'/collect',
         component:Collect,
@@ -101,15 +92,36 @@ const routerTable = [{
                 },
                 name:'shop'
             }
-        ],
+        ]
     },
-    // 我的足迹
     {
+        path: '/mine',
+        component: Mine,
+        meta: {
+            include: 'Mine'
+        }
+    },
+    {
+        path:'/search',
+        component:Search,
+        name:'search',
+        meta :{
+            include:'Search'
+        }
+    },{
         path:'/footprint',
         component:Footprint,
-        meta: { 
+        meta:{
             include:'footprint'
-        },
+        }
+    },
+    {
+        path:'/orders',
+        component:Orders,
+        name:'orders',
+        meta :{
+            include:'Orders'
+        }
     }
 ]
 
