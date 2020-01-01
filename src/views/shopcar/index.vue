@@ -14,7 +14,7 @@
                 @change="shopChecked(item.id)"
               >{{ shopName[index] }}</van-checkbox>
               <div class="content" v-for="el of item[shopName[index]] " :key="el.id">
-                <van-checkbox v-model="el.checked" @change="checked(el.id)"></van-checkbox>
+                <van-checkbox v-model="el.checked" @change="checked(el.id,index)"></van-checkbox>
                 <van-card
                   :num="el.num"
                   :price="el.jiage"
@@ -26,7 +26,7 @@
                     <van-stepper
                       v-model="el.num"
                       integer
-                      @change="changeCount(el.id,item.num,el.jiage)"
+                      @change="changeCount(el.id,el.num,el.jiage,index)"
                     />
                   </div>
                 </van-card>
@@ -57,7 +57,8 @@ export default {
       allList: [],
       shopName: [],
       allCK: false,
-      sum: 0
+      sum: 0,
+      shopCheck: []
     };
   },
   updated() {
@@ -74,10 +75,10 @@ export default {
       });
       this.shopName = shopname;
     },
-    changeCount(id, num, price) {
+    changeCount(id, num, price, index) {
       //传参
       const data = getStorage("shopcar");
-      data.map(elm => {
+      data[index][this.shopName[index]].map(elm => {
         if (elm.id == id) {
           elm.num = num;
           elm.sum = num * price;
@@ -90,20 +91,19 @@ export default {
     },
     shopChecked(id) {
       //店铺选中
-      const data = getStorage("shopcar");
-      data.map(elm => {
-        if (elm.id == id) {
-          elm.shopChecked = !elm.shopChecked;
-        }
-      });
-      setStorage("shopcar", data);
+      //   const data = getStorage("shopcar");
+      //   data.map(elm => {
+      //     if (elm.id == id) {
+      //       elm.shopChecked = !elm.shopChecked;
+      //     }
+      //   });
+      //   setStorage("shopcar", data);
       this.checked(id);
-      // bus.$emit('checked',id)
     },
-    checked(id) {
+    checked(id, index) {
       //商品选中
       const data = getStorage("shopcar");
-      data.map(elm => {
+      data[index][this.shopName[index]].map(elm => {
         if (elm.id == id) {
           elm.checked = !elm.checked;
         }
@@ -111,17 +111,21 @@ export default {
       setStorage("shopcar", data);
     },
     allChecked() {
-      this.carlist.map(elm => {
-        elm.shopChecked = !this.allCK;
-        elm.checked = !this.allCK;
-      });
+      //   this.carlist.map(elm => {
+      //     elm.shopChecked = !this.allCK;
+      //     elm.checked = !this.allCK;
+      //   });
     },
     sumPrice() {
       let p = 0;
-      let carlist = getStorage("shopcar");
-      carlist.map(elm => {
-        if (elm.checked) {
-          p += elm.sum;
+      let goods = getStorage("shopcar");
+
+      goods.map(el => {
+        for (let key in el) {
+          console.log(key, el[key]);
+          el[key].map(el => {
+            p += el.sum;
+          });
         }
       });
       this.sum = p * 100;

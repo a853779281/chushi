@@ -99,9 +99,9 @@ export default {
                   ...this.$route.query,
                   num: this.num,
                   checkboxflag: true,
-                  sum: this.sum
+                  sum: this.sum,
+                  checked: false
                 });
-                // 这家店没有这款商品
               }
             }
             // console.log(el[this.$route.query.shop_name], flag);
@@ -116,7 +116,8 @@ export default {
             ...this.$route.query,
             num: this.num,
             checkboxflag: true,
-            sum: this.sum
+            sum: this.sum,
+            checked: false
           });
           goods.push(list);
         }
@@ -129,48 +130,14 @@ export default {
           ...this.$route.query,
           num: this.num,
           checkboxflag: true,
-          sum: this.sum
+          sum: this.sum,
+          checked: false
         });
         goods.push(list);
       }
       console.log("goods", goods);
       setStorage("shopcar", goods);
     }
-    // addShopCar() {
-    //   Toast("亲！成功加入购物车~");
-    //   const goods = getStorage("shopcar");
-    //   if (goods.length != 0) {
-    //     const f = goods.some(elm => {
-    //       return elm.id == this.$route.params.id;
-    //     });
-
-    //     if (f) {
-    //       goods.map(elm => {
-    //         if (elm.id == this.$route.params.id) {
-    //           elm.num += this.num;
-    //           elm.sum = this.sum;
-    //           return;
-    //         }
-    //       });
-    //     } else {
-    //       goods.push({
-    //         ...this.$route.query,
-    //         num: this.num,
-    //         checkboxflag: true,
-    //         sum: this.sum
-    //       });
-    //     }
-    //   } else {
-    //     goods.push({
-    //       ...this.$route.query,
-    //       num: this.num,
-    //       checkboxflag: true,
-    //       sum: this.sum
-    //     });
-    //   }
-
-    //   setStorage("shopcar", goods);
-    // }
   },
   watch: {
     num() {
