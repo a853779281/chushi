@@ -8,25 +8,25 @@
         </div>
         <div v-else class="car_container">
           <ul>
-            <li v-for="item of carlist" :key="item.id">
+            <li v-for="(item,index) of carlist" :key="index">
               <van-checkbox
                 v-model="item.shopChecked"
                 @change="shopChecked(item.id)"
-              >{{ item.shop_name }}</van-checkbox>
-              <div class="content">
-                <van-checkbox v-model="item.checked" @change="checked(item.id)"></van-checkbox>
+              >{{ shopName[index] }}</van-checkbox>
+              <div class="content" v-for="el of item[shopName[index]] " :key="el.id">
+                <van-checkbox v-model="el.checked" @change="checked(el.id)"></van-checkbox>
                 <van-card
-                  :num="item.num"
-                  :price="item.jiage"
-                  :desc="item.cate_name"
-                  :title="item.title"
-                  :thumb="item.pic"
+                  :num="el.num"
+                  :price="el.jiage"
+                  :desc="el.cate_name"
+                  :title="el.title"
+                  :thumb="el.pic"
                 >
                   <div slot="footer">
                     <van-stepper
-                      v-model="item.num"
+                      v-model="el.num"
                       integer
-                      @change="changeCount(item.id,item.num,item.jiage)"
+                      @change="changeCount(el.id,item.num,el.jiage)"
                     />
                   </div>
                 </van-card>
@@ -62,29 +62,17 @@ export default {
   },
   updated() {
     this.sumPrice();
-    this.List();
   },
   methods: {
     List() {
       let goods = getStorage("shopcar");
       let shopname = [];
       goods.map(el => {
-        shopname.push(el.shop_name);
-        for (let i = 0; i < goods.length; i++) {
-          console.log(1);
+        for (let key in el) {
+          shopname.push(key);
         }
       });
-      this.shopName = [...new Set(shopname)];
-
-      //   for (let i = 0; i < goods.length; i++) {
-      //     for (let j = i + 1; j < goods.length; j++) {
-      //       if (goods[i].shop_name == goods[j].shop_name) {
-      //         console.log(i, j);
-      //         arr.push(goods[i]);
-      //       }
-      //     }
-      //     console.log(arr);
-      //   }
+      this.shopName = shopname;
     },
     changeCount(id, num, price) {
       //传参
@@ -146,6 +134,7 @@ export default {
       this.f = false;
     }
     this.sumPrice();
+    this.List();
   }
 };
 </script>

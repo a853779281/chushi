@@ -47,7 +47,8 @@ export default {
       goodsList: this.$attrs.goodsList,
       show: false,
       num: 1,
-      sum: this.$route.query.jiage
+      sum: this.$route.query.jiage,
+      getGoods: []
     };
   },
   mounted() {},
@@ -69,37 +70,107 @@ export default {
       Toast("亲！成功加入购物车~");
       const goods = getStorage("shopcar");
       if (goods.length != 0) {
-        const f = goods.some(elm => {
-          return elm.id == this.$route.params.id;
+        const f = goods.some(el => {
+          return el[this.$route.query.shop_name];
         });
-
         if (f) {
-          goods.map(elm => {
-            if (elm.id == this.$route.params.id) {
-              elm.num += this.num;
-              elm.sum = this.sum;
-              return;
+          goods.map(el => {
+            // 判断是否 是这家店
+            if (el[this.$route.query.shop_name]) {
+              console.log("是这家店");
+              //1.是这家店
+              //2.判断 存储的这家店 是否有这款商品
+              let flag = el[this.$route.query.shop_name].some(el => {
+                return el.id == this.$route.params.id;
+              });
+              if (flag) {
+                console.log("这家店 有这款商品");
+                el[this.$route.query.shop_name].map(elm => {
+                  if (elm.id == this.$route.params.id) {
+                    console.log("===");
+                    elm.num += this.num;
+                    elm.sum = this.sum;
+                    return;
+                  }
+                });
+              } else {
+                console.log("这家店没有这款商品");
+                el[this.$route.query.shop_name].push({
+                  ...this.$route.query,
+                  num: this.num,
+                  checkboxflag: true,
+                  sum: this.sum
+                });
+                // 这家店没有这款商品
+              }
             }
+            // console.log(el[this.$route.query.shop_name], flag);
           });
+          console.log("有商品，有这家店的商品");
         } else {
-          goods.push({
+          console.log("有商品，但没有这家店的商品");
+          let list = {
+            [this.$route.query.shop_name]: []
+          };
+          list[this.$route.query.shop_name].push({
             ...this.$route.query,
             num: this.num,
             checkboxflag: true,
             sum: this.sum
           });
+          goods.push(list);
         }
       } else {
-        goods.push({
+        console.log(2, "else");
+        let list = {
+          [this.$route.query.shop_name]: []
+        };
+        list[this.$route.query.shop_name].push({
           ...this.$route.query,
           num: this.num,
           checkboxflag: true,
           sum: this.sum
         });
+        goods.push(list);
       }
-
+      console.log("goods", goods);
       setStorage("shopcar", goods);
     }
+    // addShopCar() {
+    //   Toast("亲！成功加入购物车~");
+    //   const goods = getStorage("shopcar");
+    //   if (goods.length != 0) {
+    //     const f = goods.some(elm => {
+    //       return elm.id == this.$route.params.id;
+    //     });
+
+    //     if (f) {
+    //       goods.map(elm => {
+    //         if (elm.id == this.$route.params.id) {
+    //           elm.num += this.num;
+    //           elm.sum = this.sum;
+    //           return;
+    //         }
+    //       });
+    //     } else {
+    //       goods.push({
+    //         ...this.$route.query,
+    //         num: this.num,
+    //         checkboxflag: true,
+    //         sum: this.sum
+    //       });
+    //     }
+    //   } else {
+    //     goods.push({
+    //       ...this.$route.query,
+    //       num: this.num,
+    //       checkboxflag: true,
+    //       sum: this.sum
+    //     });
+    //   }
+
+    //   setStorage("shopcar", goods);
+    // }
   },
   watch: {
     num() {
