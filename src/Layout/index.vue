@@ -37,10 +37,9 @@ export default {
           this.$route.name == "shop" ||
           this.$route.name == "goods" ||
           this.$route.name == "DetailsGoods" ||
-          this.$route.name == "DetailsImg"
-          //   ||
-          //   this.$route.name == "DetailsComments" ||
-          //   this.$route.name == "DetailsRecommend"
+          this.$route.name == "DetailsImg" ||
+          this.$route.name == "DetailsComments" ||
+          this.$route.name == "DetailsRecommend"
         ) {
           this.flag = false;
         } else {

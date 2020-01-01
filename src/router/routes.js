@@ -103,6 +103,7 @@ const routerTable = [{
     {
         path: '/shopcar',
         component: Shopcar,
+        name: 'Shopcar',
         meta: {
             include: 'Shopcar'
         }

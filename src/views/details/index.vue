@@ -5,18 +5,15 @@
       <keep-alive :include="$route.meta.include">
         <router-view :goodsList="goodsList"></router-view>
       </keep-alive>
-      <FooterNav />
     </div>
   </div>
 </template>
 
 <script>
 import ListTab from "./ListTab";
-import FooterNav from "./footerNav";
 export default {
   components: {
-    ListTab,
-    FooterNav
+    ListTab
   },
   data() {
     return {

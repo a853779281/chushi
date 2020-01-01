@@ -28,7 +28,12 @@ import {
     Sku,
     GoodsAction,
     GoodsActionIcon,
-    GoodsActionButton
+    GoodsActionButton,
+    stepper,
+    Toast,
+    Checkbox,
+    Card,
+    SubmitBar
 } from 'vant'
 
 Vue.use(TreeSelect)
@@ -46,6 +51,11 @@ Vue.use(TreeSelect)
     .use(GoodsAction)
     .use(GoodsActionIcon)
     .use(GoodsActionButton)
+    .use(stepper)
+    .use(Toast)
+    .use(Checkbox)
+    .use(Card)
+    .use(SubmitBar)
 
 
 
