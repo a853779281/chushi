@@ -17,15 +17,15 @@
                 <i class="fas fa-eye-slash account_username_right" @click= "passwordFlag"></i>
             </div>
         </div>
-        <button class="btn"  @click= "ALogin(username)">登录</button>
+        <button class="btn"  @click= "ALogin()">登录</button>
         <Register></Register>
     </div>
 </template>
 
 <script>
 import Register from './Register'
-
-import {mapState,mapActions} from 'vuex'
+import request from '@/utils/request.js'
+// import {mapState,mapActions} from 'vuex'
 export default {
     data(){
         return {
@@ -35,11 +35,11 @@ export default {
             token:''
         }
     },
-    computed:{
-        ...mapState({
-            person:state=>state.accountLoginStore.person
-        })
-    },
+    // computed:{
+    //     ...mapState({
+    //         person:state=>state.accountLoginStore.person
+    //     })
+    // },
     methods:{
         
         passwordFlag(){
@@ -48,7 +48,22 @@ export default {
         clearUsername(){
            return this.username=''
         },
-        ...mapActions(['ALogin'])
+        // ...mapActions(['ALogin'])
+        async ALogin(){
+            const result=await request({
+                url:'',
+                method:"post",
+                headers:{
+                    "Content-Type":'application/json'
+                },
+                data:{
+                    tkoen:this.token,
+                    username:this.username,
+                    password:this.password,
+                }
+            })
+            console.log(result.data)
+        }
     },
     components:{
         Register
