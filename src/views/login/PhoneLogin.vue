@@ -8,40 +8,112 @@
         <div  class="account_username">
             <i class="fas fa-lock account_username_left" ></i>
             <input type="text"  placeholder="验证码" v-model= "img_code">
-            <span class="account_username_right img_code">验证码</span>
+            <span class="account_username_right img_code" @click= "imgCode">{{str ||'验证码'}}</span>
         </div>
         <div  class="account_username">
             <i class="fas fa-lock account_username_left" ></i>
             <input type="text"  placeholder="请输入手机验证码" v-model= "phone_code">
-            <span class="account_username_right phone_code">验证码</span>
+            <span
+             class="account_username_right phone_code"
+              @click= "phoneCode"
+              >{{flag? '点击获取验证码':'此验证码'+count+'秒失效'}}</span>
+            
         </div>
-        <button class="btn">登录</button>
+        <button class="btn" @click="PLogin">登录</button>
         <Register></Register>
     </div>
 </template>
 <script>
     import Register from './Register'
-
-    import  {mapState,mapActions} from 'vuex'
+    import request from '@/utils/request.js'
+    // import  {mapState,mapActions} from 'vuex'
 
 export default {
     data(){
         return {
             phone:'',
             img_code:'',
-            phone_code:''
+            str:'',
+            phone_code:'',
+            count:60,
+            flag:true,
+            token:''
         }
     },
-    computed:{
-        ...mapState({
-            person:state=>state.phoneLoginStore.person
-        })
-    },
+    // computed:{
+    //     ...mapState({
+    //         person:state=>state.phoneLoginStore.person
+    //     })
+    // },
     methods:{
         clearPhone(){
             this.phone=''
         },
-         ...mapActions(['PLogin'])
+        //  ...mapActions(['PLogin'])
+        imgCode(){
+          let str='',
+               a,b,c,d 
+              for (var i=1 ;i<5;i++){
+                a=String.fromCharCode(Math.round(Math.random()*(65-90)+90)),
+                b=String.fromCharCode(Math.round(Math.random()*(48-57)+57)),
+                c=String.fromCharCode(Math.round(Math.random()*(97-122)+122)),
+                d=Math.round(Math.random()*(1-3)+3)
+                if(d==1){
+                    str+=a
+                }else if(d==2){
+                    str+=b
+                }else if(d==3){
+                    str+=c
+                }
+            }
+            this.str=str
+        },
+        async phoneCode(){
+            let count=60,
+                timer
+                timer= setInterval(() => {
+                    count--;
+                    // console.log(count)
+                    this.count=count
+                    this.flag=false
+                    if(count==0){
+                        clearInterval(timer)
+                        this.flag =true
+                    }
+                }, 1000);
+            // const result=await request({
+            //     url:'',
+            //     method:'post',
+            //     data:{
+            //         phone:this.phone
+            //     },
+            //     headers:{
+            //         "Content-Type":'application/json'
+            //     }
+            // })
+            // console.log(result.data)
+        },
+        async PLogin(){
+            const{img_code,str,phone,phone_code,token}=this
+            if(img_code==str && !phone && !phone_code){
+                const result=await request({
+                    url:'',
+                    method:'post',
+                    data:{
+                        token,
+                        phone,
+                        phone_code
+                    },
+                    headers:{
+                        "Content-Type":'application/json'
+                    }
+                })
+                console.log(result.data)
+            }else{
+                alert('您填的验证码错误')
+            }
+           
+        }
     },
     components:{
         Register
@@ -80,7 +152,11 @@ export default {
                 flex 80
             .img_code
                 width .27rem
+                background #dddddd
+                line-height .38rem
+                color #777777
             .phone_code
+                flex 150
                 height .38rem
                 background #dddddd
                 color #777777
