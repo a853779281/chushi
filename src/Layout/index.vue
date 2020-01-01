@@ -39,6 +39,7 @@ export default {
           this.$route.name == "goods" ||
           this.$route.name == "DetailsGoods" ||
           this.$route.name == "DetailsImg" ||
+<<<<<<< HEAD
           this.$route.name == "search" ||
           this.$route.name == "orders" ||
           this.$route.name == "AccountLogin" ||
@@ -48,6 +49,10 @@ export default {
           //   ||
           //   this.$route.name == "DetailsComments" ||
           //   this.$route.name == "DetailsRecommend"
+=======
+          this.$route.name == "DetailsComments" ||
+          this.$route.name == "DetailsRecommend"
+>>>>>>> wangyongsong
         ) {
           this.flag = false;
         } else {

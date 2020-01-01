@@ -4,6 +4,10 @@ Vue.filter('current', (val) => {
     return '￥' + val
 })
 
+Vue.filter('decimals', (val) => {
+    return '￥' + Number(val).toFixed(2)
+})
+
 
 Vue.filter('UnitConversion', value => {
     let num;

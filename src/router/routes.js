@@ -111,9 +111,15 @@ const routerTable = [{
 
     },
     {
+<<<<<<< HEAD
         path: '/category',
         component: Category,
         name: 'category',
+=======
+        path: '/shopcar',
+        component: Shopcar,
+        name: 'Shopcar',
+>>>>>>> wangyongsong
         meta: {
             include: 'Category'
         }
