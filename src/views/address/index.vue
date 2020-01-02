@@ -15,7 +15,7 @@
                             <div class="nf">
                                 <ul class="nf-box">
                                     <li class="name"> {{item.name}} </li>
-                                    <li class="phone"> {{item.phone}} </li>
+                                    <li class="phone-box"> {{item.phone}} </li>
                                 </ul>
                             </div>
                             <div class="sd">
@@ -44,7 +44,7 @@
                 <h1>新增收货地址</h1>
                 <ul>
                     <li><span class="man">收货人：</span><input type="text" v-model= "name"></li>
-                    <li><span>联系方式：</span><input type="text" placeholder="131 2345 6789" v-model= "ophone"></li>
+                    <li><span>联系方式：</span><input type="text" placeholder="131 2345 6789" v-model= "phone"></li>
                     <li><span>所在地区：</span><input type="text" v-model= "site" placeholder="浙江省 杭州市 江干区"></li>
                     <li><span>详细地址：</span><input type="text" placeholder="街道、楼牌号等" v-model= "detailed"></li>
                 </ul>
@@ -63,6 +63,13 @@ export default {
         return {
             f:false,
                 address:[
+                    {
+                      id : 1,
+                      name : '怪我咯',
+                      phone :13113121321,
+                      site : '浙江省杭州市江干区',
+                      detailed : '撒旦撒是否看过开朗了肯定是'
+                    }
 
         ],
         
@@ -154,7 +161,7 @@ export default {
                       font-size .14rem
                     .name
                       flex 100
-                    .phone
+                    .phone-box
                       flex 275
                 .sd
                   .sd-box
