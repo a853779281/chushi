@@ -5,7 +5,8 @@
         </div>
         <div class="home_search">
             <i class="fas fa-search"></i>
-            <input type="text" name="" id="" placeholder="优选最初的味道">
+            <router-link :to= "
+             {name:'search'} "> <input type="text" name="" id="" placeholder="优选最初的味道"></router-link>
         </div>
         <i class="fas fa-bell message"></i>
     </div>
@@ -13,7 +14,13 @@
 
 <script>
 export default {
-
+    data(){
+        return {
+            homebg:{
+                background:'#fff'
+            }
+        }
+    },
 }
 </script>
 
@@ -23,9 +30,8 @@ export default {
     height .35rem
     padding .09rem 0 
     width 100%
-    background #fff
     align-items center
-    background lightgreen
+    background url(./../../assets/img/home_top_bg1.jpg)
     .logo 
         flex 44 
         img 

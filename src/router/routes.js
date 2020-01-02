@@ -10,6 +10,18 @@ const Shopcar = () => import(/* webpackChunkName: "group-jwj" */ '@/views/shopca
 
 const Mine = () => import(/* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
 
+const Search = () => import(/* webpackChunkName: "group-jwj" */ '@/views/search/index.vue')
+
+const Orders = () => import(/* webpackChunkName: "group-jwj" */ '@/views/orders/index.vue')
+
+const List = () => import(/* webpackChunkName: "group-jwj" */ '@/views/list/index.vue')
+
+const Footprint = () => import(/* webpackChunkName: "group-jwj" */ '@/views/footprint/index.vue')
+
+const Collect = () => import(/* webpackChunkName: "group-jwj" */ '@/views/collect/index.vue')
+
+const Details = () => import(/* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
+
 
 const Login = () => import(/* webpackChunkName: "group-jwj" */ '@/views/login/index.vue')
 
@@ -45,6 +57,22 @@ const routerTable=[
         }
     },
     {
+            path: 'list:id',
+            component: List,
+            name: 'List',
+            meta: {
+                include: 'List'
+            }
+    },
+    {
+        path: 'details:id',
+        component: Details,
+        name: 'Details',
+        meta: {
+            include: 'Details'
+        }
+    },
+    {
         path: '/category',
         component: Category,
         name:'category',
@@ -61,11 +89,56 @@ const routerTable=[
         }
     },
     {
+        path:'/collect',
+        component:Collect,
+        meta:{
+            include:'collect'
+        },
+        children:[
+            {
+                path:'goods',
+                meta:{
+                    include:'goods'
+                },
+                name:'goods'
+            },
+            {
+                path:'shop',
+                meta:{
+                    include:'shop'
+                },
+                name:'shop'
+            }
+        ]
+    },
+    {
         path: '/mine',
         component: Mine,
         name:'mine',
         meta: {
             include: 'Mine'
+        }
+    },
+    {
+        path:'/search',
+        component:Search,
+        name:'search',
+        meta :{
+            include:'Search'
+        }
+    },{
+        path:'/footprint',
+        component:Footprint,
+        meta:{
+            include:'footprint'
+        }
+    },
+    {
+        path:'/orders',
+        component:Orders,
+        name:'orders',
+        meta :{
+            include:'Orders'
         }
     },
     {
