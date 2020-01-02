@@ -25,6 +25,7 @@
       <span>购买数量</span>
       <van-stepper v-model="num" class />
     </div>
+    <div class="des">{{goodsList.miaoshu}}</div>
     <!-- goods-detail end -->
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" text="客服" @click.native="goService" />
@@ -156,6 +157,8 @@ export default {
 .detailsgoods {
   height: 100%;
   overflow: auto;
+  background: #fff;
+  padding-bottom: 0.5rem;
 
   .van-swipe {
     height: 2rem;
@@ -236,6 +239,17 @@ export default {
       line-height: 0.28rem;
       font-size: 0.18rem;
     }
+  }
+
+  .des {
+    margin-top: 0.2rem;
+    padding: 0.1rem 0.1rem;
+    color: #888;
+    font-size: 0.14rem;
+    line-height: 0.16rem;
+    letter-spacing: 0.02rem;
+    background: #fff;
+    // text-align: center;
   }
 }
 </style>
