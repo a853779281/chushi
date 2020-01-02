@@ -34,7 +34,7 @@ export default {
         $route: {
             deep:true,
             handler () {
-                if( this.$route.name == 'search' | this.$route.name == 'orders'){
+                if( this.$route.name == 'search' || this.$route.name == 'orders' || this.$route.name == 'address'){
                     this.tabBarFlag = false
                 }else{
                     this.tabBarFlag = true

@@ -12,7 +12,7 @@
   
 </van-search>
 <router-link :to= "{
-    name:'orders'
+    name:'address'
 }"> 搜索</router-link>
 </div>
 <div slot="action" @click="onSearch" class="search-bottom">
