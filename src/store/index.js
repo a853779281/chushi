@@ -3,10 +3,12 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import AddrStore from '@/views/addr/store.js'
+import addrStore from '@/views/addr/store.js'
 
 const store=new Vuex.Store({
-    AddrStore
+    modules:{
+        addrStore
+    }
 })
 
 export default store

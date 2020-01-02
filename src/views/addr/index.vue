@@ -19,4 +19,6 @@ export default {
 <style lang="stylus" scoped>
 .wrap 
     height 100% 
+    display flex
+    flex-direction column
 </style>

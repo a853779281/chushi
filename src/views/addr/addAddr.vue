@@ -14,16 +14,20 @@
 </template>
 
 <script>
+import {mapState} from "vuex"
 export default {
+    mounted(){
+        console.log(this.$store)
+    },
     data(){
         return{
             chosenAddressId: '1',
         }
     },
     computed:{
-        list(){
-            return this.$store.state.addrStore.list
-        },
+        ...mapState({
+            list:state=>state.addrStore.list
+        })
     },
     methods: {
         onAdd() {
@@ -35,8 +39,10 @@ export default {
 
 <style lang="stylus" scoped>
 .wrapper 
-    height 100% 
+    overflow auto
+    flex 1
     .addr
+        overflow auto
         position absolute
         left 50%
         top 50%
