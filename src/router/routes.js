@@ -27,6 +27,9 @@ const Login = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/i
 
 const AccountLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/AccountLogin.vue')
 
+const Address = () => import(/* webpackChunkName: "group-jwj" */ '@/views/address/index.vue')
+const Addaddress = () => import(/* webpackChunkName: "group-jwj" */ '@/views/address/addaddress.vue')
+
 
 const PhoneLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/PhoneLogin.vue')
 
@@ -310,6 +313,25 @@ const routerTable = [{
             include: 'UCenter'
         }
     },
+    
+    
+        {
+            path:'/address',
+            component:Address,
+            name:'address',
+            meta :{
+                include:'Address'
+            }
+        
+    },
+    {
+        path:'/addaddress',
+        component:Addaddress,
+        name:'addaddress',
+        meta:{
+            include:'Addaddress'
+        }
+    }
 ]
 
 export default routerTable
