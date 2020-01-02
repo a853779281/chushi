@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="search">
     <div class="search-box">
       <span class="fas fa-angle-left" @click="fanhui"></span>
@@ -11,6 +12,28 @@
             }}
       "
       >搜索</router-link>
+=======
+    <div class="search">
+        <div class="search-box">
+        <span class="fas fa-angle-left" @click="fanhui"></span>
+        <van-search
+            v-model="value"
+            placeholder="请输入搜索关键词"
+            shape="round"
+            label="宝贝"
+            @click="onSearch"
+        >
+  
+</van-search>
+<router-link :to= "{
+    name:'address'
+}"> 搜索</router-link>
+</div>
+<div slot="action" @click="onSearch" class="search-bottom">
+    <p class="hot">热门搜索</p>
+    <p class="search-val">黑巨里</p>
+</div>
+>>>>>>> lijiale
     </div>
     <div slot="action" @click="onSearch" class="search-bottom">
       <p class="hot">热门搜索</p>

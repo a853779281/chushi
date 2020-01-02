@@ -22,6 +22,7 @@ import TabBar from "components/TabBar";
 // import Tab from 'components/Tab'
 // import Mine from '@/views/mine'
 export default {
+<<<<<<< HEAD
   components: {
     TabBar
   },
@@ -53,6 +54,26 @@ export default {
           this.flag = false;
         } else {
           this.flag = true;
+=======
+    components:{
+        TabBar
+    },
+    data () {
+        return {
+            tabBarFlag:true
+        }
+    },
+    watch:{
+        $route: {
+            deep:true,
+            handler () {
+                if( this.$route.name == 'search' || this.$route.name == 'orders' || this.$route.name == 'address'){
+                    this.tabBarFlag = false
+                }else{
+                    this.tabBarFlag = true
+                }
+            }
+>>>>>>> lijiale
         }
       }
     }
