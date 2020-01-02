@@ -52,7 +52,7 @@ export default {
         } else {
           this.flag = true;
         }
-      }
+      },
     }
   }
 };
