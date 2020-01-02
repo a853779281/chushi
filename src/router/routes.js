@@ -33,9 +33,7 @@ const Register = () => import( /* webpackChunkName: "group-jwj" */ '@/views/regi
 
 const Deliver = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/deliver.vue')
 
-<<<<<<< HEAD
 const ForgetPassword = () => import( /* webpackChunkName: "group-jwj" */ '@/views/forgetPassword/index.vue')
-=======
 const Deposit = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/deposit.vue')
 
 const Doing = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/doing.vue')
@@ -51,7 +49,6 @@ const WaitPay = () => import(/* webpackChunkName: "group-jwj" */ '@/views/delive
 const AlreadyDeliver = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/alreadyDeliver.vue')
 
 const Addr = () => import(/* webpackChunkName: "group-jwj" */ '@/views/addr/index.vue')
->>>>>>> vapour
 
 
 const UCenter = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
@@ -73,8 +70,6 @@ const routerTable = [{
     },
     // 列表路由
     {
-<<<<<<< HEAD
-=======
         path:'/addr',
         component:Addr,
 
@@ -123,7 +118,6 @@ const routerTable = [{
         component:Deposit,
     },
     {
->>>>>>> vapour
         path: 'list:id',
         component: List,
         name: 'List',
@@ -181,15 +175,12 @@ const routerTable = [{
 
     },
     {
-<<<<<<< HEAD
         path: '/category',
         component: Category,
         name: 'category',
-=======
         path: '/shopcar',
         component: Shopcar,
         name: 'Shopcar',
->>>>>>> wangyongsong
         meta: {
             include: 'Category'
         }
