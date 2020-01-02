@@ -10,8 +10,8 @@
           <ul>
             <li v-for="(item,index) of carlist" :key="index">
               <van-checkbox
-                v-model="item.checked"
-                @change="shopChecked(index,item)"
+                v-model="shopNameCheck[index]"
+                @change="shopChecked(index,shopName[index])"
               >{{ shopName[index] }}</van-checkbox>
               <div class="content" v-for="el of item[shopName[index]] " :key="el.id">
                 <van-checkbox v-model="el.checked" @change="checked(el.id,index)"></van-checkbox>
@@ -92,18 +92,21 @@ export default {
     },
     shopChecked(index, name) {
       //店铺选中
+
+      this.shopNameCheck[index][name] = !this.shopNameCheck[index][name];
+      console.log(this.shopNameCheck);
+
+      // setStorage("shopcheck", this.shopNameCheck);
+    },
+    cbox() {
       const data = getStorage("shopcar");
       let arr = [];
       data.map(el => {
-        for (const key in el) {
-          arr.push({ [key]: false });
-        }
+        console.log(el);
+        arr.push(false);
       });
-      // arr[name]=!arr[name]
-      console.log(name);
-      console.log(arr[index]);
-      setStorage("shopcheck", arr);
       this.shopNameCheck = arr;
+      setStorage("shopcheck", arr);
     },
     checked(id, index) {
       //商品选中
@@ -145,6 +148,7 @@ export default {
     }
     this.sumPrice();
     this.List();
+    this.cbox();
   }
 };
 </script>
