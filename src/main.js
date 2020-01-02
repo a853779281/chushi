@@ -3,9 +3,16 @@ import App from './App.vue'
 
 import '@/utils/rem.js'
 
-import { Search } from 'vant'
-import { Tab, Tabs } from 'vant'
-import { Toast } from 'vant'
+import {
+    Search
+} from 'vant'
+import {
+    Tab,
+    Tabs
+} from 'vant'
+import {
+    Toast
+} from 'vant'
 // 引入store
 import store from '@/store/index.js'
 
@@ -32,7 +39,7 @@ import {
     Sku,
     GoodsAction,
     GoodsActionIcon,
-    GoodsActionButton
+    GoodsActionButton,
 } from 'vant'
 
 Vue.use(TreeSelect)

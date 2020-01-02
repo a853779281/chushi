@@ -44,10 +44,11 @@ export default {
           this.$route.name == "AccountLogin" ||
           this.$route.name == "PhoneLogin" ||
           this.$route.name == "register" ||
-          this.$route.name == "forgetPassword"
-          //   ||
-          //   this.$route.name == "DetailsComments" ||
-          //   this.$route.name == "DetailsRecommend"
+          this.$route.name == "forgetPassword" ||
+          this.$route.name == "DetailsComments" ||
+          this.$route.name == "DetailsRecommend" ||
+          this.$route.name == "recommend" ||
+          this.$route.name == "searchList"
         ) {
           this.flag = false;
         } else {

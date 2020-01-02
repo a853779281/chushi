@@ -1,4 +1,5 @@
 const Home = () => import( /* webpackChunkName: "group-jwj" */ '@/views/home/index.vue')
+const NewGoodRecommend = () => import( /* webpackChunkName: "group-jwj" */ '@/views/recommend/index.vue')
 
 const Category = () => import( /* webpackChunkName: "group-jwj" */ '@/views/category/index.vue')
 
@@ -14,6 +15,7 @@ const DetailsComments = () => import( /* webpackChunkName: "group-jwj" */ '@/vie
 const DetailsRecommend = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsRecommend.vue')
 
 const Search = () => import( /* webpackChunkName: "group-jwj" */ '@/views/search/index.vue')
+const SearchList = () => import( /* webpackChunkName: "group-jwj" */ '@/views/search/SearchList.vue')
 
 const Orders = () => import( /* webpackChunkName: "group-jwj" */ '@/views/orders/index.vue')
 const Collect = () => import( /* webpackChunkName:"group-jwj" */ '@/views/collect/index.vue')
@@ -50,6 +52,14 @@ const routerTable = [{
         name: 'home',
         meta: {
             include: 'Home'
+        }
+    },
+    { //首页的新品推荐
+        path: '/recommend',
+        component: NewGoodRecommend,
+        name: 'recommend',
+        meta: {
+            include: 'NewGoodRecommend'
         }
     },
     // 列表路由
@@ -163,7 +173,16 @@ const routerTable = [{
         meta: {
             include: 'Search'
         }
-    }, {
+    },
+    {
+        path: '/searchList',
+        component: SearchList,
+        name: 'searchList',
+        meta: {
+            include: 'SearchList'
+        }
+    },
+    {
         path: '/footprint',
         component: Footprint,
         meta: {
