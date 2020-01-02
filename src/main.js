@@ -5,7 +5,6 @@ import '@/utils/rem.js'
 
 import { Search } from 'vant'
 import { Tab, Tabs } from 'vant'
-
 // 引入store
 import store from '@/store/index.js'
 
@@ -15,7 +14,6 @@ import '@/filters'
 Vue.config.productionTip = false
 Vue.use(Search)
 Vue.use(Tab).use(Tabs)
-
 
 import {
     TreeSelect,
