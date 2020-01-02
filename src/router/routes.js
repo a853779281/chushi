@@ -39,6 +39,11 @@ const ForgetPassword = () => import(/* webpackChunkName: "group-jwj" */ '@/views
 
 
 const UCenter = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
+const AccountInformation = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/AccountInformation.vue')
+const Photo = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/Photo.vue')
+const Safe = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/Safe.vue')
+const Modify = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/Modify.vue')
+const Binding = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/Binding.vue')
 
 
 
@@ -191,7 +196,49 @@ const routerTable=[
         name:'uCenter',
         meta: {
             include: 'UCenter'
-        }
+        },
+        children:[
+            {
+                path:'/uCenter/accountInformation',
+                component:AccountInformation,
+                name:'accountInformation',
+                meta:{
+                   include: 'accountInformation'
+                }
+            },
+            {
+                path:'/uCenter/photo',
+                component:Photo,
+                name:'photo',
+                meta:{
+                   include: 'Photo'
+                }
+            },
+            {
+                path:'/uCenter/safe',
+                component:Safe,
+                name:'safe',
+                meta:{
+                   include: 'Safe'
+                }
+            },
+            {
+                path:'/uCenter/modify',
+                component:Modify,
+                name:'modify',
+                meta:{
+                   include: 'Modify'
+                }
+            },
+            {
+                path:'/uCenter/binding',
+                component:Binding,
+                name:'binding',
+                meta:{
+                   include: 'Binding'
+                }
+            },
+        ]
     },
 ]
 

@@ -11,11 +11,7 @@ import { Toast } from 'vant'
 import router from '@/router'
 import store from '@/store'
 
-import {
-  Button
-} from 'vant' //引入vant 插件
 
-Vue.use(Button)
 
 
 import '@/filters'
@@ -24,7 +20,7 @@ Vue.use(Search)
 Vue.use(Tab).use(Tabs)
 Vue.use(Toast)
 
-import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell } from 'vant'
+import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell ,DatetimePicker, Area,AddressEdit} from 'vant'
 
 Vue.use(TreeSelect)
     .use(Image)
@@ -32,6 +28,9 @@ Vue.use(TreeSelect)
     .use(DropdownItem)
     .use(Button)
     .use(SwitchCell)
+    .use(DatetimePicker)
+    .use(Area)
+    .use(AddressEdit)
 
 
 

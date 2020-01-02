@@ -1,25 +1,30 @@
 <template>
      <div class="account_login">
+         <!-- 手机号 -->
         <div class="account_username">
             <i class="fas fa-user account_username_left"></i>
             <input type="number" placeholder="请输入手机号" v-model= "phone">
             <i class="fas fa-times account_username_right" @click= "clearPhone "></i>
         </div>
+        <!-- 密码 -->
         <div  class="account_username">
             <i class="fas fa-lock account_username_left" ></i>
             <input type="text"  placeholder="验证码" v-model= "img_code">
             <span class="account_username_right img_code" @click= "imgCode">{{str ||'验证码'}}</span>
         </div>
+        <!-- 手机验证码 -->
         <div  class="account_username">
             <i class="fas fa-lock account_username_left" ></i>
-            <input type="text"  placeholder="请输入手机验证码" v-model= "phone_code">
+            <input type="text"  placeholder="请输入手机验证码" v-model= "code">
             <span
              class="account_username_right phone_code"
               @click= "phoneCode"
               >{{flag? '点击获取验证码':'此验证码'+count+'秒失效'}}</span>
             
         </div>
+        <!-- 点击登录 -->
         <button class="btn" @click="PLogin">登录</button>
+        <!-- 注册和忘记密码组件 -->
         <Register></Register>
     </div>
 </template>
@@ -34,7 +39,7 @@ export default {
             phone:'',
             img_code:'',
             str:'',
-            phone_code:'',
+            code:'',
             count:60,
             flag:true,
             token:''
@@ -50,6 +55,8 @@ export default {
             this.phone=''
         },
         //  ...mapActions(['PLogin'])
+
+        // 图片验证码
         imgCode(){
           let str='',
                a,b,c,d 
@@ -68,6 +75,7 @@ export default {
             }
             this.str=str
         },
+        // 手机验证码和发送请求
         async phoneCode(){
             let count=60,
                 timer
@@ -93,22 +101,23 @@ export default {
             // })
             // console.log(result.data)
         },
+        //  请求登录
         async PLogin(){
-            const{img_code,str,phone,phone_code,token}=this
-            if(img_code==str && !phone && !phone_code){
+            const{img_code,str,phone,code}=this
+            if(img_code==str && phone && code){
                 const result=await request({
-                    url:'',
-                    method:'post',
-                    data:{
-                        token,
+                    url:'/forgetPassword',
+                    method:'get',
+                    params:{
+                        // token,
                         phone,
-                        phone_code
+                        code
                     },
-                    headers:{
-                        "Content-Type":'application/json'
-                    }
+                    // headers:{
+                    //     "Content-Type":'application/json'
+                    // }
                 })
-                console.log(result.data)
+                console.log(result.data )
             }else{
                 alert('您填的验证码错误')
             }

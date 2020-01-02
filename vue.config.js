@@ -1,13 +1,34 @@
 const path = require('path')
 
 module.exports={
+    lintOnSave: process.env.NODE_ENV !== 'production',
     devServer:{
-        open:true,
+        overlay:{
+            warnings : false,
+            error: false
+        },
+        // open:true,
         proxy:{
             '/index.php':{
                 target:'http://www.jushifang.cn',
                 changeOrigin:true
-            }
+            },
+            '/registUser':{
+                target:'http://10.31.160.200:9091',
+                changeOrigin:true
+            },
+            'registUserrev':{
+                target:'http://10.31.160.200:9091',
+                changeOrigin:true
+            },
+            'loginByUsername':{
+                target:'http://10.31.160.200:9091',
+                changeOrigin:true
+            },
+            // '/forgetPassword':{
+            //     target:'http://10.31.160.200:9091',
+            //     changeOrigin:true
+            // },
         }
     },
 
