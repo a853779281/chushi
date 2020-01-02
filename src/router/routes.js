@@ -22,7 +22,23 @@ const Collect = () => import(/* webpackChunkName: "group-jwj" */ '@/views/collec
 
 const Details = () => import(/* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
 
+const Deliver = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/deliver.vue')
 
+const Deposit = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/deposit.vue')
+
+const Doing = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/doing.vue')
+
+const Done = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/done.vue')
+
+const Close = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/close.vue')
+
+const WaitDeliver = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/waitDeliver.vue')
+
+const WaitPay = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/waitPay.vue')
+
+const AlreadyDeliver = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/alreadyDeliver.vue')
+
+const Addr = () => import(/* webpackChunkName: "group-jwj" */ '@/views/addr/index.vue')
 
 
 
@@ -41,12 +57,60 @@ const routerTable=[
         }
     },
     {
-            path: 'list:id',
-            component: List,
-            name: 'List',
-            meta: {
-                include: 'List'
+        path:'/addr',
+        component:Addr,
+
+    },
+    {
+        path:'/deliver',
+        component:Deliver,
+        redirect:'/deliver/doing/waitdeliver',
+        children:[
+            {
+                component:Done,
+                path:'done',
+                name:'done',
+            },
+            {
+                component:Doing,
+                path:'doing',
+                name:'doing',
+                children:[
+                    {
+                        component:WaitDeliver,
+                        path:'waitdeliver',
+                        name:'waitdeliver'
+                    },
+                    {
+                        component:WaitPay,
+                        path:'waitpay',
+                        name:'waitpay'
+                    },
+                    {
+                        component:AlreadyDeliver,
+                        path:'alreadydeliver',
+                        name:'alreadydeliver'
+                    }
+                ]
+            },
+            {
+                component:Close,
+                path:'close',
+                name:'close'
             }
+        ]
+    },
+    {
+        path:'/deposit',
+        component:Deposit,
+    },
+    {
+        path: 'list:id',
+        component: List,
+        name: 'List',
+        meta: {
+            include: 'List'
+        }
     },
     {
         path: 'details:id',
