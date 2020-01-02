@@ -33,9 +33,8 @@
               </div>
             </li>
           </ul>
-          <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit">
+          <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit" @click="subData">
             <van-checkbox v-model="allCK" @click="allChecked">全选</van-checkbox>
-            {{allCK}}
           </van-submit-bar>
         </div>
       </div>
@@ -44,8 +43,11 @@
 </template>
 
 <script>
+// import request from "@/utils/request.js";
+// import Vue from "vue";
 import { getStorage, setStorage } from "@/utils/storage";
 import ShopcarTab from "./ShopcarTab";
+// const bus = new Vue();
 export default {
   components: {
     ShopcarTab
@@ -64,6 +66,12 @@ export default {
   },
   updated() {
     this.sumPrice();
+    const f = this.shopNameCheck.every(el => el == true);
+    if (f) {
+      this.allCK = true;
+    } else {
+      this.allCK = false;
+    }
   },
   methods: {
     List() {
@@ -89,22 +97,62 @@ export default {
     },
     onSubmit() {
       this.$router.push("CommitOrder");
+
+      // bus.$emit("receiveData", arr);
+    },
+    subData() {
+      const data = getStorage("shopcar");
+      let arr = [];
+      let id = 1;
+      data.map(el => {
+        for (const key in el) {
+          el[key].map(elm => {
+            if (elm.checked) {
+              arr.push({
+                uid: `${id}`,
+                pid: elm.id,
+                shopname: elm.shop_name,
+                title: elm.title,
+                price: elm.jiage,
+                num: elm.num,
+                sum: elm.sum,
+                info: elm.cate_name,
+                address: "浙江省",
+                pic: elm.pic,
+                oid: ""
+              });
+              id++;
+            }
+          });
+        }
+      });
+      this.arr = arr;
     },
     shopChecked(index, name) {
       //店铺选中
-
-      this.shopNameCheck[index][name] = !this.shopNameCheck[index][name];
-      console.log(this.shopNameCheck);
-
-      // setStorage("shopcheck", this.shopNameCheck);
+      const data = getStorage("shopcar");
+      data[index][name].map(el => {
+        el.checked = this.shopNameCheck[index];
+      });
+      this.carlist[index][name].map(el => {
+        el.checked = this.shopNameCheck[index];
+      });
+      setStorage(" shopcar", this.carlist);
+      setStorage("shopcheck", this.shopNameCheck);
     },
     cbox() {
-      const data = getStorage("shopcar");
+      const checked = getStorage("shopcheck");
       let arr = [];
-      data.map(el => {
-        console.log(el);
-        arr.push(false);
-      });
+      if (checked.length) {
+        console.log(checked);
+        arr = checked;
+      } else {
+        const data = getStorage("shopcar");
+        data.map(el => {
+          console.log(el);
+          arr.push(false);
+        });
+      }
       this.shopNameCheck = arr;
       setStorage("shopcheck", arr);
     },
@@ -116,14 +164,18 @@ export default {
           elm.checked = !elm.checked;
         }
       });
+      const f = data[index][this.shopName[index]].every(
+        el => el.checked == true
+      );
+      f
+        ? (this.shopNameCheck[index] = true)
+        : (this.shopNameCheck[index] = false);
       setStorage("shopcar", data);
     },
     allChecked() {
-      //   this.carlist.map(elm => {
-      //     //   elm.shopChecked = !this.allCK;
-      //     //   elm.checked = !this.allCK;
-      //     console.log(elm);
-      //   });
+      for (let i = 0; i < this.shopNameCheck.length; i++) {
+        this.shopNameCheck[i] = !this.allCK;
+      }
     },
     sumPrice() {
       let p = 0;

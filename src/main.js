@@ -42,7 +42,8 @@ import {
     Card,
     SubmitBar,
     Cell,
-    CellGroup
+    CellGroup,
+    Field
 } from 'vant'
 
 Vue.use(TreeSelect)
@@ -67,6 +68,7 @@ Vue.use(TreeSelect)
     .use(SubmitBar)
     .use(Cell)
     .use(CellGroup)
+    .use(Field)
 
 
 

@@ -11,6 +11,10 @@ module.exports = {
             '/api/goods/get-goods-detail-img': {
                 target: 'http://cmsjapi.ffquan.cn/',
                 changeOrigin: true
+            },
+            '/order/add': {
+                target: 'http://10.31.160.135:9098',
+                changeOrigin: true
             }
         }
     },

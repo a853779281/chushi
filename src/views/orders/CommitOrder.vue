@@ -58,11 +58,24 @@
 <script>
 import ComOrder from "@/views/orders/ComOrder";
 import SubmitOrderFoot from "@/views/orders/SubmitOrderFoot";
-
+import Vue from "vue";
+const bus = new Vue();
 export default {
   components: {
     ComOrder,
     SubmitOrderFoot
+  },
+  data() {
+    return {
+      message: "",
+      receive: []
+    };
+  },
+  mounted() {
+    bus.$on("receiveData", d => {
+      console.log("ddddd", d);
+      this.receive = d;
+    });
   }
 };
 </script>
