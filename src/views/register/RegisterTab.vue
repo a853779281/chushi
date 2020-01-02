@@ -1,9 +1,20 @@
 <template>
     <div class="register_tab">
-        <i class="fas fa-chevron-left"></i>
+        <i class="fas fa-chevron-left" @click= "goback"></i>
         <span>手机号快速注册</span>
     </div>
 </template>
+
+<script>
+export default {
+    methods:{
+        goback(){
+            this.$router.go(-1)
+        }
+    }
+}
+</script>
+
 
 <style lang="stylus" scoped>
 .register_tab 

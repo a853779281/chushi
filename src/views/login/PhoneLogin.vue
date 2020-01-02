@@ -160,7 +160,7 @@ export default {
                 height .38rem
                 background #dddddd
                 color #777777
-                line-height .38rem
+                // line-height .38rem
         .btn 
             width 90%
             height .4rem

@@ -18,18 +18,27 @@
          <div  class="forgetPassword_username">
             <label for="" class="forgetPassword_username_left">验证码</label>
             <input type="text"  placeholder="验证码" v-model= "img_code">
-            <span class="forgetPassword_username_right img_code">验证码</span>
+            <span 
+            class="forgetPassword_username_right img_code"
+            @click= "imgCode"
+            >{{str ||'验证码'}}</span>
         </div>
         <div  class="forgetPassword_username">
-            <div v-if= "f1">
-                <label for="" class="forgetPassword_username_left">手机验证码</label>
+            <div class="code" v-if= "f1">
+                <label for="" class="forgetPassword_username_left code_left">手机验证码</label>
                 <input type="text"  placeholder="请输入手机验证码" v-model= "phone_code">
-                <span class="forgetPassword_username_right phone_code">获取验证码</span>
+                <span 
+                class="forgetPassword_username_right phone_code"
+                @click= "phoneCode"
+                >{{flagPhone_code? '点击获取验证码':'此验证码'+count+'秒失效'}}</span>
             </div>
-            <div v-else>
-                <label for="" class="forgetPassword_username_left">邮箱验证码</label>
-                <input type="text"  placeholder="请输入邮箱验证码" v-model= "phone_code">
-                <span class="forgetPassword_username_right phone_code">获取验证码</span>
+            <div class="code" v-else>
+                <label for="" class="forgetPassword_username_left code_left">邮箱验证码</label>
+                <input type="text"  placeholder="请输入邮箱验证码" v-model= "email_code">
+                <span 
+                class="forgetPassword_username_right phone_code"
+                @click= "emailCode"
+                >{{flagEmail_code? '点击获取验证码':'此验证码'+count+'秒失效'}}</span>
             </div>
             
         </div>
@@ -47,11 +56,12 @@
             <i class="fas fa-check-circle green" v-show= 'flag'></i>
             <i class="fas fa-eye-slash forgetPassword_username_right" @click= "passwordFlag"></i>
         </div>
-        <button class="btn">重置密码</button>
+        <button class="btn"  @click= "resetPassword">重置密码</button>
     </div>
 </template>
 
 <script>
+import request from '@/utils/request.js'
 export default {
     data(){
         return {
@@ -60,11 +70,16 @@ export default {
             email:'',
             password:'',
             phone_code:'',
+            email_code:'',
             img_code:'',
+            str:'',
+            count:60,
             f_phone:false,
             flag:false,
             f1:true,
-            f_email:false
+            f_email:false,
+            flagPhone_code:true,
+            flagEmail_code:true
         }
     },
     methods:{
@@ -100,6 +115,96 @@ export default {
         },
         test(){
             return this.f1=!this.f1
+        },
+        imgCode(){
+          let str='',
+               a,b,c,d 
+              for (var i=1 ;i<5;i++){
+                a=String.fromCharCode(Math.round(Math.random()*(65-90)+90)),
+                b=String.fromCharCode(Math.round(Math.random()*(48-57)+57)),
+                c=String.fromCharCode(Math.round(Math.random()*(97-122)+122)),
+                d=Math.round(Math.random()*(1-3)+3)
+                if(d==1){
+                    str+=a
+                }else if(d==2){
+                    str+=b
+                }else if(d==3){
+                    str+=c
+                }
+            }
+            this.str=str
+        },
+        async phoneCode(){
+            let count=60,
+                timer
+                timer= setInterval(() => {
+                    count--;
+                    // console.log(count)
+                    this.count=count
+                    this.flagPhone_code=false
+                    if(count==0){
+                        clearInterval(timer)
+                        this.flagPhone_code =true
+                    }
+                }, 1000);
+            // const result=await request({
+            //     url:'',
+            //     method:'post',
+            //     data:{
+            //         phone:this.phone
+            //     },
+            //     headers:{
+            //         "Content-Type":'application/json'
+            //     }
+            // })
+            // console.log(result.data)
+        },
+        async emailCode(){
+            let count=60,
+                timer
+                timer= setInterval(() => {
+                    count--;
+                    // console.log(count)
+                    this.count=count
+                    this.flagEmail_code=false
+                    if(count==0){
+                        clearInterval(timer)
+                        this.flagEmail_code =true
+                    }
+                }, 1000);
+            // const result=await request({
+            //     url:'',
+            //     method:'post',
+            //     data:{
+            //         email:this.email
+            //     },
+            //     headers:{
+            //         "Content-Type":'application/json'
+            //     }
+            // })
+            // console.log(result.data)
+        },
+        async resetPassword(){
+            const {phone,email,img_code,str,phone_code,email_code,password}=this
+            if((img_code==str &&!phone&&!phone_code&&!password)||(img_code==str &&!email&&!email_code&&!password)){
+               const result=await request({
+                    url:'',
+                    method:'post',
+                    data:{
+                        phone,
+                        phone_code,
+                        email,
+                        email_code,
+                        password
+                    },
+                    headers:{
+                        "Content-Type":'application/json'
+                    }
+                })
+                console.log(result.data) 
+            }else{
+                alert('您输入的验证码有误')
+            }
         }
     },
 }
@@ -149,6 +254,25 @@ export default {
                 width .6rem
                 font-size .12rem
                 color #333
+            .img_code
+                    flex 80
+                    background #dddddd
+                    line-height .32rem
+                    color #777777
+            .code
+                display flex
+                // justify-content center
+                align-items center
+                .code_left
+                    flex 105
+                input 
+                    flex 160
+                .phone_code
+                    flex 110
+                    height .38rem
+                    // line-height .32rem
+                    background #dddddd
+                    color #777777
         .btn 
             width 90%
             height .4rem

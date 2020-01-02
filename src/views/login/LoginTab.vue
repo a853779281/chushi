@@ -1,12 +1,22 @@
 <template>
     <div class="login_tab">
-        <i class="fas fa-chevron-left"></i>
+        <i class="fas fa-chevron-left" @click= "goback"></i>
         <ul>
             <router-link :to= "{name:'AccountLogin'}" tag="li">账户登录</router-link>
             <router-link :to= "{name:'PhoneLogin' }" tag="li">手机登录</router-link>
         </ul>
     </div>
 </template>
+
+<script>
+export default {
+    methods:{
+        goback(){
+            this.$router.go(-1)
+        }
+    }
+}
+</script>
 
 <style lang="stylus" scoped>
 .login_tab 

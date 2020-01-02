@@ -1,9 +1,19 @@
 <template>
     <div class="forgetPassword_tab">
-        <i class="fas fa-chevron-left"></i>
+        <i class="fas fa-chevron-left" @click= "goback"></i>
         <span>找回密码</span>
     </div>
 </template>
+
+<script>
+export default {
+    methods:{
+        goback(){
+            this.$router.go(-1)
+        }
+    }
+}
+</script>
 
 <style lang="stylus" scoped>
 .forgetPassword_tab 
