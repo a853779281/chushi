@@ -10,11 +10,10 @@
 </template>
 
 <style lang="stylus" scoped>
-.layout {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+.layout 
+  display flex
+  flex-direction column
+  height 100%
 </style>
 
 <script>
@@ -43,7 +42,5 @@ export default {
             }
         }
       },
-    }
-  }
-};
+}
 </script>
