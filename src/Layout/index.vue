@@ -49,7 +49,8 @@ export default {
           this.$route.name == "DetailsComments" ||
           this.$route.name == "DetailsRecommend" ||
           this.$route.name == "recommend" ||
-          this.$route.name == "searchList"
+          this.$route.name == "searchList" ||
+          this.$route.name == "CommitOrder"
         ) {
           this.flag = false;
         } else {

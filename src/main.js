@@ -13,9 +13,13 @@ import {
 // 引入store
 import store from '@/store/index.js'
 
-import { AddressList } from 'vant'
+import {
+    AddressList
+} from 'vant'
 
-import { Area } from 'vant'
+import {
+    Area
+} from 'vant'
 
 import router from '@/router'
 
@@ -45,7 +49,9 @@ import {
     Checkbox,
     Card,
     SubmitBar,
-
+    Cell,
+    CellGroup,
+    Field
 } from 'vant'
 
 Vue.use(TreeSelect)
@@ -68,9 +74,13 @@ Vue.use(TreeSelect)
     .use(Checkbox)
     .use(Card)
     .use(SubmitBar)
-    .use(Toast)
     .use(AddressList)
     .use(Area)
+    .use(Cell)
+    .use(CellGroup)
+    .use(Field)
+
+
 
 
 
