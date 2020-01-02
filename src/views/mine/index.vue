@@ -31,15 +31,15 @@
                 <h2>商家中心</h2>
                 <ul>
                     <li>
-                        <a>
+                        <router-link to="/deliver">
                             <img src="../../assets/image/mine/deliver.png" alt="">
                             <p>订单发货</p>
-                        </a>
+                        </router-link>
                     </li>
                     <li>
-                        <a>                    <img src="../../assets/image/mine/pay.png"     alt="">
+                        <router-link  to="/deposit">                    <img src="../../assets/image/mine/pay.png"     alt="">
                             <p>货款提现</p>
-                        </a>
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@
                 <p class="coupon"><a href="">我的优惠券<span class="fas fa-angle-right"></span></a></p>
 
                 <!-- 收货地址管理 -->
-                <p class="addr"><a href="">收货地址管理<span class="fas fa-angle-right"></span></a></p>
+                <p class="addr"><router-link to="/addr">收货地址管理<span class="fas fa-angle-right"></span></router-link></p>
 
                 <!-- 用户设置 -->
                 <p class="setting"><a href="">用户设置<span class="fas fa-angle-right"></span></a></p>
@@ -215,8 +215,10 @@ export default {
                 li
                     width 50%
                     text-align center
-                    img 
-                        width .3rem
+                    a 
+                        color #222
+                        img 
+                            width .3rem
         .order
             width 100%
             margin-bottom 1px

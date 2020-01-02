@@ -22,6 +22,7 @@ import TabBar from "components/TabBar";
 // import Tab from 'components/Tab'
 // import Mine from '@/views/mine'
 export default {
+<<<<<<< HEAD
   components: {
     TabBar
   },
@@ -57,6 +58,27 @@ export default {
           this.flag = false;
         } else {
           this.flag = true;
+=======
+    components:{
+        TabBar
+    },
+    data(){
+        return{
+            flag:true
+        }
+    },
+    watch:{
+        $route:{
+            deep:true,
+            handler(){
+                let f=this.$route.path.indexOf('/deliver')
+                if(this.$route.name=='shop'||    this.$route.name=='goods' || this.$route.name == 'search' || this.$route.name == 'search' || this.$route.name == 'orders'|| f!=-1 ||this.$route.path == '/deposit'||this.$route.path == '/addr'){
+                    this.flag=false
+                } else {
+                    this.flag=true
+                }
+            }
+>>>>>>> vapour
         }
       }
     }
