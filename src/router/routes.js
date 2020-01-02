@@ -126,7 +126,7 @@ const routerTable = [{
         component: Deposit,
     },
     {
-        path: 'list:id',
+        path: '/list:id',
         component: List,
         name: 'List',
         meta: {
@@ -135,7 +135,7 @@ const routerTable = [{
     },
     // 详情页路由
     {
-        path: 'details:id',
+        path: '/details:id',
         component: Details,
         name: 'Details',
         meta: {

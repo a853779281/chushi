@@ -10,8 +10,8 @@
           <ul>
             <li v-for="(item,index) of carlist" :key="index">
               <van-checkbox
-                v-model="item.shopChecked"
-                @change="shopChecked(item.id)"
+                v-model="shopNameCheck[index]"
+                @change="shopChecked(index,shopName[index])"
               >{{ shopName[index] }}</van-checkbox>
               <div class="content" v-for="el of item[shopName[index]] " :key="el.id">
                 <van-checkbox v-model="el.checked" @change="checked(el.id,index)"></van-checkbox>
@@ -58,7 +58,8 @@ export default {
       shopName: [],
       allCK: false,
       sum: 0,
-      shopCheck: []
+      shopNameCheck: [],
+      test: false
     };
   },
   updated() {
@@ -89,16 +90,23 @@ export default {
     onSubmit() {
       window.console.log(1);
     },
-    shopChecked(id) {
+    shopChecked(index, name) {
       //店铺选中
-      //   const data = getStorage("shopcar");
-      //   data.map(elm => {
-      //     if (elm.id == id) {
-      //       elm.shopChecked = !elm.shopChecked;
-      //     }
-      //   });
-      //   setStorage("shopcar", data);
-      this.checked(id);
+
+      this.shopNameCheck[index][name] = !this.shopNameCheck[index][name];
+      console.log(this.shopNameCheck);
+
+      // setStorage("shopcheck", this.shopNameCheck);
+    },
+    cbox() {
+      const data = getStorage("shopcar");
+      let arr = [];
+      data.map(el => {
+        console.log(el);
+        arr.push(false);
+      });
+      this.shopNameCheck = arr;
+      setStorage("shopcheck", arr);
     },
     checked(id, index) {
       //商品选中
@@ -112,19 +120,20 @@ export default {
     },
     allChecked() {
       //   this.carlist.map(elm => {
-      //     elm.shopChecked = !this.allCK;
-      //     elm.checked = !this.allCK;
+      //     //   elm.shopChecked = !this.allCK;
+      //     //   elm.checked = !this.allCK;
+      //     console.log(elm);
       //   });
     },
     sumPrice() {
       let p = 0;
       let goods = getStorage("shopcar");
-
       goods.map(el => {
         for (let key in el) {
-          console.log(key, el[key]);
           el[key].map(el => {
-            p += el.sum;
+            if (el.checked) {
+              p += el.sum;
+            }
           });
         }
       });
@@ -139,6 +148,7 @@ export default {
     }
     this.sumPrice();
     this.List();
+    this.cbox();
   }
 };
 </script>
