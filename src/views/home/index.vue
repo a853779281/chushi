@@ -342,10 +342,10 @@ export default {
       // console.log(e.target.scrollTop)
       if (!e.target.scrollTop) {
         // console.log(this.$children[0].$el.style)
-        this.$children[0].$el.style.background =
-          "url(./../../assets/img/home_top_bg1.jpg)";
+        // this.$children[0].$el.style.background =
+        //   "url(./../../assets/img/home_top_bg1.jpg)";
       } else {
-        this.$children[0].$el.style.background = "#fff";
+        // this.$children[0].$el.style.background = "#fff";
       }
     }
   },
