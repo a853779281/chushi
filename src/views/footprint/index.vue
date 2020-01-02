@@ -1,5 +1,14 @@
 <template>
     <div>
-        我的足迹
+        <TopFootprint/>
     </div>
 </template>
+
+<script>
+import TopFootprint from "./topFootprint";
+export default{
+    components: {
+        TopFootprint
+    }
+}
+</script>

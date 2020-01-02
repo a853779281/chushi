@@ -40,6 +40,9 @@ const AlreadyDeliver = () => import(/* webpackChunkName: "group-jwj" */ '@/views
 
 const Addr = () => import(/* webpackChunkName: "group-jwj" */ '@/views/addr/index.vue')
 
+const EditAddr = () => import(/* webpackChunkName: "group-jwj" */ '@/views/addr/editAddr.vue')
+
+const UserSetting = () => import(/* webpackChunkName: "group-jwj" */ '@/views/userSetting/index.vue')
 
 
 const routerTable=[
@@ -59,7 +62,11 @@ const routerTable=[
     {
         path:'/addr',
         component:Addr,
-
+    },
+    {
+        component:EditAddr,
+        path:'/editaddr',
+        name:'editaddr'
     },
     {
         path:'/deliver',
@@ -186,6 +193,10 @@ const routerTable=[
         meta :{
             include:'Orders'
         }
+    },
+    {
+        path:'/setting',
+        component:UserSetting
     }
 ]
 

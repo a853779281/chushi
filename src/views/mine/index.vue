@@ -5,7 +5,7 @@
             <div class="top">
                 <img src="../../assets/image/mine/topBg.jpg" alt="" class="photo">
 
-                <transition enter-active-class="animated bounceInDown slow">
+                <transition enter-active-class="animated bounceInDown normal">
                     <a class="login"  v-if="show">
                         <span>点击登陆</span>
                     </a>
@@ -77,7 +77,7 @@
                 <p class="addr"><router-link to="/addr">收货地址管理<span class="fas fa-angle-right"></span></router-link></p>
 
                 <!-- 用户设置 -->
-                <p class="setting"><a href="">用户设置<span class="fas fa-angle-right"></span></a></p>
+                <p class="setting"><router-link to="/setting">用户设置<span class="fas fa-angle-right"></span></router-link></p>
 
             </div>
 
@@ -87,6 +87,7 @@
 
 <script>
 import MineTab from './MineTab'
+import 'animate.css'
 export default {
     components:{
         MineTab,

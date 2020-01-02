@@ -1,5 +1,5 @@
 <template>
     <div>
-        货款体现
+        订单无效，请确认后再付款
     </div>
 </template>

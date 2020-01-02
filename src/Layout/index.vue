@@ -35,7 +35,7 @@ export default {
             deep:true,
             handler(){
                 let f=this.$route.path.indexOf('/deliver')
-                if(this.$route.name=='shop'||    this.$route.name=='goods' || this.$route.name == 'search' || this.$route.name == 'search' || this.$route.name == 'orders'|| f!=-1 ||this.$route.path == '/deposit'||this.$route.path == '/addr'){
+                if(this.$route.name=='shop'||    this.$route.name=='goods' || this.$route.name == 'search' || this.$route.name == 'search' || this.$route.name == 'orders'|| f!=-1 ||this.$route.path == '/deposit'||this.$route.path == '/addr'||this.$route.path == '/editaddr'||this.$route.path == '/footprint'||this.$route.path == '/setting'){
                     this.flag=false
                 } else {
                     this.flag=true
