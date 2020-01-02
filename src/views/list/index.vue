@@ -17,24 +17,36 @@
         </div>
       </div>
       <ul class="goods_list">
-        <li v-for="(item, index) in dataList" :key="index">
+        <router-link
+          :to="{
+                name:'Details',
+                params:{
+                    id: item.id
+                },
+                query:{
+                    ...item
+                }
+                }"
+          v-for="item in goodsList"
+          :key="item.id"
+          tag="li"
+        >
           <div class="img_box">
-            <img :src="item.common_image" :alt="item.common_name" />
+            <img :src="item.pic" :alt="item.d_title" />
           </div>
           <div class="content_box">
-            <h1>{{item.common_name}}</h1>
+            <h1>{{item.d_title}}</h1>
             <span class="price">
               ￥
-              <b class="price_num">{{item.common_price}}</b>
+              <b class="price_num">{{item.jiage}}</b>
             </span>
             <div class="common_footer">
-              <span class="common_salenum">销量 {{item.common_salenum}}</span>
-              <span class="common_evaluate">评论 {{item.common_evaluate}}</span>
+              <span class="common_salenum">销量 {{item.xiaoliang |UnitConversion}}</span>
+              <span class="common_evaluate">评论 {{item.comment |UnitConversion}}</span>
             </div>
           </div>
-        </li>
+        </router-link>
       </ul>
-      <!--  -->
     </div>
   </div>
 </template>
@@ -66,26 +78,21 @@ export default {
         { text: "好评排序", value: "b" },
         { text: "销量排序", value: "c" }
       ],
-      dataList: []
+      goodsList: []
     };
   },
   async mounted() {
-    const data = await request({
+    const result = await request({
       url: "/index.php",
       params: {
-        ctl: "Goods_Goods",
-        met: "goodslist",
-        typ: "json",
-        ua: "wap",
-        sub_site_id: 0,
-        cat_id: this.$route.params.id,
-        pagesize: 10,
-        curpage: 1,
-        firstRow: 0,
-        pos: 1
+        r: "class/cyajaxsub",
+        page: 1,
+        cid: this.$route.params.id,
+        px: "t",
+        cac_id: ""
       }
     });
-    this.dataList = data.data.data.items;
+    this.goodsList = result.data.data.content;
   },
   methods: {
     onConfirm() {
@@ -123,6 +130,7 @@ export default {
           width: 0.88rem;
           height: 0.88rem;
           padding: 0.1rem;
+          overflow: hidden;
 
           img {
             width: 0.88rem;
@@ -131,11 +139,13 @@ export default {
         }
 
         .content_box {
+          width: 2.5rem;
           padding: 0.1rem 0.1rem;
           margin-right: 0.1rem;
 
           h1 {
             font-size: 0.143rem;
+            height: 0.4rem;
             line-height: 0.2rem;
             white-space: 0.1rem;
             word-wrap: break-word;
