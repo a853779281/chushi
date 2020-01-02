@@ -5,6 +5,8 @@ const Category = () => import( /* webpackChunkName: "group-jwj" */ '@/views/cate
 
 
 const Shopcar = () => import( /* webpackChunkName: "group-jwj" */ '@/views/shopcar/index.vue')
+const CommitOrder = () => import( /* webpackChunkName: "group-jwj" */ '@/views/orders/CommitOrder.vue')
+
 const Mine = () => import( /* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
 const List = () => import( /* webpackChunkName: "group-jwj" */ '@/views/list/index.vue')
 const Details = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
@@ -196,6 +198,14 @@ const routerTable = [{
         name: 'shopcar',
         meta: {
             include: 'Shopcar'
+        }
+    },
+    {
+        path: '/CommitOrder',
+        component: CommitOrder,
+        name: 'CommitOrder',
+        meta: {
+            include: 'CommitOrder'
         }
     },
     {

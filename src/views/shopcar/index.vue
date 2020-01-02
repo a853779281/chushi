@@ -88,7 +88,7 @@ export default {
       setStorage("shopcar", data);
     },
     onSubmit() {
-      window.console.log(1);
+      this.$router.push("CommitOrder");
     },
     shopChecked(index, name) {
       //店铺选中

@@ -40,7 +40,9 @@ import {
     Toast,
     Checkbox,
     Card,
-    SubmitBar
+    SubmitBar,
+    Cell,
+    CellGroup
 } from 'vant'
 
 Vue.use(TreeSelect)
@@ -63,6 +65,8 @@ Vue.use(TreeSelect)
     .use(Checkbox)
     .use(Card)
     .use(SubmitBar)
+    .use(Cell)
+    .use(CellGroup)
 
 
 

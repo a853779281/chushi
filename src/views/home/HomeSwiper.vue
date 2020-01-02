@@ -2,13 +2,24 @@
   <!-- <md-card> -->
   <swiper :options="swiperOption">
     <swiper-slide v-for="item of swiperData" :key="item.id">
-      <a href class="swiperlist">
+      <router-link
+        class="swiperlist"
+        :to="{
+                name:'Details',
+                params:{
+                  id:item.id
+                },
+                query:{
+                  ...item
+                }
+                }"
+      >
         <div class="swiper_img">
           <img :src="item.pic" alt />
         </div>
         <div class="pro_name">{{ item.d_title }}</div>
         <p>{{ item.jiage | current }}</p>
-      </a>
+      </router-link>
     </swiper-slide>
     <swiper-slide>
       <router-link :to="path" class="findMore">

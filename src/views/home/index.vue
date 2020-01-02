@@ -18,19 +18,39 @@
           </div>
           <ul class="manage_more">
             <li v-for="item of manageArr1" :key="item.id">
-              <a href>
+              <router-link
+                :to="{
+                name:'Details',
+                params:{
+                  id:item.id
+                },
+                query:{
+                  ...item
+                }
+                }"
+              >
                 <div class="swiper_img">
                   <img :src="item.pic" alt />
                 </div>
                 <div class="pro_name">{{ item.d_title }}</div>
                 <p>{{ item.jiage | current }}</p>
-              </a>
+              </router-link>
             </li>
           </ul>
         </div>
         <ul class="manage_list">
           <li v-for="item of manageArr2" :key="item.id">
-            <a href>
+            <router-link
+              :to="{
+                name:'Details',
+                params:{
+                  id:item.id
+                },
+                query:{
+                  ...item
+                }
+                }"
+            >
               <div class="img">
                 <img :src="item.pic" alt />
               </div>
@@ -38,7 +58,7 @@
                 <h3>{{ item.d_title }}</h3>
                 <p>{{ item.jiage | current }}</p>
               </div>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -46,13 +66,23 @@
         <h3>人气推荐</h3>
         <ul>
           <li v-for="item of recommendData" :key="item.id">
-            <a href>
+            <router-link
+              :to="{
+                name:'Details',
+                params:{
+                  id:item.id
+                },
+                query:{
+                  ...item
+                }
+                }"
+            >
               <div class="img">
                 <img :src="item.pic" alt />
               </div>
               <div class="pro_name">{{ item.d_title }}</div>
               <p>{{ item.jiage | current }}</p>
-            </a>
+            </router-link>
           </li>
         </ul>
       </div>
