@@ -14,31 +14,24 @@
                 @change="shopChecked(index,shopName[index])"
               >{{ shopName[index] }}</van-checkbox>
 
-              <van-swipe-cell v-for="el of item[shopName[index]] " :key="el.id">
-                <div class="content">
-                  <van-checkbox v-model="el.checked" @change="checked(el.id,index)"></van-checkbox>
-                  <van-card
-                    :num="el.num"
-                    :price="el.jiage"
-                    :desc="el.cate_name"
-                    :title="el.title"
-                    :thumb="el.pic"
-                  >
-                    <div slot="footer">
-                      <van-stepper
-                        v-model="el.num"
-                        integer
-                        @change="changeCount(el.id,el.num,el.jiage,index)"
-                      />
-                    </div>
-                  </van-card>
-                </div>
-
-                <template slot="right" class="del-right">
-                  <van-button square type="danger" text="删除" @click.native="del(el.id,index)" />
-                  <van-button square type="primary" text="收藏" />
-                </template>
-              </van-swipe-cell>
+              <div class="content" v-for="el of item[shopName[index]] " :key="el.id">
+                <van-checkbox v-model="el.checked" @change="checked(el.id,index)"></van-checkbox>
+                <van-card
+                  :num="el.num"
+                  :price="el.jiage"
+                  :desc="el.cate_name"
+                  :title="el.title"
+                  :thumb="el.pic"
+                >
+                  <div slot="footer">
+                    <van-stepper
+                      v-model="el.num"
+                      integer
+                      @change="changeCount(el.id,el.num,el.jiage,index)"
+                    />
+                  </div>
+                </van-card>
+              </div>
             </li>
           </ul>
           <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit">
@@ -89,20 +82,6 @@ export default {
         }
       });
       this.shopName = shopname;
-    },
-    del(id, index) {
-      // console.log(this.carlist[index]);
-      console.log(index);
-      for (const key in this.carlist[index]) {
-        this.carlist[index][key].map((el, index) => {
-          if (el.id == id) {
-            console.log(this.carlist[index], key);
-            console.log(this.carlist[index][key]);
-            // this.carlist[index][key].splice(index, 1);
-          }
-        });
-      }
-      setStorage("shopcar", this.carlist);
     },
     changeCount(id, num, price, index) {
       //传参
@@ -244,12 +223,6 @@ export default {
           border-radius: 0.1rem;
           margin-bottom: 0.15rem;
           padding: 0.1rem;
-
-          .van-swipe-cell__right {
-            .van-button--square {
-              height: 100%;
-            }
-          }
 
           .content {
             display: flex;
