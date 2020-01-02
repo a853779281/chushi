@@ -1,29 +1,39 @@
+const Home = () => import( /* webpackChunkName: "group-jwj" */ '@/views/home/index.vue')
+
+const Category = () => import( /* webpackChunkName: "group-jwj" */ '@/views/category/index.vue')
 
 
-const Home = () => import(/* webpackChunkName: "group-jwj" */ '@/views/home/index.vue')
+const Shopcar = () => import( /* webpackChunkName: "group-jwj" */ '@/views/shopcar/index.vue')
+const Mine = () => import( /* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
+const List = () => import( /* webpackChunkName: "group-jwj" */ '@/views/list/index.vue')
+const Details = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
+// 
+const DetailsGoods = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsGoods.vue')
+const DetailsImg = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsImg.vue')
+const DetailsComments = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsComments.vue')
+const DetailsRecommend = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/DetailsRecommend.vue')
 
-const Category = () => import(/* webpackChunkName: "group-jwj" */ '@/views/category/index.vue')
+const Search = () => import( /* webpackChunkName: "group-jwj" */ '@/views/search/index.vue')
+
+const Orders = () => import( /* webpackChunkName: "group-jwj" */ '@/views/orders/index.vue')
+const Collect = () => import( /* webpackChunkName:"group-jwj" */ '@/views/collect/index.vue')
+
+const Footprint = () => import( /* webpackChunkName:"group-jwj" */ '@/views/footprint/index.vue')
+
+const Login = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/index.vue')
 
 
-const Shopcar = () => import(/* webpackChunkName: "group-jwj" */ '@/views/shopcar/index.vue')
+const AccountLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/AccountLogin.vue')
 
 
-const Mine = () => import(/* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
+const PhoneLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/PhoneLogin.vue')
 
-const Search = () => import(/* webpackChunkName: "group-jwj" */ '@/views/search/index.vue')
 
-const Orders = () => import(/* webpackChunkName: "group-jwj" */ '@/views/orders/index.vue')
-
-const List = () => import(/* webpackChunkName: "group-jwj" */ '@/views/list/index.vue')
-
-const Footprint = () => import(/* webpackChunkName: "group-jwj" */ '@/views/footprint/index.vue')
-
-const Collect = () => import(/* webpackChunkName: "group-jwj" */ '@/views/collect/index.vue')
-
-const Details = () => import(/* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
+const Register = () => import( /* webpackChunkName: "group-jwj" */ '@/views/register/index.vue')
 
 const Deliver = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/deliver.vue')
 
+const ForgetPassword = () => import( /* webpackChunkName: "group-jwj" */ '@/views/forgetPassword/index.vue')
 const Deposit = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/deposit.vue')
 
 const Doing = () => import(/* webpackChunkName: "group-jwj" */ '@/views/deliver/doing.vue')
@@ -44,21 +54,24 @@ const EditAddr = () => import(/* webpackChunkName: "group-jwj" */ '@/views/addr/
 
 const UserSetting = () => import(/* webpackChunkName: "group-jwj" */ '@/views/userSetting/index.vue')
 
+const UCenter = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
 
-const routerTable=[
-    {
-        path:'/',
-        redirect:'/home'
+
+
+const routerTable = [{
+        path: '/',
+        redirect: '/home'
     },
-    
+
     {
-        path:'/home',
-        component:Home,
-        name:'home',
+        path: '/home',
+        component: Home,
+        name: 'home',
         meta: {
-            include:'Home'
+            include: 'Home'
         }
     },
+    // 列表路由
     {
         path:'/addr',
         component:Addr,
@@ -119,79 +132,169 @@ const routerTable=[
             include: 'List'
         }
     },
+    // 详情页路由
     {
         path: 'details:id',
         component: Details,
         name: 'Details',
         meta: {
             include: 'Details'
-        }
+        },
+        redirect: '/details:id/detailsgoods',
+        children: [{
+                path: 'detailsgoods',
+                component: DetailsGoods,
+                name: 'DetailsGoods',
+                meta: {
+                    include: 'DetailsGoods'
+                }
+            },
+            {
+                path: 'detailsimg',
+                component: DetailsImg,
+                name: 'DetailsImg',
+                meta: {
+                    include: 'DetailsImg'
+                }
+            },
+            {
+                path: 'detailscomments',
+                component: DetailsComments,
+                name: 'DetailsComments',
+                meta: {
+                    include: 'DetailsComments'
+                }
+            },
+            {
+                path: 'detailsrecommend',
+                component: DetailsRecommend,
+                name: 'DetailsRecommend',
+                meta: {
+                    include: 'DetailsRecommend'
+                }
+            },
+
+
+
+
+        ]
+
+
     },
     {
         path: '/category',
         component: Category,
-        meta: {
-            include: 'Category'
-        }
+        name: 'category',
     },
     {
         path: '/shopcar',
         component: Shopcar,
-        name:'shopcar',
+        name: 'shopcar',
         meta: {
             include: 'Shopcar'
         }
     },
     {
-        path:'/collect',
-        component:Collect,
-        meta:{
-            include:'collect'
+        path: '/collect',
+        component: Collect,
+        meta: {
+            include: 'collect'
         },
-        children:[
-            {
-                path:'goods',
-                meta:{
-                    include:'goods'
+        children: [{
+                path: 'goods',
+                meta: {
+                    include: 'goods'
                 },
-                name:'goods'
+                name: 'goods'
             },
             {
-                path:'shop',
-                meta:{
-                    include:'shop'
+                path: 'shop',
+                meta: {
+                    include: 'shop'
                 },
-                name:'shop'
+                name: 'shop'
             }
         ]
     },
     {
         path: '/mine',
         component: Mine,
+        name: 'mine',
         meta: {
             include: 'Mine'
         }
     },
     {
-        path:'/search',
-        component:Search,
-        name:'search',
-        meta :{
-            include:'Search'
+        path: '/search',
+        component: Search,
+        name: 'search',
+        meta: {
+            include: 'Search'
         }
-    },{
-        path:'/footprint',
-        component:Footprint,
-        meta:{
-            include:'footprint'
+    }, {
+        path: '/footprint',
+        component: Footprint,
+        meta: {
+            include: 'footprint'
         }
     },
     {
-        path:'/orders',
-        component:Orders,
-        name:'orders',
-        meta :{
-            include:'Orders'
+        path: '/orders',
+        component: Orders,
+        name: 'orders',
+        meta: {
+            include: 'Orders'
+        }
+    },
+    {
+        path: '/login',
+        redirect: '/login/account',
+        component: Login,
+        name: 'login',
+        meta: {
+            include: 'Login'
+        },
+        children: [{
+                path: '/login/account',
+                component: AccountLogin,
+                name: 'AccountLogin',
+                meta: {
+                    include: 'AccountLogin'
+                },
+            },
+            {
+                path: '/login/phone',
+                component: PhoneLogin,
+                name: 'PhoneLogin',
+                meta: {
+                    include: 'PhoneLogin'
+                },
+            },
+
+        ]
+    },
+    {
+        path: '/register',
+        component: Register,
+        name: 'register',
+        meta: {
+            include: 'Register'
+        }
+    },
+    {
+        path: '/forgetPassword',
+        component: ForgetPassword,
+        name: 'forgetPassword',
+        meta: {
+            include: 'ForgetPassword'
+        }
+    },
+    {
+        path: '/uCenter',
+        component: UCenter,
+        name: 'uCenter',
+        meta: {
+            include: 'UCenter'
         }
     },
     {

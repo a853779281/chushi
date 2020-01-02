@@ -5,8 +5,13 @@
             <div class="top">
                 <img src="../../assets/image/mine/topBg.jpg" alt="" class="photo">
 
+<<<<<<< HEAD
                 <transition enter-active-class="animated bounceInDown normal">
                     <a class="login"  v-if="show">
+=======
+                <transition enter-active-class="animated bounceInDown slow">
+                    <a class="login"  v-if="show"  @click="goLogin">
+>>>>>>> 486fe939b30c1a457499e5eb897fb62d7d8254bd
                         <span>点击登陆</span>
                     </a>
                 </transition>
@@ -91,6 +96,11 @@ import 'animate.css'
 export default {
     components:{
         MineTab,
+    },
+    methods:{
+        goLogin(){
+            this.$router.push('/login')
+        }
     },
     data () {
         return {
