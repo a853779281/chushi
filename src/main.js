@@ -25,13 +25,8 @@ Vue.use(TreeSelect)
     .use(Search)
     .use(Area)
 
-
-
-
-
 new Vue({
     router,
     store,
     render: h => h(App),
-
 }).$mount('#app')
