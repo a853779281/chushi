@@ -3,45 +3,23 @@ import App from './App.vue'
 
 import '@/utils/rem.js'
 
-import {
-    Search
-} from 'vant'
-import {
-    Tab,
-    Tabs
-} from 'vant'
-// 引入store
-import store from '@/store/index.js'
+import { Search } from 'vant'
+import { Tab, Tabs } from 'vant'
+import { Toast } from 'vant'
+
 
 import router from '@/router'
+import store from '@/store'
+
+
+
 
 import '@/filters'
 Vue.config.productionTip = false
 Vue.use(Search)
-Vue.use(Tab).use(Tabs)
+Vue.use(Tab).use(Tabs).user(Toast)
 
-import {
-    TreeSelect,
-    Image,
-    DropdownMenu,
-    DropdownItem,
-    Button,
-    SwitchCell,
-    Icon,
-    Swipe,
-    SwipeItem,
-    Tag,
-    Popup,
-    Sku,
-    GoodsAction,
-    GoodsActionIcon,
-    GoodsActionButton,
-    stepper,
-    Toast,
-    Checkbox,
-    Card,
-    SubmitBar
-} from 'vant'
+import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell ,DatetimePicker, Area,AddressEdit} from 'vant'
 
 Vue.use(TreeSelect)
     .use(Image)
@@ -49,20 +27,9 @@ Vue.use(TreeSelect)
     .use(DropdownItem)
     .use(Button)
     .use(SwitchCell)
-    .use(Icon)
-    .use(Swipe)
-    .use(SwipeItem)
-    .use(Tag)
-    .use(Popup)
-    .use(Sku)
-    .use(GoodsAction)
-    .use(GoodsActionIcon)
-    .use(GoodsActionButton)
-    .use(stepper)
-    .use(Toast)
-    .use(Checkbox)
-    .use(Card)
-    .use(SubmitBar)
+    .use(DatetimePicker)
+    .use(Area)
+    .use(AddressEdit)
 
 
 

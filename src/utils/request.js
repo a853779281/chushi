@@ -17,7 +17,7 @@ import {
 Vue.use(Toast)
 const instance = axios.create({ // 创建一个axios实例
     // baseURL,
-    timeout: 5000,
+    // timeout: 5000,
 });
 
 // 默认表单提交
