@@ -7,5 +7,11 @@
 export default {
     details: {
         detailsGoods: '/index.php'
+    },
+    recommendPage: {
+        recommend: '/index.php'
+    },
+    searchPage: {
+        search: '/index.php'
     }
 }

@@ -14,29 +14,29 @@
         <div class="manage_top">
           <div class="more">
             <h3>自营专区</h3>
-            <a href>更多 ></a>
+            <router-link :to="{name:'searchList'}">更多 ></router-link>
           </div>
           <ul class="manage_more">
-            <li v-for="item of manageArr1" :key="item.common_id">
+            <li v-for="item of manageArr1" :key="item.id">
               <a href>
                 <div class="swiper_img">
-                  <img :src="item.common_image" alt />
+                  <img :src="item.pic" alt />
                 </div>
-                <div class="pro_name">{{ item.common_name }}</div>
-                <p>{{ item.common_price | current }}</p>
+                <div class="pro_name">{{ item.d_title }}</div>
+                <p>{{ item.jiage | current }}</p>
               </a>
             </li>
           </ul>
         </div>
         <ul class="manage_list">
-          <li v-for="item of manageArr2" :key="item.common_id">
+          <li v-for="item of manageArr2" :key="item.id">
             <a href>
               <div class="img">
-                <img :src="item.common_image" alt />
+                <img :src="item.pic" alt />
               </div>
               <div class="descript">
-                <h3>{{ item.common_name }}</h3>
-                <p>{{ item.common_price | current }}</p>
+                <h3>{{ item.d_title }}</h3>
+                <p>{{ item.jiage | current }}</p>
               </div>
             </a>
           </li>
@@ -45,13 +45,13 @@
       <div class="recommend">
         <h3>人气推荐</h3>
         <ul>
-          <li v-for="item of recommendData" :key="item.common_id">
+          <li v-for="item of recommendData" :key="item.id">
             <a href>
               <div class="img">
-                <img :src="item.common_image" alt />
+                <img :src="item.pic" alt />
               </div>
-              <div class="pro_name">{{ item.common_name }}</div>
-              <p>{{ item.common_price | current }}</p>
+              <div class="pro_name">{{ item.d_title }}</div>
+              <p>{{ item.jiage | current }}</p>
             </a>
           </li>
         </ul>
@@ -352,20 +352,33 @@ export default {
 
   async mounted() {
     window.addEventListener("scroll", this.handleScroll, true);
-    const res = await request({
+    const recommendRes = await request({
       url: "/index.php",
       method: "GET",
       params: {
-        ctl: "IndexNew",
-        met: "indexPT",
-        typ: "json"
+        r: "class/cyajaxsub",
+        page: 1,
+        cid: 119,
+        px: "t",
+        cac_id: ""
       }
     });
-    //   console.log( res.data.data )
-    const startData = res.data.data.shopSelfSupportGoodsList;
+    const manageRes = await request({
+      url: "/index.php",
+      method: "GET",
+      params: {
+        r: "class/cyajaxsub",
+        page: 1,
+        cid: 119,
+        px: "t",
+        cac_id: ""
+      }
+    });
+    // console.log("jwjwjwj", recommendRes.data.data.content);
+    const startData = manageRes.data.data.content;
     this.manageArr1 = startData.splice(0, 2);
-    this.manageArr2 = startData.splice(0);
-    this.recommendData = res.data.data.recommendedGoodsList;
+    this.manageArr2 = startData.splice(0, 4);
+    this.recommendData = recommendRes.data.data.content;
   }
 };
 </script>
