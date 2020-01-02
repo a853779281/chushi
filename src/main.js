@@ -13,6 +13,14 @@ import {
 // 引入store
 import store from '@/store/index.js'
 
+import {
+    AddressList
+} from 'vant'
+
+import {
+    Area
+} from 'vant'
+
 import router from '@/router'
 
 import '@/filters'
@@ -42,7 +50,9 @@ import {
     Card,
     SubmitBar,
     SwipeCell,
-    Cell
+    Cell,
+    CellGroup,
+    Field
 } from 'vant'
 
 Vue.use(TreeSelect)
@@ -66,7 +76,13 @@ Vue.use(TreeSelect)
     .use(Card)
     .use(SubmitBar)
     .use(SwipeCell)
+    .use(AddressList)
+    .use(Area)
     .use(Cell)
+    .use(CellGroup)
+    .use(Field)
+
+
 
 
 

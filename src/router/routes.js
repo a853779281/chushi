@@ -5,6 +5,8 @@ const Category = () => import( /* webpackChunkName: "group-jwj" */ '@/views/cate
 
 
 const Shopcar = () => import( /* webpackChunkName: "group-jwj" */ '@/views/shopcar/index.vue')
+const CommitOrder = () => import( /* webpackChunkName: "group-jwj" */ '@/views/orders/CommitOrder.vue')
+
 const Mine = () => import( /* webpackChunkName: "group-jwj" */ '@/views/mine/index.vue')
 const List = () => import( /* webpackChunkName: "group-jwj" */ '@/views/list/index.vue')
 const Details = () => import( /* webpackChunkName: "group-jwj" */ '@/views/details/index.vue')
@@ -26,6 +28,9 @@ const Login = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/i
 
 
 const AccountLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/AccountLogin.vue')
+
+// const Address = () => import( /* webpackChunkName: "group-jwj" */ '@/views/address/index.vue')
+// const Addaddress = () => import( /* webpackChunkName: "group-jwj" */ '@/views/address/addaddress.vue')
 
 
 const PhoneLogin = () => import( /* webpackChunkName: "group-jwj" */ '@/views/login/PhoneLogin.vue')
@@ -199,6 +204,14 @@ const routerTable = [{
         }
     },
     {
+        path: '/CommitOrder',
+        component: CommitOrder,
+        name: 'CommitOrder',
+        meta: {
+            include: 'CommitOrder'
+        }
+    },
+    {
         path: '/collect',
         component: Collect,
         meta: {
@@ -310,6 +323,25 @@ const routerTable = [{
             include: 'UCenter'
         }
     },
+
+
+    // {
+    //     path: '/address',
+    //     component: Address,
+    //     name: 'address',
+    //     meta: {
+    //         include: 'Address'
+    //     }
+
+    // },
+    // {
+    //     path: '/addaddress',
+    //     component: Addaddress,
+    //     name: 'addaddress',
+    //     meta: {
+    //         include: 'Addaddress'
+    //     }
+    // }
 ]
 
 export default routerTable

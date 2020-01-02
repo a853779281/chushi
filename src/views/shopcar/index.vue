@@ -41,7 +41,7 @@
               </van-swipe-cell>
             </li>
           </ul>
-          <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit">
+          <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit" @click="subData">
             <van-checkbox v-model="allCK" @click="allChecked">全选</van-checkbox>
           </van-submit-bar>
         </div>
@@ -51,9 +51,11 @@
 </template>
 
 <script>
-import request from "@/utils/request.js";
+// import request from "@/utils/request.js";
+// import Vue from "vue";
 import { getStorage, setStorage } from "@/utils/storage";
 import ShopcarTab from "./ShopcarTab";
+// const bus = new Vue();
 export default {
   components: {
     ShopcarTab
@@ -116,34 +118,37 @@ export default {
       setStorage("shopcar", data);
     },
     onSubmit() {
+      this.$router.push("CommitOrder");
+
+      // bus.$emit("receiveData", arr);
+    },
+    subData() {
       const data = getStorage("shopcar");
       let arr = [];
+      let id = 1;
       data.map(el => {
         for (const key in el) {
           el[key].map(elm => {
             if (elm.checked) {
               arr.push({
-                uid: "",
+                uid: `${id}`,
                 pid: elm.id,
                 shopname: elm.shop_name,
                 title: elm.title,
                 price: elm.jiage,
                 num: elm.num,
                 sum: elm.sum,
-                dec: elm.cate_name,
-                address: "",
-                pic: elm.pic
+                info: elm.cate_name,
+                address: "浙江省",
+                pic: elm.pic,
+                oid: ""
               });
+              id++;
             }
           });
         }
       });
-      request({
-        url: "/usershoplist",
-        method: "POST",
-        data: JSON.stringify(arr),
-        headers: { "Content-Type": "application/json" }
-      });
+      this.arr = arr;
     },
     shopChecked(index, name) {
       //店铺选中

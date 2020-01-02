@@ -27,7 +27,8 @@ export default {
   },
   data() {
     return {
-      flag: true
+      flag: true,
+      tabBarFlag: true
     };
   },
   watch: {
@@ -48,7 +49,9 @@ export default {
           this.$route.name == "DetailsComments" ||
           this.$route.name == "DetailsRecommend" ||
           this.$route.name == "recommend" ||
-          this.$route.name == "searchList"
+          this.$route.name == "searchList" ||
+          this.$route.name == "address" ||
+          this.$route.name == "CommitOrder"
         ) {
           this.flag = false;
         } else {
