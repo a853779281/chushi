@@ -25,8 +25,8 @@ module.exports={
                 target:'http://10.31.160.200:9091',
                 changeOrigin:true
             },
-            // '/forgetPassword':{
-            //     target:'http://10.31.160.200:9091',
+            // 'register':{
+            //     target:'http://localhost:3000',
             //     changeOrigin:true
             // },
         }

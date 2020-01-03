@@ -42,7 +42,6 @@ export default {
             code:'',
             count:60,
             flag:true,
-            token:''
         }
     },
     // computed:{
@@ -106,18 +105,22 @@ export default {
             const{img_code,str,phone,code}=this
             if(img_code==str && phone && code){
                 const result=await request({
-                    url:'/forgetPassword',
-                    method:'get',
-                    params:{
-                        // token,
+                    url:'http://localhost:3000/login',
+                    method:'post',
+                    data:{
                         phone,
                         code
                     },
-                    // headers:{
-                    //     "Content-Type":'application/json'
-                    // }
+                    headers:{
+                        "Content-Type":'application/json'
+                    }
                 })
-                console.log(result.data )
+                if(result.data.state ){
+                    alert('登录成功')
+                    this.router.push('mine')
+                }else{
+                    alert('账号或密码错误')
+                }
             }else{
                 alert('您填的验证码错误')
             }
