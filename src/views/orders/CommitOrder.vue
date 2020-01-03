@@ -56,6 +56,7 @@
 </template>
 
 <script>
+// import request from '@/utils/request'
 import ComOrder from "@/views/orders/ComOrder";
 import SubmitOrderFoot from "@/views/orders/SubmitOrderFoot";
 // import Vue from "vue";
@@ -112,7 +113,6 @@ export default {
       });
       this.sum = sum;
       this.orderData = NewData;
-
       this.calcP = allPrice;
     }
   },
