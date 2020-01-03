@@ -4,26 +4,17 @@ import App from './App.vue'
 import '@/utils/rem.js'
 import '@/filters'
 
-
-import {
-    AddressList
-} from 'vant'
-
-import {
-    Area
-} from 'vant'
-
 import router from '@/router'
 import store from '@/store'
 
-import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell ,DatetimePicker, Area,AddressEdit,Search,Tab, Tabs,Toast} from 'vant'
 
 
 
 Vue.config.productionTip = false
 
-<<<<<<< HEAD
 import {
+    Area,
+    AddressList,
     TreeSelect,
     Image,
     DropdownMenu,
@@ -49,9 +40,6 @@ import {
     CellGroup,
     Field
 } from 'vant'
-=======
-
->>>>>>> 67a32b6008d9d1a8c710358b21c25debca769b4e
 
 Vue.use(TreeSelect)
     .use(Image)
@@ -59,7 +47,6 @@ Vue.use(TreeSelect)
     .use(DropdownItem)
     .use(Button)
     .use(SwitchCell)
-<<<<<<< HEAD
     .use(Icon)
     .use(Swipe)
     .use(SwipeItem)
@@ -82,13 +69,6 @@ Vue.use(TreeSelect)
     .use(Field)
 
 
-=======
-    .use(DatetimePicker)
-    .use(Area)
-    .use(AddressEdit)
-    .use(Tab).use(Tabs).use(Toast)
-    .use(Search)
->>>>>>> 67a32b6008d9d1a8c710358b21c25debca769b4e
 
 
 

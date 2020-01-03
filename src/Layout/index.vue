@@ -44,7 +44,6 @@ export default {
   height: 100%;
 }
 </style>
-<<<<<<< HEAD
 
 <script>
 import TabBar from "components/TabBar";
@@ -91,5 +90,3 @@ export default {
   }
 };
 </script>
-=======
->>>>>>> 67a32b6008d9d1a8c710358b21c25debca769b4e
