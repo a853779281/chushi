@@ -5,7 +5,11 @@ import '@/utils/rem.js'
 
 import '@/filters'
 
-import store from "@/store"
+
+
+
+// 引入store
+import store from '@/store/index.js'
 
 import router from '@/router'
 
