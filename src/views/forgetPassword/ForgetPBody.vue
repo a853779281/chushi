@@ -1,5 +1,6 @@
 <template>
     <div class="forgetPassword">
+        <!-- 输入手机号或邮箱 -->
         <div class="forgetPassword_username">
             <div v-if= "f1">
                 <label for="" class="forgetPassword_username_left">手机号码</label>
@@ -15,6 +16,7 @@
                 <span class="test" @click= "test">手机验证</span>
             </div>
         </div>
+        <!-- 输入验证码 -->
          <div  class="forgetPassword_username">
             <label for="" class="forgetPassword_username_left">验证码</label>
             <input type="text"  placeholder="验证码" v-model= "img_code">
@@ -23,6 +25,7 @@
             @click= "imgCode"
             >{{str ||'验证码'}}</span>
         </div>
+        <!-- 输入手机或邮箱验证码 -->
         <div  class="forgetPassword_username">
             <div class="code" v-if= "f1">
                 <label for="" class="forgetPassword_username_left code_left">手机验证码</label>
@@ -42,6 +45,7 @@
             </div>
             
         </div>
+        <!-- 输入密码  -->
          <div class="forgetPassword_username" v-if= "tiggle">
             <label for="" class="forgetPassword_username_left">重置密码</label>
             <input type="password" placeholder="组合，4-20个字符" v-model= "password" 
@@ -56,6 +60,7 @@
             <i class="fas fa-check-circle green" v-show= 'flag'></i>
             <i class="fas fa-eye-slash forgetPassword_username_right" @click= "passwordFlag"></i>
         </div>
+        <!-- 点击更换密码 -->
         <button class="btn"  @click= "resetPassword">重置密码</button>
     </div>
 </template>
@@ -65,7 +70,7 @@ import request from '@/utils/request.js'
 export default {
     data(){
         return {
-            tiggle:true,
+            tiggle:true,  
             phone:'',
             email:'',
             password:'',
@@ -83,12 +88,15 @@ export default {
         }
     },
     methods:{
+        // 是否查看密码
         passwordFlag(){
             return this.tiggle=!this.tiggle
         },
+        // 是否清空手机号
         clearPhone(){
            return this.phone=''
         },
+        // 手机正则验证
         phoneTest(){
             let reg=/^[1][3,4,5,7,8,9][0-9]{9}$/
             if(reg.test(this.phone)){
@@ -97,6 +105,7 @@ export default {
                 this.f=false
             }
         },
+        // 密码验证
         passwordTest(){
            let reg=/^[0-9a-zA-Z]{4,20}$/
             if(reg.test(this.password)){
@@ -105,17 +114,20 @@ export default {
                 this.flag=false
             }
         },
+        // 邮箱验证
         emailTest(){
-            let reg=/^([0-9A-Za-z\-_]+)@([0-9a-z]+[a-z]{2,3}([a-z]{2})?)$/
+            let reg=/^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/
             if(reg.test(this.email)){
                 this.f_email=true
             }else{
                 this.f_email=false
             }
         },
+        // 判断是手机号还是邮箱
         test(){
             return this.f1=!this.f1
         },
+        // 图片验证码
         imgCode(){
           let str='',
                a,b,c,d 
@@ -134,6 +146,7 @@ export default {
             }
             this.str=str
         },
+        // 手机验证码，发送请求
         async phoneCode(){
             let count=60,
                 timer
@@ -159,6 +172,7 @@ export default {
             // })
             // console.log(result.data)
         },
+        // 邮箱验证码，发送请求
         async emailCode(){
             let count=60,
                 timer
@@ -184,6 +198,7 @@ export default {
             // })
             // console.log(result.data)
         },
+        // 请求更改密码
         async resetPassword(){
             const {phone,email,img_code,str,phone_code,email_code,password}=this
             if((img_code==str &&!phone&&!phone_code&&!password)||(img_code==str &&!email&&!email_code&&!password)){

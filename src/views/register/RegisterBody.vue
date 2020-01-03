@@ -1,5 +1,6 @@
 <template>
     <div class="register">
+        <!-- 设置密码能否看见 -->
         <div class="register_username" v-if= "tiggle">
             <label for="" class="register_username_left">设置密码</label>
             <input type="password" placeholder="组合，4-20个字符" v-model= "password" 
@@ -16,12 +17,15 @@
             <i class="fas fa-times " @click= "clearPassword "></i>
             <i class="fas fa-eye-slash register_username_right" @click= "passwordFlag"></i>
         </div>
+
+        <!-- 手机号 -->
         <div class="register_username">
             <label for="" class="register_username_left">手机号码</label>
             <input type="number" placeholder="请输入手机号" v-model= "phone"  @keyup='phoneTest'>
             <i class="fas fa-check-circle green" v-show= 'f'></i>
             <i class="fas fa-times register_username_right" @click= "clearPhone "></i>
         </div>
+        <!-- 图片验证码 -->
          <div  class="register_username">
             <label for="" class="register_username_left">验证码</label>
             <input type="text"  placeholder="验证码" v-model= "img_code">
@@ -30,14 +34,16 @@
             @click= "imgCode"
             >{{str ||'验证码'}}</span>
         </div>
+        <!-- 手机验证码 -->
         <div  class="register_username">
             <label for="" class="register_username_left">手机验证码</label>
-            <input type="text"  placeholder="请输入手机验证码" v-model= "phone_code">
+            <input type="text"  placeholder="请输入手机验证码" v-model= "code">
             <span 
             class="register_username_right phone_code"
             @click= "phoneCode"
             >{{flagPhone_code? '点击获取验证码':'此验证码'+count+'秒失效'}}</span>
         </div>
+        <!-- 点击注册 -->
         <button class="btn" @click= "register">注册</button>
     </div>
 </template>
@@ -50,7 +56,7 @@ export default {
             tiggle:true,
             phone:'',
             password:'',
-            phone_code:'',
+            code:'',
             count:60,
             img_code:'',
             str:'',
@@ -69,6 +75,7 @@ export default {
         clearPhone(){
            return this.phone=''
         },
+        // 手机号正则验证
         phoneTest(){
             let reg=/^[1][3,4,5,7,8,9][0-9]{9}$/
             if(reg.test(this.phone)){
@@ -77,6 +84,7 @@ export default {
                 this.f=false
             }
         },
+        // 密码验证
         passwordTest(){
            let reg= /^[0-9a-zA-Z]{4,20}$/
             if(reg.test(this.password)){
@@ -85,6 +93,7 @@ export default {
                 this.flag=false
             }
         },
+        // 图片验证码
         imgCode(){
           let str='',
                a,b,c,d 
@@ -103,6 +112,7 @@ export default {
             }
             this.str=str
         },
+        // 手机号验证码
         async phoneCode(){
             let count=60,
                 timer
@@ -116,32 +126,33 @@ export default {
                         this.flagPhone_code =true
                     }
                 }, 1000);
-            // const result=await request({
-            //     url:'',
-            //     method:'post',
-            //     data:{
-            //         phone:this.phone
-            //     },
-            //     headers:{
-            //         "Content-Type":'application/json'
-            //     }
-            // })
-            // console.log(result.data)
+            const result=await request({
+                url:'http://10.31.160.200:9091/registUser',
+                method:'get',
+                // params:{
+                //     phone:this.phone
+                // },
+                // headers:{
+                //     "Content-Type":'application/json'
+                // }
+            })
+            console.log(result.data)
         },
+        // 请求登录
         async register(){
-            const {phone,password,phone_code,img_code,str}=this
-            if(img_code==str &&!phone &&!password &&!phone_code){
+            const {phone,password,code,img_code,str}=this
+            if(img_code==str &&phone &&password &&code){
                 const result= await request({
-                    url:'',
-                    method:'post',
-                    data:{
+                    url:'http://10.31.160.200:9091/registUserrev',
+                    method:'get',
+                    params:{
                         phone,
-                        password,
-                        phone_code
+                        // password,
+                        code
                     },
-                    headers:{
-                        "Content-Type":'application/json'
-                    }
+                    // headers:{
+                    //     "Content-Type":'application/json'
+                    // }
                 })
                 console.log(result.data)
             }else{

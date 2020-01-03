@@ -51,18 +51,18 @@ export default {
         // ...mapActions(['ALogin'])
         async ALogin(){
             const result=await request({
-                url:'',
-                method:"post",
-                headers:{
-                    "Content-Type":'application/json'
-                },
-                data:{
-                    tkoen:this.token,
+                url:'http://10.31.160.200:9091/loginByUsername',
+                method:"get",
+                // headers:{
+                //     "Content-Type":'application/json'
+                // },
+                params:{
+                    // tkoen:this.token,
                     username:this.username,
                     password:this.password,
                 }
             })
-            console.log(result.data)
+            console.log(JSON.parse(result.data) )
         }
     },
     components:{
