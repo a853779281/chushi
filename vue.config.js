@@ -25,8 +25,12 @@ module.exports={
                 target:'http://10.31.160.200:9091',
                 changeOrigin:true
             },
-            // 'register':{
-            //     target:'http://localhost:3000',
+            '/api/goods/get-goods-detail-img': {
+                target: 'http://cmsjapi.ffquan.cn/',
+                changeOrigin: true
+            }
+            // '/forgetPassword':{
+            //     target:'http://10.31.160.200:9091',
             //     changeOrigin:true
             // },
         }

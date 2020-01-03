@@ -1,12 +1,12 @@
 <template>
-    <div class="layout">
-        <!-- <Tab></Tab> -->
-        <keep-alive :include= "$route.meta.include">
-            <router-view></router-view>
-        </keep-alive>
-        <!-- <Mine></Mine> -->
-        <TabBar v-if="flag"></TabBar>
-    </div>
+  <div class="layout">
+    <!-- <Tab></Tab> -->
+    <keep-alive :include="$route.meta.include">
+      <router-view></router-view>
+    </keep-alive>
+    <!-- <Mine></Mine> -->
+    <TabBar v-if="flag"></TabBar>
+  </div>
 </template>
 
 <script>
@@ -38,10 +38,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.layout 
-    display flex 
-    flex-direction column
-    height 100%
-
-
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 </style>

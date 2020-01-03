@@ -1,14 +1,14 @@
 <template>
   <div id="itemList">
-    <div v-for="item of dataList" :key="item.cat_id" class="box">
-      <h3>{{item.cat_name}}</h3>
+    <div v-for="(item,index) of getFloorsData" :key="index" class="box">
+      <h3>{{item.name}}</h3>
       <ul>
-        <li v-for="el of item.child" :key="el.id">
+        <li v-for="el of item.list" :key="el.api_cid">
           <routerLink
             :to="{
                         name:'List',
                         params:{
-                            id:el.id
+                            id: el.api_cid,
                         },
                         query:{
                             a:1
@@ -16,9 +16,9 @@
                              }"
           >
             <div class="imgbox">
-              <img :src="el.cat_pic" :alt="el.cat_name" />
+              <img :src="el.img" :alt="el.name" />
             </div>
-            <span>{{el.cat_name}}</span>
+            <span>{{el.name}}</span>
           </routerLink>
         </li>
       </ul>
@@ -26,31 +26,11 @@
   </div>
 </template>
 <script>
-import request from "@/utils/request.js";
 export default {
-  data() {
-    return {
-      dataList: []
-    };
-  },
   props: ["floors"],
-  watch: {
-    floors() {
-      this.getData();
-    }
-  },
-  methods: {
-    async getData() {
-      const data = await request({
-        url: `/index.php`,
-        params: {
-          ctl: "Goods_Cat",
-          met: "tree",
-          typ: "json",
-          cat_parent_id: this.floors.id
-        }
-      });
-      this.dataList = data.data.data.items;
+  computed: {
+    getFloorsData() {
+      return this.floors && this.floors.floors;
     }
   }
 };
@@ -80,29 +60,32 @@ export default {
       margin-bottom: 0.2rem;
 
       li {
-        display: flex;
-        flex-direction: column;
         width: 0.7rem;
         margin-bottom: 0.06rem;
         width: 33%;
         padding: 0 0.05rem;
         box-sizing: border-box;
 
-        .imgbox {
-          width: 100%;
-          height: 0.7rem;
+        a {
+          display: flex;
+          flex-direction: column;
 
-          img {
-            // width: 0.7rem;
+          .imgbox {
             width: 100%;
-          }
-        }
+            height: 0.7rem;
 
-        span {
-          text-align: center;
-          font-size: 0.13rem;
-          color: #444;
-          margin-top: 0.1rem;
+            img {
+              width: 100%;
+            }
+          }
+
+          span {
+            text-align: center;
+            width: 100%;
+            font-size: 0.13rem;
+            color: #444;
+            margin-top: 0.1rem;
+          }
         }
       }
     }
