@@ -206,6 +206,11 @@ const routerTable = [{
         name: 'CommitOrder',
         meta: {
             include: 'CommitOrder'
+        },
+        beforeEnter(to, from, next) {
+            if (from.path == '/shopcar' && to.path == '/CommitOrder') {
+                next(true)
+            }
         }
     },
     {

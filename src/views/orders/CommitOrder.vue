@@ -7,21 +7,21 @@
         <span>添加收货人信息</span>
       </div>
       <div class="order_box">
-        <div class="order_list">
-          <h3>店铺名称</h3>
+        <div class="order_list" v-for="(item,index) of orderData" :key="index">
+          <h3>{{item.name}}</h3>
           <ul>
-            <li>
+            <li v-for="(elm,index) of item[item.id]" :key="index">
               <a href>
                 <div class="img">
-                  <img src alt="图片区域" srcset />
+                  <img :src="elm.pic" alt="图片区域" srcset />
                 </div>
                 <div class="desc">
                   <h4>
-                    <p>商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名商品名</p>
-                    <span>价格</span>
+                    <p>{{elm.title}}</p>
+                    <span>{{elm.price | current}}</span>
                   </h4>
                   <p>包装：袋装， 规格：500g</p>
-                  <p class="num">x2</p>
+                  <p class="num">x{{elm.num}}</p>
                 </div>
               </a>
             </li>
@@ -40,8 +40,8 @@
           />
           <p class="sum">
             共
-            <span>2</span>件商品，小计：
-            <em>￥20.80</em>
+            <span>{{sum}}</span>件商品，小计：
+            <em>{{calcP | current}}</em>
           </p>
         </van-cell-group>
         <van-cell-group>
@@ -51,15 +51,16 @@
         </van-cell-group>
       </div>
     </div>
-    <SubmitOrderFoot></SubmitOrderFoot>
+    <SubmitOrderFoot :allPrice="calcP" :orderInfo="orderData"></SubmitOrderFoot>
   </div>
 </template>
 
 <script>
 import ComOrder from "@/views/orders/ComOrder";
 import SubmitOrderFoot from "@/views/orders/SubmitOrderFoot";
-import Vue from "vue";
-const bus = new Vue();
+// import Vue from "vue";
+// import VueBus from "vue-bus";
+// Vue.use(VueBus);
 export default {
   components: {
     ComOrder,
@@ -68,14 +69,55 @@ export default {
   data() {
     return {
       message: "",
-      receive: []
+      orderData: JSON.parse(this.$route.params.data),
+      sum: 0,
+      calcP: 0
     };
   },
+  methods: {
+    updateData() {
+      let sName = [];
+      let NewData = [];
+      let sum = 0;
+      let allPrice = 0;
+      this.orderData.forEach(elm => {
+        if (!sName.includes(elm.shopname)) {
+          sName.push({ [elm.shopid]: elm.shopname });
+          NewData.push({
+            name: elm.shopname,
+            id: elm.shopid,
+            [elm.shopid]: [
+              {
+                goodId: elm.pid,
+                num: elm.num,
+                pic: elm.pic,
+                price: elm.sum,
+                title: elm.title
+              }
+            ]
+          });
+        } else {
+          NewData.forEach(el => {
+            el[elm.shopid].push({
+              goodId: elm.pid,
+              num: elm.num,
+              pic: elm.pic,
+              price: elm.sum,
+              title: elm.title
+            });
+          });
+        }
+        sum += elm.num;
+        allPrice += elm.sum;
+      });
+      this.sum = sum;
+      this.orderData = NewData;
+
+      this.calcP = allPrice;
+    }
+  },
   mounted() {
-    bus.$on("receiveData", d => {
-      console.log("ddddd", d);
-      this.receive = d;
-    });
+    this.updateData();
   }
 };
 </script>

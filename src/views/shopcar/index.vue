@@ -33,7 +33,7 @@
               </div>
             </li>
           </ul>
-          <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit" @click="subData">
+          <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit">
             <van-checkbox v-model="allCK" @click="allChecked">全选</van-checkbox>
           </van-submit-bar>
         </div>
@@ -45,9 +45,10 @@
 <script>
 // import request from "@/utils/request.js";
 // import Vue from "vue";
+// import VueBus from "vue-bus";
 import { getStorage, setStorage } from "@/utils/storage";
 import ShopcarTab from "./ShopcarTab";
-// const bus = new Vue();
+// Vue.use(VueBus);
 export default {
   components: {
     ShopcarTab
@@ -61,7 +62,8 @@ export default {
       allCK: false,
       sum: 0,
       shopNameCheck: [],
-      test: false
+      test: false,
+      selected: []
     };
   },
   updated() {
@@ -96,14 +98,9 @@ export default {
       setStorage("shopcar", data);
     },
     onSubmit() {
-      this.$router.push("CommitOrder");
-
-      // bus.$emit("receiveData", arr);
-    },
-    subData() {
       const data = getStorage("shopcar");
-      let arr = [];
       let id = 1;
+      let arr = [];
       data.map(el => {
         for (const key in el) {
           el[key].map(elm => {
@@ -111,13 +108,14 @@ export default {
               arr.push({
                 uid: `${id}`,
                 pid: elm.id,
+                shopid: elm.brand_id,
                 shopname: elm.shop_name,
                 title: elm.title,
                 price: elm.jiage,
                 num: elm.num,
                 sum: elm.sum,
                 info: elm.cate_name,
-                address: "浙江省",
+                address: "",
                 pic: elm.pic,
                 oid: ""
               });
@@ -126,8 +124,18 @@ export default {
           });
         }
       });
-      this.arr = arr;
+      this.selected = arr;
+      this.$router.push({
+        name: "CommitOrder",
+        path: "CommitOrder",
+        params: {
+          data: JSON.stringify(this.selected)
+        }
+      });
+
+      // bus.$emit("receiveData", arr);
     },
+
     shopChecked(index, name) {
       //店铺选中
       const data = getStorage("shopcar");
@@ -192,7 +200,6 @@ export default {
       this.sum = p * 100;
     }
   },
-  watch: {},
   mounted() {
     const data = getStorage("shopcar");
     if (data.length) {

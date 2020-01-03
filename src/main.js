@@ -3,6 +3,8 @@ import App from './App.vue'
 
 import '@/utils/rem.js'
 
+import VueBus from "vue-bus";
+Vue.use(VueBus);
 import {
     Search
 } from 'vant'
