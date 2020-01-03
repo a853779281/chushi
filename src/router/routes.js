@@ -53,7 +53,6 @@ const AlreadyDeliver = () => import( /* webpackChunkName: "group-jwj" */ '@/view
 const Addr = () => import( /* webpackChunkName: "group-jwj" */ '@/views/addr/index.vue')
 
 
-const UCenter = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
 
 const UCenter = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
 const AccountInformation = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/AccountInformation.vue')

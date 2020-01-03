@@ -814,11 +814,7 @@
 
 "@vant/icons@1.2.0":
   version "1.2.0"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/@vant/icons/download/@vant/icons-1.2.0.tgz?cache=0&sync_timestamp=1576034134230&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40vant%2Ficons%2Fdownload%2F%40vant%2Ficons-1.2.0.tgz#ed31f367185704fa2ef9b437a0c8d3ee5e4f5f58"
-=======
   resolved "https://registry.npm.taobao.org/@vant/icons/download/@vant/icons-1.2.0.tgz#ed31f367185704fa2ef9b437a0c8d3ee5e4f5f58"
->>>>>>> 8f2f4694376b4ac2e84fcd62d3a2039a9df6a9cf
   integrity sha1-7THzZxhXBPou+bQ3oMjT7l5PX1g=
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.0.0":
@@ -1481,11 +1477,7 @@ aws4@^1.8.0:
 
 axios@^0.19.0:
   version "0.19.0"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/axios/download/axios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"
-=======
   resolved "https://registry.npm.taobao.org/axios/download/axios-0.19.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxios%2Fdownload%2Faxios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"
->>>>>>> 8f2f4694376b4ac2e84fcd62d3a2039a9df6a9cf
   integrity sha1-jgm/89kSLhM/e4EByPvdAO09Krg=
   dependencies:
     follow-redirects "1.5.10"
@@ -2648,11 +2640,7 @@ debug@=3.1.0, debug@~3.1.0:
   dependencies:
     ms "2.0.0"
 
-<<<<<<< HEAD
-debug@^3.0.0, debug@^3.1.1, debug@^3.2.5, debug@^3.2.6:
-=======
 debug@^3.0.0, debug@^3.1.1, debug@^3.2.5:
->>>>>>> 8f2f4694376b4ac2e84fcd62d3a2039a9df6a9cf
   version "3.2.6"
   resolved "https://registry.npm.taobao.org/debug/download/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
   integrity sha1-6D0X3hbYp++3cX7b5fsQE17uYps=
@@ -7858,11 +7846,7 @@ vue-hot-reload-api@^2.3.0:
 
 vue-lazyload@1.2.3:
   version "1.2.3"
-<<<<<<< HEAD
-  resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
-=======
   resolved "https://registry.npm.taobao.org/vue-lazyload/download/vue-lazyload-1.2.3.tgz?cache=0&sync_timestamp=1568801961628&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-lazyload%2Fdownload%2Fvue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
->>>>>>> 8f2f4694376b4ac2e84fcd62d3a2039a9df6a9cf
   integrity sha1-kB+ewVx+bKeHgaK65KNDaGve2yw=
 
 vue-loader@^15.7.2:
