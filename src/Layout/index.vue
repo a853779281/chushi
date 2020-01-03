@@ -38,11 +38,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.layout {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+.layout 
+  display flex
+  flex-direction column
+  height 100%
 </style>
 <<<<<<< HEAD
 
@@ -51,6 +50,7 @@ import TabBar from "components/TabBar";
 // import Tab from 'components/Tab'
 // import Mine from '@/views/mine'
 export default {
+<<<<<<< HEAD
   components: {
     TabBar
   },
@@ -93,3 +93,28 @@ export default {
 </script>
 =======
 >>>>>>> 67a32b6008d9d1a8c710358b21c25debca769b4e
+=======
+    components:{
+        TabBar
+    },
+    data(){
+        return{
+            flag:true
+        }
+    },
+    watch:{
+        $route:{
+            deep:true,
+            handler(){
+                let f=this.$route.path.indexOf('/deliver')
+                if(this.$route.name=='shop'||    this.$route.name=='goods' || this.$route.name == 'search' || this.$route.name == 'search' || this.$route.name == 'orders'|| f!=-1 ||this.$route.path == '/deposit'||this.$route.path == '/addr'||this.$route.path == '/editaddr'||this.$route.path == '/footprint'||this.$route.path == '/setting'){
+                    this.flag=false
+                } else {
+                    this.flag=true
+                }
+            }
+        }
+      },
+}
+</script>
+>>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184

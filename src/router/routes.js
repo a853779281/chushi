@@ -57,6 +57,9 @@ const AlreadyDeliver = () => import( /* webpackChunkName: "group-jwj" */ '@/view
 
 const Addr = () => import( /* webpackChunkName: "group-jwj" */ '@/views/addr/index.vue')
 
+const EditAddr = () => import(/* webpackChunkName: "group-jwj" */ '@/views/addr/editAddr.vue')
+
+const UserSetting = () => import(/* webpackChunkName: "group-jwj" */ '@/views/userSetting/index.vue')
 
 
 const UCenter = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
@@ -90,9 +93,19 @@ const routerTable = [{
     },
     // 列表路由
     {
+<<<<<<< HEAD
         path: '/addr',
         component: Addr,
 
+=======
+        path:'/addr',
+        component:Addr,
+    },
+    {
+        component:EditAddr,
+        path:'/editaddr',
+        name:'editaddr'
+>>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184
     },
     {
         path: '/deliver',
@@ -370,6 +383,7 @@ const routerTable = [{
             },
         ]
     },
+<<<<<<< HEAD
 
 
     // {
@@ -389,6 +403,12 @@ const routerTable = [{
     //         include: 'Addaddress'
     //     }
     // }
+=======
+    {
+        path:'/setting',
+        component:UserSetting
+    }
+>>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184
 ]
 
 export default routerTable

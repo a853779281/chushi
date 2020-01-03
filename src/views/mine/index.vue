@@ -5,8 +5,13 @@
             <div class="top">
                 <img src="../../assets/image/mine/topBg.jpg" alt="" class="photo">
 
+<<<<<<< HEAD
                 <transition enter-active-class="animated bounceInDown slow">
                     <a class="login"  v-if="show" @click= "goLogin">
+=======
+                <transition enter-active-class="animated bounceInDown normal">
+                    <a class="login"  v-if="show">
+>>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184
                         <span>点击登陆</span>
                     </a>
                 </transition>
@@ -65,7 +70,7 @@
             </div>
 
             <!-- 其他 -->
-            <div class="list">
+            <div class="ulist">
                 <!-- 门店自提订单 -->
                 <p class="self">
                 <a href="">门店自提订单<span class="fas fa-angle-right"></span></a></p>
@@ -77,7 +82,7 @@
                 <p class="addr"><router-link to="/addr">收货地址管理<span class="fas fa-angle-right"></span></router-link></p>
 
                 <!-- 用户设置 -->
-                <p class="setting"><a href="">用户设置<span class="fas fa-angle-right"></span></a></p>
+                <p class="setting"><router-link to="/setting">用户设置<span class="fas fa-angle-right"></span></router-link></p>
 
             </div>
 
@@ -87,6 +92,7 @@
 
 <script>
 import MineTab from './MineTab'
+import 'animate.css'
 export default {
     components:{
         MineTab,
@@ -153,11 +159,9 @@ export default {
     height 100%
     display flex
     flex-direction column
-    overflow auto
     .mine_body 
         background-color #f2f2f2
         width 100%
-        flex 1
         overflow auto
         .top
             position relative
@@ -235,6 +239,8 @@ export default {
                 background-color #fff
                 align-items center
                 margin-bottom 1px
+                a 
+                    color #222
             ul
                 width 100%
                 display flex
@@ -253,7 +259,8 @@ export default {
                             margin-bottom .1rem
                             font-size .16rem  
                             align-self center
-        .list
+        .ulist
+            width 100%
             margin-bottom .3rem  
             p   
                 height .5rem

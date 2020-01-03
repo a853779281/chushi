@@ -1,21 +1,18 @@
 <template>
     <div class="top">
         <i class="fas fa-chevron-left" @click="goBack"></i>
-        <span>地址管理</span>
-        <i class="fas fa-check"  @click="saveAddr"></i>
+        <span class="history">浏览历史</span>
+        <span>编辑</span>
     </div>
 </template>
 
 <script>
-export default {
+export default{
     methods: {
         goBack(){
-            this.$router.replace('/mine')
-        },
-        saveAddr(){
-            this.$router.replace('/mine')
+            this.$router.push('/mine')
         }
-    },
+    }
 }
 </script>
 
@@ -31,19 +28,15 @@ export default {
     align-items center
     z-index 999
     text-align center
-    background-color #f4f4f4
+    background-color #fff
     box-shadow-bottom 3px
-    .add 
-        font-size .35rem
-        line-height .5rem
-    a 
+    border 0 1px 0 0,#ccc
+    i 
         color #333
-        font-size .2rem
-        i
-            font-size .16rem
-            line-height .5rem
-    span 
-        flex 1
+    span
         color #333
-        font-size .2rem
+        &.history 
+            flex 1
+            color black
+            font-size .2rem
 </style>

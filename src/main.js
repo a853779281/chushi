@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import '@/utils/rem.js'
+<<<<<<< HEAD
 import '@/filters'
 
 
@@ -12,6 +13,9 @@ import {
 import {
     Area
 } from 'vant'
+=======
+import store from "@/store"
+>>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184
 
 import router from '@/router'
 import store from '@/store'
@@ -22,6 +26,7 @@ import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell ,Date
 
 Vue.config.productionTip = false
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 import {
     TreeSelect,
@@ -52,13 +57,18 @@ import {
 =======
 
 >>>>>>> 67a32b6008d9d1a8c710358b21c25debca769b4e
+=======
+import { TreeSelect, Image, DropdownMenu, DropdownItem, Button, SwitchCell,AddressList,Toast,AddressEdit,Search,Tab, Tabs,Area  } from 'vant'
+>>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184
 
 Vue.use(TreeSelect)
     .use(Image)
+    .use(Toast)
     .use(DropdownMenu)
     .use(DropdownItem)
     .use(Button)
     .use(SwitchCell)
+<<<<<<< HEAD
 <<<<<<< HEAD
     .use(Icon)
     .use(Swipe)
@@ -91,10 +101,17 @@ Vue.use(TreeSelect)
 >>>>>>> 67a32b6008d9d1a8c710358b21c25debca769b4e
 
 
+=======
+    .use(AddressList)
+    .use(AddressEdit )
+    .use(Tab)
+    .use(Tabs)
+    .use(Search)
+    .use(Area)
+>>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184
 
 new Vue({
     router,
     store,
     render: h => h(App),
-
 }).$mount('#app')
