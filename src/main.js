@@ -2,11 +2,15 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import '@/utils/rem.js'
+
 import '@/filters'
 
 import store from "@/store"
 
 import router from '@/router'
+
+
+Vue.config.productionTip = false
 
 import {
     TreeSelect,
@@ -42,9 +46,6 @@ import {
     AddressList
 } from 'vant'
 
-
-
-Vue.config.productionTip = false
 
 
 Vue.use(TreeSelect)

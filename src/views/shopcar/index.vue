@@ -61,10 +61,7 @@
 
 <script>
 // import request from "@/utils/request.js";
-<<<<<<< HEAD
 // import Vue from "vue";
-=======
->>>>>>> wangyongsong
 import { getStorage, setStorage } from "@/utils/storage";
 import ShopcarTab from "./ShopcarTab";
 // const bus = new Vue();
@@ -130,10 +127,7 @@ export default {
       setStorage("shopcar", data);
     },
     onSubmit() {
-<<<<<<< HEAD
       this.$router.push("CommitOrder");
-
-      // bus.$emit("receiveData", arr);
     },
     subData() {
       const data = getStorage("shopcar");
@@ -162,36 +156,6 @@ export default {
         }
       });
       this.arr = arr;
-=======
-      // const data = getStorage("shopcar");
-      // let arr = [];
-      // data.map(el => {
-      //   for (const key in el) {
-      //     el[key].map(elm => {
-      //       if (elm.checked) {
-      //         arr.push({
-      //           uid: "",
-      //           pid: elm.id,
-      //           shopname: elm.shop_name,
-      //           title: elm.title,
-      //           price: elm.jiage,
-      //           num: elm.num,
-      //           sum: elm.sum,
-      //           dec: elm.cate_name,
-      //           address: "",
-      //           pic: elm.pic
-      //         });
-      //       }
-      //     });
-      //   }
-      // });
-      // request({
-      //   url: "/usershoplist",
-      //   method: "POST",
-      //   data: JSON.stringify(arr),
-      //   headers: { "Content-Type": "application/json" }
-      // });
->>>>>>> wangyongsong
     },
     shopChecked(index, name) {
       //店铺选中
