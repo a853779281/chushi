@@ -4,7 +4,6 @@
       <MineTab></MineTab>
       <div class="top">
         <img src="../../assets/image/mine/topBg.jpg" alt class="photo" />
-
         <transition enter-active-class="animated bounceInDown slow">
           <a class="login" v-if="show" @click="goLogin">
             <span>点击登陆</span>
@@ -76,10 +75,26 @@
 
         <!-- 我的优惠券 -->
         <p class="coupon">
-          <a href>
-            我的优惠券
-            <span class="fas fa-angle-right"></span>
-          </a>
+          <van-coupon-cell
+            :coupons="coupons"
+            :chosen-coupon="chosenCoupon"
+            @click="showList = true"
+          />
+
+          <van-popup
+            v-model="showList"
+            round
+            position="bottom"
+            style="height: 90%; padding-top: 4px;"
+          >
+            <van-coupon-list
+              :coupons="coupons"
+              :chosen-coupon="chosenCoupon"
+              :disabled-coupons="disabledCoupons"
+              @change="onChange"
+              @exchange="onExchange"
+            />
+          </van-popup>
         </p>
 
         <!-- 收货地址管理 -->
@@ -105,6 +120,7 @@
 <script>
 import MineTab from "./MineTab";
 import "animate.css";
+import coupon from "./couponStore";
 export default {
   components: {
     MineTab
@@ -112,10 +128,21 @@ export default {
   methods: {
     goLogin() {
       this.$router.push("/login");
+    },
+    onChange(index) {
+      this.showList = false;
+      this.chosenCoupon = index;
+    },
+    onExchange() {
+      this.coupons.push(coupon);
     }
   },
   data() {
     return {
+      chosenCoupon: -1,
+      coupons: coupon.coupon,
+      disabledCoupons: coupon.coupon,
+      showList: false,
       collect: [
         {
           num: 0,
@@ -168,9 +195,9 @@ export default {
 <style lang="stylus" scoped>
 .mine {
   flex: 1;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   .mine_body {
     background-color: #f2f2f2;

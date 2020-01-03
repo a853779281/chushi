@@ -107,10 +107,10 @@ export default {
           this.carlist[i][name].splice(index, 1);
         }
       });
-      console.log(this.carlist, i);
+      // console.log(this.carlist, i);
 
       if (!this.carlist[i][this.shopName[i]].length) {
-        console.log(i);
+        // console.log(i);
         this.carlist.splice(i, 1);
       }
       setStorage("shopcar", this.carlist);
@@ -173,12 +173,12 @@ export default {
       const checked = getStorage("shopcheck");
       let arr = [];
       if (checked.length) {
-        console.log(checked);
+        // console.log(checked);
         arr = checked;
       } else {
         const data = getStorage("shopcar");
         data.map(el => {
-          console.log(el);
+          window.console.log(el);
           arr.push(false);
         });
       }

@@ -43,7 +43,9 @@ import {
     Cell,
     CellGroup,
     Field,
-    AddressList
+    AddressList,
+    CouponCell,
+    CouponList
 } from 'vant'
 
 
@@ -79,7 +81,8 @@ Vue.use(TreeSelect)
     .use(AddressList)
     .use(Tab)
     .use(Tabs)
-
+    .use(CouponCell)
+    .use(CouponList)
 new Vue({
     router,
     store,
