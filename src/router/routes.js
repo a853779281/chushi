@@ -57,17 +57,17 @@ const AlreadyDeliver = () => import( /* webpackChunkName: "group-jwj" */ '@/view
 
 const Addr = () => import( /* webpackChunkName: "group-jwj" */ '@/views/addr/index.vue')
 
-const EditAddr = () => import(/* webpackChunkName: "group-jwj" */ '@/views/addr/editAddr.vue')
+const EditAddr = () => import( /* webpackChunkName: "group-jwj" */ '@/views/addr/editAddr.vue')
 
-const UserSetting = () => import(/* webpackChunkName: "group-jwj" */ '@/views/userSetting/index.vue')
+const UserSetting = () => import( /* webpackChunkName: "group-jwj" */ '@/views/userSetting/index.vue')
 
 
-const UCenter = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
-const AccountInformation = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/AccountInformation.vue')
-const Photo = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/Photo.vue')
-const Safe = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/Safe.vue')
-const Modify = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/Modify.vue')
-const Binding = () => import(/* webpackChunkName: "group-jwj" */ '@/views/uCenter/Binding.vue')
+const UCenter = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/index.vue')
+const AccountInformation = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/AccountInformation.vue')
+const Photo = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/Photo.vue')
+const Safe = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/Safe.vue')
+const Modify = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/Modify.vue')
+const Binding = () => import( /* webpackChunkName: "group-jwj" */ '@/views/uCenter/Binding.vue')
 
 
 const routerTable = [{
@@ -93,19 +93,13 @@ const routerTable = [{
     },
     // 列表路由
     {
-<<<<<<< HEAD
         path: '/addr',
         component: Addr,
-
-=======
-        path:'/addr',
-        component:Addr,
     },
     {
-        component:EditAddr,
-        path:'/editaddr',
-        name:'editaddr'
->>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184
+        component: EditAddr,
+        path: '/editaddr',
+        name: 'editaddr'
     },
     {
         path: '/deliver',
@@ -340,50 +334,48 @@ const routerTable = [{
         meta: {
             include: 'UCenter'
         },
-        children:[
-            {
-                path:'/uCenter/accountInformation',
-                component:AccountInformation,
-                name:'accountInformation',
-                meta:{
-                   include: 'accountInformation'
+        children: [{
+                path: '/uCenter/accountInformation',
+                component: AccountInformation,
+                name: 'accountInformation',
+                meta: {
+                    include: 'accountInformation'
                 }
             },
             {
-                path:'/uCenter/photo',
-                component:Photo,
-                name:'photo',
-                meta:{
-                   include: 'Photo'
+                path: '/uCenter/photo',
+                component: Photo,
+                name: 'photo',
+                meta: {
+                    include: 'Photo'
                 }
             },
             {
-                path:'/uCenter/safe',
-                component:Safe,
-                name:'safe',
-                meta:{
-                   include: 'Safe'
+                path: '/uCenter/safe',
+                component: Safe,
+                name: 'safe',
+                meta: {
+                    include: 'Safe'
                 }
             },
             {
-                path:'/uCenter/modify',
-                component:Modify,
-                name:'modify',
-                meta:{
-                   include: 'Modify'
+                path: '/uCenter/modify',
+                component: Modify,
+                name: 'modify',
+                meta: {
+                    include: 'Modify'
                 }
             },
             {
-                path:'/uCenter/binding',
-                component:Binding,
-                name:'binding',
-                meta:{
-                   include: 'Binding'
+                path: '/uCenter/binding',
+                component: Binding,
+                name: 'binding',
+                meta: {
+                    include: 'Binding'
                 }
             },
         ]
     },
-<<<<<<< HEAD
 
 
     // {
@@ -403,12 +395,10 @@ const routerTable = [{
     //         include: 'Addaddress'
     //     }
     // }
-=======
     {
-        path:'/setting',
-        component:UserSetting
+        path: '/setting',
+        component: UserSetting
     }
->>>>>>> 3731a31c08eeef6400e012c096ba85c3b42c0184
 ]
 
 export default routerTable

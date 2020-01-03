@@ -8,13 +8,17 @@
         </div>
         <div v-else class="car_container">
           <ul>
-            <li v-for="(item,index) of carlist" :key="index">
+            <li v-for="(item,index) of carlist" :key="item[shopName[index]][0].brand_id || index">
               <van-checkbox
+                class="shop_name"
                 v-model="shopNameCheck[index]"
                 @change="shopChecked(index,shopName[index])"
               >{{ shopName[index] }}</van-checkbox>
 
               <van-swipe-cell v-for="el of item[shopName[index]] " :key="el.id">
+                <template slot="left">
+                  <van-button square type="primary" text="选择" />
+                </template>
                 <div class="content">
                   <van-checkbox v-model="el.checked" @change="checked(el.id,index)"></van-checkbox>
                   <van-card
@@ -35,7 +39,12 @@
                 </div>
 
                 <template slot="right" class="del-right">
-                  <van-button square type="danger" text="删除" @click.native="del(el.id,index)" />
+                  <van-button
+                    square
+                    type="danger"
+                    text="删除"
+                    @click.native="del(el.id,index,shopName[index])"
+                  />
                   <van-button square type="primary" text="收藏" />
                 </template>
               </van-swipe-cell>
@@ -52,7 +61,10 @@
 
 <script>
 // import request from "@/utils/request.js";
+<<<<<<< HEAD
 // import Vue from "vue";
+=======
+>>>>>>> wangyongsong
 import { getStorage, setStorage } from "@/utils/storage";
 import ShopcarTab from "./ShopcarTab";
 // const bus = new Vue();
@@ -92,17 +104,17 @@ export default {
       });
       this.shopName = shopname;
     },
-    del(id, index) {
-      // console.log(this.carlist[index]);
-      console.log(index);
-      for (const key in this.carlist[index]) {
-        this.carlist[index][key].map((el, index) => {
-          if (el.id == id) {
-            console.log(this.carlist[index], key);
-            console.log(this.carlist[index][key]);
-            // this.carlist[index][key].splice(index, 1);
-          }
-        });
+    del(id, i, name) {
+      this.carlist[i][name].map((el, index) => {
+        if (el.id == id) {
+          this.carlist[i][name].splice(index, 1);
+        }
+      });
+      console.log(this.carlist, i);
+
+      if (!this.carlist[i][this.shopName[i]].length) {
+        console.log(i);
+        this.carlist.splice(i, 1);
       }
       setStorage("shopcar", this.carlist);
     },
@@ -118,6 +130,7 @@ export default {
       setStorage("shopcar", data);
     },
     onSubmit() {
+<<<<<<< HEAD
       this.$router.push("CommitOrder");
 
       // bus.$emit("receiveData", arr);
@@ -149,6 +162,36 @@ export default {
         }
       });
       this.arr = arr;
+=======
+      // const data = getStorage("shopcar");
+      // let arr = [];
+      // data.map(el => {
+      //   for (const key in el) {
+      //     el[key].map(elm => {
+      //       if (elm.checked) {
+      //         arr.push({
+      //           uid: "",
+      //           pid: elm.id,
+      //           shopname: elm.shop_name,
+      //           title: elm.title,
+      //           price: elm.jiage,
+      //           num: elm.num,
+      //           sum: elm.sum,
+      //           dec: elm.cate_name,
+      //           address: "",
+      //           pic: elm.pic
+      //         });
+      //       }
+      //     });
+      //   }
+      // });
+      // request({
+      //   url: "/usershoplist",
+      //   method: "POST",
+      //   data: JSON.stringify(arr),
+      //   headers: { "Content-Type": "application/json" }
+      // });
+>>>>>>> wangyongsong
     },
     shopChecked(index, name) {
       //店铺选中
@@ -250,7 +293,11 @@ export default {
           margin-bottom: 0.15rem;
           padding: 0.1rem;
 
-          .van-swipe-cell__right {
+          .shop_name {
+            margin-bottom: 0.05rem;
+          }
+
+          .van-swipe-cell__right, .van-swipe-cell__left {
             .van-button--square {
               height: 100%;
             }
@@ -261,6 +308,8 @@ export default {
 
             .van-checkbox {
               width: 20%;
+              display: flex;
+              justify-content: center;
             }
 
             .van-card {
