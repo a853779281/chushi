@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+//1
 import '@/utils/rem.js'
 
 import { Search } from 'vant'
