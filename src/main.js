@@ -14,13 +14,18 @@ Vue.config.productionTip = false
 
 import {
     Area,
-    AddressList,
     TreeSelect,
     Image,
     DropdownMenu,
     DropdownItem,
     Button,
     SwitchCell,
+    DatetimePicker,
+    AddressEdit,
+    Search,
+    Tab,
+    Tabs,
+    Toast,
     Icon,
     Swipe,
     SwipeItem,
@@ -31,18 +36,23 @@ import {
     GoodsActionIcon,
     GoodsActionButton,
     stepper,
-    Toast,
     Checkbox,
     Card,
     SubmitBar,
     SwipeCell,
     Cell,
     CellGroup,
-    Field
+    Field,
+    AddressList,
+    CouponCell,
+    CouponList
 } from 'vant'
+
+
 
 Vue.use(TreeSelect)
     .use(Image)
+    .use(Toast)
     .use(DropdownMenu)
     .use(DropdownItem)
     .use(Button)
@@ -57,18 +67,22 @@ Vue.use(TreeSelect)
     .use(GoodsActionIcon)
     .use(GoodsActionButton)
     .use(stepper)
-    .use(Toast)
     .use(Checkbox)
     .use(Card)
     .use(SubmitBar)
     .use(SwipeCell)
-    .use(AddressList)
     .use(Area)
     .use(Cell)
     .use(CellGroup)
     .use(Field)
-
-
+    .use(DatetimePicker)
+    .use(AddressEdit)
+    .use(Search)
+    .use(AddressList)
+    .use(Tab)
+    .use(Tabs)
+    .use(CouponCell)
+    .use(CouponList)
 
 
 
@@ -76,5 +90,4 @@ new Vue({
     router,
     store,
     render: h => h(App),
-
 }).$mount('#app')

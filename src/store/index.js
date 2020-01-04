@@ -1,7 +1,9 @@
-import Vuex from 'vuex'
 import Vue from 'vue'
+import Vuex from 'vuex'
 
 Vue.use(Vuex)
+import addrStore from '@/views/addr/store.js'
+
 import accountLoginStore from '@/views/login/storeAccount'
 
 import detailsGoods from '@/views/details/store'
@@ -15,11 +17,10 @@ const store = new Vuex.Store({
         detailsGoods,
         accountLoginStore,
         recommendStore,
-        searchStore
+        searchStore,
+        addrStore
     }
 })
-
-
 
 
 

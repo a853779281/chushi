@@ -5,8 +5,7 @@
     </ul>
 
     <div>
-      <h1>该商品未收到任何评价</h1>
-      <p>期待你的</p>
+      <h1 class="noneComments">该商品未收到任何评价</h1>
     </div>
   </div>
 </template>
@@ -56,6 +55,12 @@ export default {
         background: #BD9960;
       }
     }
+  }
+
+  .noneComments {
+    text-align: center;
+    margin-top: 60%;
+    font-size: 0.18rem;
   }
 }
 </style>
