@@ -138,23 +138,28 @@ export default {
             })
             console.log(result.data)
         },
-        // 请求登录
+        // 请求注册
         async register(){
             const {phone,password,code,img_code,str}=this
             if(img_code==str &&phone &&password &&code){
                 const result= await request({
-                    url:'http://10.31.160.200:9091/registUserrev',
-                    method:'get',
-                    params:{
+                    url:'http://localhost:3000/register',
+                    method:'post',
+                    data:{
                         phone,
-                        // password,
+                        password,
                         code
                     },
-                    // headers:{
-                    //     "Content-Type":'application/json'
-                    // }
+                    headers:{
+                        "Content-Type":'application/json'
+                    }
                 })
-                console.log(result.data)
+                if(result.data.state){
+                    alert('注册成功')
+                    this.$router.push('login')
+                }else{
+                    alert('账号已存在，请重新注册')
+                }
             }else{
                  alert('您填的验证码错误')
             }

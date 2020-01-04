@@ -1,44 +1,41 @@
 <template>
     <div>
+        <h3 class="title">基本信息</h3>
         <div class="content">
+            <!-- 用户名称 -->
             <dl class="list">
-                <dt>用户名称：</dt>
-                <dd>
-                    <span class="w400">chushi_8bc57b72e2709&nbsp;&nbsp;
+                <dt class="list_left">用户名称：</dt>
+                <dd class="list_right">
+                    <span class="name">chushi_8bc57b72e2709&nbsp;&nbsp;
                     </span>
-                    <span class="nc-grade-mini bbc_bg" style="cursor:pointer;">
+                    <span class="member">
                         注册会员                                                    
                     </span>
                     <!--<span class="midisplay">&nbsp;&nbsp;</span>-->
                 </dd>
             </dl>
+            <!-- 昵称 -->
             <dl class="list">
-                <dt>昵称：</dt>
-                <dd>
-                    <span class="w400">
-                            <input type="text" class="text n-valid" maxlength="20" name="nickname" value="">
-                            <span class="msg-box n-right" style="display: none;" for="nickname"></span>
+                <dt class="list_left">昵称：</dt>
+                <dd class="list_right">
+                    <input type="text">
+                </dd>
+            </dl>
+            <!-- 手机 -->
+            <dl class="list">
+                <dt class="list_left">手机：</dt>
+                <dd class="list_right">
+                    <span class="name">
+                        18856038824&nbsp;&nbsp;
+                    </span>
+                    <span class="updataPhone">
+                        修改手机
                     </span>
                 </dd>
             </dl>
+            <!-- 真实姓名 -->
             <dl class="list">
-                <dt>手机：</dt>
-                <dd><span class="w400">18856038824&nbsp;&nbsp;
-                    <a href="http://ucenter.jushifang.cn/index.php?ctl=User&amp;met=security&amp;op=mobile">
-                        修改手机</a>
-                        </span>
-                    <!--<span class="midisplay">
-                        <select name="privacy[user_privacy_mobile]">
-                        
-                            <option value="0" selected="selected"></option>
-                            <option value="1" selected="selected"></option>
-                            <option value="2" selected="selected"></option>
-                        </select>
-                        </span>-->
-                </dd>
-            </dl>
-            <dl class="list">
-                <dt>真实姓名：</dt>
+                <dt class="list_left">真实姓名：</dt>
                 <dd><span class="w400">
                             <input type="text" class="text" maxlength="20" name="user_truename" value="">
                             </span>
@@ -51,10 +48,11 @@
                             </span>-->
                 </dd>
             </dl>
+            <!-- 性别 -->
             <dl class="list">
-                <dt>性别：</dt>
-                <dd>
-                    <span class="w400">
+                <dt class="list_left">性别：</dt>
+                <dd class="list_right">
+                    <span class="name">
                         <label>
                             <input type="radio" name="user_gender" value="0" checked="">
                             女</label>
@@ -67,41 +65,27 @@
                             <input type="radio" name="user_gender" value="2">
                         保密</label>
                     </span>
-                    <!--<span class="midisplay">
-                            <select name="privacy[user_privacy_sex]">
-                            <option value="0" selected="selected"></option>
-                            <option value="1" selected="selected"></option>
-                            <option value="2" selected="selected"></option>
-                            </select>
-                            </span>-->
                 </dd>
             </dl>
+            <!-- 生日 -->
             <dl class="list">
-                <dt>生日：</dt>
-                <dd><span class="w400"><select id="birthdayYear" name="year"><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option></select>
-                            <label>年</label>
-                            <select id="birthdayMonth" name="month"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>
-                            <label>月</label>
-                            <select id="birthdayDay" name="day"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
-                            <label>日</label>
-                        <!--<b class="kbs"></b></span>-->
-                        <!--<span class="midisplay">
-                            <select name="privacy[user_privacy_birthday]">
-                            <option value="0" selected="selected" ></option>
-                            <option value="1" selected="selected"></option>
-                            <option value="2" selected="selected"></option>
-                            </select>
-                            </span>-->
-                </span></dd>
+                <dt class="list_left">生日：</dt>
+                <dd class="list_right">
+                    <span class="name"><select id="birthdayYear" name="year"><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option></select>
+                        <label>年</label>
+                        <select id="birthdayMonth" name="month"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>
+                        <label>月</label>
+                        <select id="birthdayDay" name="day"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
+                        <label>日</label>
+                       
+                    </span>
+                </dd>
             </dl>
+            <!-- 所在地区 -->
             <dl class="list">
-                <dt>所在地区：</dt>
-                <dd>
-                    <span class="w400">
-                        <!-- <input type="hidden" name="address_area" id="t" value="安徽 合肥市 包河区">
-                        <input type="hidden" name="province_id" id="id_1" value="12">
-                        <input type="hidden" name="city_id" id="id_2" value="186">
-                        <input type="hidden" name="area_id" id="id_3" value="2224"> -->
+                <dt class="list_left">所在地区：</dt>
+                <dd class="list_right">
+                    <span class="name">
                         <div id="d_2" class="">
                                 <select id="select_1" name="select_1" onchange="district(this);" aria-required="true" class="n-valid">
                                     <option value="" class="">--请选择--</option>
@@ -154,21 +138,17 @@
                             </span>-->
                 </dd>
             </dl>
+            <!-- qq -->
             <dl class="list">
-                <dt>QQ：</dt>
-                <dd>
-                    <span class="w400">
-                        <input type="text" class="text" maxlength="30" name="user_qq" id="user_qq" value="">
+                <dt class="list_left">QQ：</dt>
+                <dd class="list_right">
+                    <span class="name">
+                        <input type="number">
                     </span>
                 </dd>
             </dl>
             <dl class="bottom">
-                <dt></dt>
-                <dd>
-                    <label class="submit-border">
-                        <input type="submit" class="submit bbc_btns" value="保存修改"> 
-                    </label>
-                </dd>
+                <input type="button" class="btn" value="保存修改"> 
             </dl>
         </div>
     </div>
@@ -185,12 +165,71 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-    // @import '~@/assets/stylesheets/UCenter.css'
+    @import '~@/assets/stylesheets/border.styl'
+    .title
+        font-size .16rem
+        font-weight bold
+        color red
+        margin 0 .1rem
+        margin-top .1rem
+        padding-bottom .1rem
+        border 0 0 1px 0,#e1e1e1
     .content
         display flex
         flex-direction column
         .list
             display flex
-
+            justify-content flex-start
+            margin 0 .1rem
+            padding  .1rem  0
+            border 0 0 1px 0,#e1e1e1
+            .list_left
+                width 1rem
+                text-align right
+                font-size .14rem
+                color #777
+                height .27rem
+                line-height .27rem
+            .list_right
+                .name
+                    display inline-block
+                    height .27rem
+                    line-height .27rem
+                    font-size .14rem
+                    color #777
+                .member
+                    font-size .12rem
+                    line-height .16rem
+                    text-shadow .01rem .01rem 0 rgba(0, 0, 0, 0.25)
+                    color #FFF4F4
+                    background-color #e45050
+                    vertical-align middle
+                    display inline-block
+                    height .16rem
+                    padding .01rem .03rem
+                    border-radius .02rem
+                .updataPhone
+                    margin-left .1rem
+                    display inline-block
+                    height .27rem
+                    line-height .27rem
+                    cursor pointer
+                    font-size .14rem
+        .bottom 
+            align-self center
+            margin-top .2rem 
+            padding-bottom  .5rem 
+            .btn
+                border-top 0
+                border-right 0
+                border-left 0
+                border-bottom 0
+                background #ff5252
+                color #ffffff
+                width 1rem
+                text-align center
+                height .24rem
+                line-height .24rem
+                border-radius .05rem
 
 </style>

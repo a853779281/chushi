@@ -1,6 +1,5 @@
 export default {
-    coupon:[
-        {
+    coupon: [{
             available: 1,
             condition: '无使用门槛\n最多优惠12元',
             reason: '',
@@ -34,5 +33,5 @@ export default {
             unitDesc: '元',
         }
     ]
-    
+
 }

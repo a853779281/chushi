@@ -13,6 +13,7 @@ import router from '@/router'
 Vue.config.productionTip = false
 
 import {
+    Area,
     TreeSelect,
     Image,
     DropdownMenu,
@@ -20,7 +21,6 @@ import {
     Button,
     SwitchCell,
     DatetimePicker,
-    Area,
     AddressEdit,
     Search,
     Tab,

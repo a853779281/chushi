@@ -2,11 +2,11 @@
     <div class="uCenter">
         <UCenterBar/>
         <div class="uCenter_body">
-            <keep-alive>
+            <keep-alive include="$route.meta.include">
                 <router-view></router-view>
             </keep-alive>
+            <UCenterFoot/>
         </div>
-        <UCenterFoot/>
     </div>
 </template>
 
