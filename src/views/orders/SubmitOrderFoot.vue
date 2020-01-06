@@ -3,7 +3,7 @@
     <div class="sum_price">
       <h3>
         合计：
-        <span>{{}}</span>
+        <span>{{allPrice | current}}</span>
       </h3>
     </div>
     <div class="submitOrder" @click="submitOrder">提交订单</div>
@@ -11,72 +11,44 @@
 </template>
 <script>
 // import request from "@/utils/request.js";
-// import { getStorage } from "@/utils/storage";
-
+import { setStorage, removeStorage } from "@/utils/storage";
+import Vue from "vue";
+import { Toast } from "vant";
+Vue.use(Toast);
 export default {
-  // data() {
-  //   return {
-  //     receive: []
-  //   };
-  // },
-
+  data() {
+    return {
+      // price: this.$attrs.allPrice
+    };
+  },
+  props: ["allPrice", "orderInfo"],
   methods: {
     submitOrder() {
-      // let arr = [];
+      setStorage("orderInfo", this.orderInfo);
+      Toast.success("购买成功");
+      removeStorage("shopcar");
+      removeStorage(" shopcar");
+      removeStorage("shopcheck");
+
       // const data = getStorage("shopcar");
-      // const order=getStorage('arr')
-      // // console.log("jwjwjw", data);
-      // let sameName = {};
-      // let repeatShopName = [];
-      // let singleShopName = [];
       // data.map(el => {
       //   console.log("el", el);
       //   for (const key in el) {
-      //     console.log(key);
-      //     el[key].map(elm => {
+      //     el[key].map((elm, index) => {
       //       if (elm.checked) {
-      //         // arr.push({
-      //         //   elm.shop_name: []
-      //         // });
-      //         repeatShopName.push(elm.shop_name);
-      //         let a = new Set(repeatShopName);
-      //         singleShopName = Array.from(a);
-      //         if (a.has(elm.shop_name)) {
-      //           console.log("有");
-      //         }
-      //         console.log("你好", singleShopName);
-      //         // console.log("elm", elm);
-      //         // return elm;
+      //         console.log(el[key]);
+      //         el[key].splice(index, 1);
       //       }
       //     });
+      //     if (el[key].length == 0) {
+      //       data.splice(el[key], 1);
+      //     }
       //   }
       // });
-      // console.log(sameName);
-      // request({
-      //   url: "/order/add",
-      //   method: "POST",
-      //   data: { ...arr },
-      //   headers: { "Content-Type": "application/json" }
-      // });
+      // setStorage("shopcar", data);
     }
   }
 };
-
-// [
-//   {
-//     uid: "1234",
-//     pid: 24362726,
-//     shopname: "舌里旗舰店",
-//     title: "舌里红枣夹核桃1000g 新疆大枣子加核桃仁干果夹心零食抱抱年货",
-//     price: 31.99,
-//     num: 5,
-//     sum: 159.95,
-//     dec: "枣类制品",
-//     address: "",
-//     pic:
-//       "https://img.alicdn.com/imgextra/i3/2471521096/O1CN01sBrYEN1Jy0exZW7VW_!!2471521096.png"
-//   }
-// ];
 </script>
 <style lang="stylus" scoped>
 .calc {

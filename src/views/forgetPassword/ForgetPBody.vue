@@ -101,6 +101,7 @@ export default {
     },
     // 密码验证
     passwordTest() {
+      /* eslint-disable */
       let reg = /^[0-9a-zA-Z]{4,20}$/;
       if (reg.test(this.password)) {
         this.flag = true;
@@ -110,7 +111,6 @@ export default {
     },
     // 邮箱验证
     emailTest() {
-      /* eslint-disable */
       let reg = /^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/;
       if (reg.test(this.email)) {
         this.f_email = true;
