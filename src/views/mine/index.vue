@@ -121,6 +121,7 @@
 import MineTab from "./MineTab";
 import "animate.css";
 import coupon from "./couponStore";
+import {getCookie} from '@/utils/cookie.js'
 export default {
   components: {
     MineTab
@@ -135,6 +136,11 @@ export default {
     },
     onExchange() {
       this.coupons.push(coupon);
+    }
+  },
+  computed:{
+    username(){
+      return getCookie('username')
     }
   },
   data() {
@@ -189,6 +195,10 @@ export default {
     setTimeout(() => {
       this.show = !this.show;
     }, 0);
+
+    let collection = localStorage.getItem('collection')
+    collection=JSON.parse(collection)
+    this.collect[0].num= collection.length
   }
 };
 </script>
