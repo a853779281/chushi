@@ -1,15 +1,28 @@
 <template>
   <div class="list_tab">
-    <h3>List</h3>
-    <img src="../../assets/img/ico/ia_100000002.png" alt />
+    <van-icon name="arrow-left" id="back" @click.native="back" />
+    <ul>
+      <li></li>
+    </ul>
+    <van-icon name="ellipsis" id="more" />
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    back() {
+      this.$router.go(-1);
+    }
+  }
+};
+</script>
 
 <style lang="stylus" scoped>
 @import '~@/assets/stylesheets/border.styl';
 
 .list_tab {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 0.44rem;
   align-items: center;
@@ -19,17 +32,34 @@
   background: #fff;
   border: 0 0 1px 0, #ccc;
 
-  h3 {
-    flex: 355;
-    text-align: center;
-    font-size: 0.176rem;
-    font-weight: 400;
+  #back {
+    font-size: 0.2rem;
   }
 
-  img {
-    flex: 20;
-    width: 0.18rem;
-    cursor: pointer;
+  ul {
+    display: flex;
+    width: 70%;
+    text-align: center;
+
+    li {
+      font-size: 0.18rem;
+      width: 25%;
+      line-height: 0.43rem;
+      box-sizing: border-box;
+      margin: 0 0.1rem;
+      border-bottom: 1px transparent solid;
+
+      &.active {
+        color: #BD9960;
+        border-bottom: 1px #BD9960 solid;
+      }
+    }
   }
+
+  #more {
+    font-weight: bold;
+    font-size: 0.25rem;
+  }
+
 }
 </style>
