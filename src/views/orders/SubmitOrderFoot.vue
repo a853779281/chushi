@@ -39,6 +39,9 @@ export default {
         });
       });
       setStorage(" shopcar", data);
+      setTimeout(() => {
+        this.$router.push("home");
+      }, 2000);
     }
   }
 };
