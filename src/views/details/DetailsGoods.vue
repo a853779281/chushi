@@ -10,33 +10,45 @@
     <div class="goodsDetails">
       <div class="title-box">
         <!-- <van-tag type="warning">自营</van-tag> -->
-        <span class="title">{{goodsList.d_title}}</span>
-        <span class="share">
-          <i class="fas fa-share-alt"></i>分享
-        </span>
+        <span class="title">{{ goodsList.d_title }}</span>
+        <span class="share"> <i class="fas fa-share-alt"></i>分享 </span>
       </div>
       <div class="price-box">
-        <span>{{goodsList.jiage |decimals }}</span>
-        <del>{{goodsList.yuanjia |decimals}}</del>
-        <b>库存：{{goodsList.sellnum}} 件</b>
+        <span>{{ goodsList.jiage | decimals }}</span>
+        <del>{{ goodsList.yuanjia | decimals }}</del>
+        <b>库存：{{ goodsList.sellnum }} 件</b>
       </div>
     </div>
     <div class="buynum">
       <span>购买数量</span>
       <van-stepper v-model="num" class />
     </div>
-    <div class="des">{{goodsList.miaoshu}}</div>
+    <div class="des">{{ goodsList.miaoshu }}</div>
     <!-- goods-detail end -->
     <van-goods-action>
-      <van-goods-action-icon icon="chat-o" text="客服" @click.native="goService" />
-      <van-goods-action-icon icon="cart-o" text="购物车" @click.native="goShopCar" />
-      <van-goods-action-button type="warning" text="加入购物车" @click.native="addShopCar" />
-      <van-goods-action-button type="danger" text="立即购买" @click.native="goBuyer" />
+      <van-goods-action-icon
+        icon="chat-o"
+        text="客服"
+        @click.native="goService"
+      />
+      <van-goods-action-icon
+        icon="cart-o"
+        text="购物车"
+        @click.native="goShopCar"
+      />
+      <van-goods-action-button
+        type="warning"
+        text="加入购物车"
+        @click.native="addShopCar"
+      />
+      <van-goods-action-button
+        type="danger"
+        text="立即购买"
+        @click.native="goBuyer"
+      />
     </van-goods-action>
   </div>
 </template>
-
-
 
 <script>
 import { getStorage, setStorage } from "@/utils/storage.js";
@@ -69,75 +81,75 @@ export default {
     },
     addShopCar() {
       Toast("亲！成功加入购物车~");
-      const goods = getStorage("shopcar");
+      const goods = getStorage(" shopcar");
+      // console.log(goods);
       if (goods.length != 0) {
         const f = goods.some(el => {
-          return el[this.$route.query.shop_name];
+          return el.shopId == this.$route.query.brand_id;
         });
         if (f) {
           goods.map(el => {
-            // 判断是否 是这家店
-            if (el[this.$route.query.shop_name]) {
-              console.log("是这家店");
-              //1.是这家店
+            if (el.shopId == this.$route.query.brand_id) {
+              // console.log("是这家店");
               //2.判断 存储的这家店 是否有这款商品
-              let flag = el[this.$route.query.shop_name].some(el => {
+              let flag = el.goodsList.some(el => {
                 return el.id == this.$route.params.id;
               });
               if (flag) {
-                console.log("这家店 有这款商品");
-                el[this.$route.query.shop_name].map(elm => {
+                // console.log("这家店 有这款商品");
+                el.goodsList.map(elm => {
                   if (elm.id == this.$route.params.id) {
-                    console.log("===");
+                    // console.log("加数量算总价");
                     elm.num += this.num;
                     elm.sum = this.sum;
                     return;
                   }
                 });
               } else {
-                console.log("这家店没有这款商品");
-                el[this.$route.query.shop_name].push({
+                // console.log("这家店没有这款商品");
+                el.goodsList.push({
                   ...this.$route.query,
                   num: this.num,
-                  checkboxflag: true,
                   sum: this.sum,
                   checked: false
                 });
               }
             }
-            // console.log(el[this.$route.query.shop_name], flag);
           });
-          console.log("有商品，有这家店的商品");
         } else {
-          console.log("有商品，但没有这家店的商品");
+          // console.log("有商品，但没有这家店的商品");
           let list = {
-            [this.$route.query.shop_name]: []
+            shopname: this.$route.query.shop_name,
+            shopId: this.$route.query.brand_id,
+            goodsList: [],
+            shopFlag: false
           };
-          list[this.$route.query.shop_name].push({
+          list.goodsList.push({
             ...this.$route.query,
             num: this.num,
-            checkboxflag: true,
             sum: this.sum,
             checked: false
           });
           goods.push(list);
         }
       } else {
-        console.log(2, "else");
+        // console.log("没有这家店");
         let list = {
-          [this.$route.query.shop_name]: []
+          shopname: this.$route.query.shop_name,
+          shopId: this.$route.query.brand_id,
+          goodsList: [],
+          shopFlag: false
         };
-        list[this.$route.query.shop_name].push({
+        list.goodsList.push({
           ...this.$route.query,
           num: this.num,
-          checkboxflag: true,
           sum: this.sum,
           checked: false
         });
         goods.push(list);
       }
-      console.log("goods", goods);
-      setStorage("shopcar", goods);
+      // console.log("goods", goods);
+      setStorage(" shopcar", goods);
     }
   },
   watch: {
@@ -147,9 +159,6 @@ export default {
   }
 };
 </script>
-
-
-
 
 <style lang="stylus" scoped>
 @import '~assets/stylesheets/border.styl';

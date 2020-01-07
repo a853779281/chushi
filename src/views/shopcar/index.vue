@@ -8,19 +8,24 @@
         </div>
         <div v-else class="car_container">
           <ul>
-            <li v-for="(item,index) of carlist" :key="item[shopName[index]][0].brand_id || index">
+            <li v-for="(item, index) of goods" :key="item.shopId">
               <van-checkbox
                 class="shop_name"
-                v-model="shopNameCheck[index]"
-                @change="shopChecked(index,shopName[index])"
-              >{{ shopName[index] }}</van-checkbox>
+                v-model="item.shopFlag"
+                @change="Checked()"
+              >
+                {{ item.shopname }}
+              </van-checkbox>
 
-              <van-swipe-cell v-for="el of item[shopName[index]] " :key="el.id">
+              <van-swipe-cell v-for="el of item.goodsList" :key="el.id">
                 <template slot="left">
                   <van-button square type="primary" text="选择" />
                 </template>
                 <div class="content">
-                  <van-checkbox v-model="el.checked" @change="checked(el.id,index)"></van-checkbox>
+                  <van-checkbox
+                    v-model="el.checked"
+                    @change="sigleChecked(index, el.id)"
+                  ></van-checkbox>
                   <van-card
                     :num="el.num"
                     :price="el.jiage"
@@ -32,7 +37,7 @@
                       <van-stepper
                         v-model="el.num"
                         integer
-                        @change="changeCount(el.id,el.num,el.jiage,index)"
+                        @change="changeCount(el.id, el.num, el.jiage, index)"
                       />
                     </div>
                   </van-card>
@@ -43,15 +48,26 @@
                     square
                     type="danger"
                     text="删除"
-                    @click.native="del(el.id,index,shopName[index])"
+                    @click.native="del(el.id, index)"
                   />
-                  <van-button square type="primary" text="收藏" />
+                  <van-button
+                    square
+                    type="primary"
+                    text="收藏"
+                    @click.native="collection(el.id, index)"
+                  />
                 </template>
               </van-swipe-cell>
             </li>
           </ul>
-          <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit">
-            <van-checkbox v-model="allCK" @click="allChecked">全选</van-checkbox>
+          <van-submit-bar
+            :price="sum"
+            button-text="提交订单"
+            @submit="onSubmit"
+          >
+            <van-checkbox v-model="allCK" @change="allChecked"
+              >全选</van-checkbox
+            >
           </van-submit-bar>
         </div>
       </div>
@@ -64,6 +80,7 @@
 // import Vue from "vue";
 // import VueBus from "vue-bus";
 import { getStorage, setStorage } from "@/utils/storage";
+
 import ShopcarTab from "./ShopcarTab";
 // Vue.use(VueBus);
 export default {
@@ -73,87 +90,75 @@ export default {
   data() {
     return {
       f: true,
-      carlist: getStorage("shopcar"),
-      allList: [],
-      shopName: [],
+      goods: getStorage(" shopcar"),
       allCK: false,
-      sum: 0,
-      shopNameCheck: [],
-      test: false,
-      selected: []
+      sum: 0
     };
+  },
+  mounted() {
+    // 判断是否有商品
+    const data = getStorage(" shopcar");
+    const allChecked = getStorage(" allChecked");
+    if (data.length) {
+      this.f = false;
+    }
+    if (allChecked.checked) {
+      this.allCK = allChecked;
+    }
+    this.sumPrice();
   },
   updated() {
     this.sumPrice();
-    const f = this.shopNameCheck.every(el => el == true);
-    if (f) {
-      this.allCK = true;
-    } else {
-      this.allCK = false;
-    }
   },
   methods: {
-    List() {
-      let goods = getStorage("shopcar");
-      let shopname = [];
-      goods.map(el => {
-        for (let key in el) {
-          shopname.push(key);
-        }
-      });
-      this.shopName = shopname;
-    },
-    del(id, i, name) {
-      this.carlist[i][name].map((el, index) => {
-        if (el.id == id) {
-          this.carlist[i][name].splice(index, 1);
-        }
-      });
-      // console.log(this.carlist, i);
-
-      if (!this.carlist[i][this.shopName[i]].length) {
-        // console.log(i);
-        this.carlist.splice(i, 1);
+    collection(id, index) {
+      let collectionArr = getStorage("collection");
+      let f = collectionArr.some(el => el.pid == id);
+      if (!f) {
+        this.goods[index].goodsList.map(elm => {
+          if (id == elm.id) {
+            collectionArr.push({
+              pid: elm.id,
+              shopid: elm.brand_id,
+              shopname: elm.shop_name,
+              title: elm.title,
+              price: elm.jiage,
+              num: elm.num,
+              sum: elm.sum,
+              info: elm.cate_name,
+              address: "",
+              pic: elm.pic,
+              oid: ""
+            });
+          }
+        });
       }
-      setStorage("shopcar", this.carlist);
-    },
-    changeCount(id, num, price, index) {
-      //传参
-      const data = getStorage("shopcar");
-      data[index][this.shopName[index]].map(elm => {
-        if (elm.id == id) {
-          elm.num = num;
-          elm.sum = num * price;
-        }
-      });
-      setStorage("shopcar", data);
+      setStorage("collection", collectionArr);
     },
     onSubmit() {
-      const data = getStorage("shopcar");
+      const data = getStorage(" shopcar");
       let id = 1;
       let arr = [];
       data.map(el => {
-        for (const key in el) {
-          el[key].map(elm => {
-            if (elm.checked) {
-              arr.push({
-                uid: `${id}`,
-                pid: elm.id,
-                shopid: elm.brand_id,
-                shopname: elm.shop_name,
-                title: elm.title,
-                price: elm.jiage,
-                num: elm.num,
-                sum: elm.sum,
-                info: elm.cate_name,
-                address: "",
-                pic: elm.pic,
-                oid: ""
-              });
-              id++;
-            }
-          });
-        }
+        el.goodsList.map(elm => {
+          if (elm.checked) {
+            arr.push({
+              uid: `${id}`,
+              pid: elm.id,
+              shopid: elm.brand_id,
+              shopname: elm.shop_name,
+              title: elm.title,
+              price: elm.jiage,
+              num: elm.num,
+              sum: elm.sum,
+              info: elm.cate_name,
+              address: "",
+              pic: elm.pic,
+              oid: ""
+            });
+            id++;
+          }
+        });
       });
       this.selected = arr;
       this.$router.push({
@@ -166,79 +171,78 @@ export default {
 
       // bus.$emit("receiveData", arr);
     },
-
-    shopChecked(index, name) {
-      //店铺选中
-      const data = getStorage("shopcar");
-      data[index][name].map(el => {
-        el.checked = this.shopNameCheck[index];
-      });
-      this.carlist[index][name].map(el => {
-        el.checked = this.shopNameCheck[index];
-      });
-      setStorage(" shopcar", this.carlist);
-      setStorage("shopcheck", this.shopNameCheck);
-    },
-    cbox() {
-      const checked = getStorage("shopcheck");
-      let arr = [];
-      if (checked.length) {
-        // console.log(checked);
-        arr = checked;
-      } else {
-        const data = getStorage("shopcar");
-        data.map(el => {
-          window.console.log(el);
-          arr.push(false);
-        });
-      }
-      this.shopNameCheck = arr;
-      setStorage("shopcheck", arr);
-    },
-    checked(id, index) {
-      //商品选中
-      const data = getStorage("shopcar");
-      data[index][this.shopName[index]].map(elm => {
+    changeCount(id, num, price, index) {
+      const data = getStorage(" shopcar");
+      data[index].goodsList.map(elm => {
         if (elm.id == id) {
-          elm.checked = !elm.checked;
+          elm.num = num;
+          elm.sum = num * price;
         }
       });
-      const f = data[index][this.shopName[index]].every(
-        el => el.checked == true
+      setStorage(" shopcar", data);
+    },
+    Checked() {
+      // 店铺选中
+      this.goods.forEach(el => {
+        el.goodsList.map(elm => {
+          elm.checked = el.shopFlag;
+        });
+      });
+      setStorage(" shopcar", this.goods);
+    },
+    del(id, index) {
+      // 删除
+      this.goods[index].goodsList.map((el, i) => {
+        if (el.id == id) {
+          this.goods[index].goodsList.splice(i, 1);
+        }
+      });
+      if (!this.goods[index].goodsList.length) {
+        this.goods.splice(index, 1);
+      }
+      setStorage(" shopcar", this.goods);
+    },
+    sigleChecked(index) {
+      // 单选
+      let flagTrue = this.goods[index].goodsList.every(el => {
+        return el.checked == true;
+      });
+      if (flagTrue) {
+        this.goods[index].shopFlag = true;
+      } else {
+        this.goods[index].shopFlag = false;
+      }
+      let fAll = this.goods.every(el => {
+        return el.shopFlag == true;
+      });
+      fAll ? (this.allCK = true) : (this.allCK = false);
+      setStorage(" shopcar", this.goods);
+      localStorage.setItem(
+        " allChecked",
+        JSON.stringify({ checked: this.allCK })
       );
-      f
-        ? (this.shopNameCheck[index] = true)
-        : (this.shopNameCheck[index] = false);
-      setStorage("shopcar", data);
     },
     allChecked() {
-      for (let i = 0; i < this.shopNameCheck.length; i++) {
-        this.shopNameCheck[i] = !this.allCK;
-      }
+      this.goods.forEach(el => {
+        el.shopFlag = this.allCK;
+      });
+      localStorage.setItem(
+        " allChecked",
+        JSON.stringify({ checked: this.allCK })
+      );
     },
     sumPrice() {
       let p = 0;
-      let goods = getStorage("shopcar");
+      let goods = getStorage(" shopcar");
       goods.map(el => {
-        for (let key in el) {
-          el[key].map(el => {
-            if (el.checked) {
-              p += el.sum;
-            }
-          });
-        }
+        el.goodsList.map(elm => {
+          if (elm.checked) {
+            p += elm.sum;
+          }
+        });
       });
       this.sum = p * 100;
     }
-  },
-  mounted() {
-    const data = getStorage("shopcar");
-    if (data.length) {
-      this.f = false;
-    }
-    this.sumPrice();
-    this.List();
-    this.cbox();
   }
 };
 </script>
