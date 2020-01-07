@@ -2,7 +2,7 @@
   <div class="confirm">
     <ComOrder></ComOrder>
     <div class="order_body">
-      <div class="add_address">
+      <div class="add_address" @click="addAddress">
         <h1>+</h1>
         <span>添加收货人信息</span>
       </div>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-// import request from '@/utils/request'
+import { setStorage } from "@/utils/storage";
 import ComOrder from "@/views/orders/ComOrder";
 import SubmitOrderFoot from "@/views/orders/SubmitOrderFoot";
 // import Vue from "vue";
@@ -76,6 +76,9 @@ export default {
     };
   },
   methods: {
+    addAddress() {
+      this.$router.push("addr");
+    },
     updateData() {
       let sName = [];
       let NewData = [];
@@ -117,6 +120,7 @@ export default {
       this.sum = sum;
       this.orderData = NewData;
       this.calcP = allPrice;
+      setStorage("orderRender", this.orderData);
     }
   },
   mounted() {

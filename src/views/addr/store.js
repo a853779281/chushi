@@ -1,6 +1,6 @@
-const ADDR="ADDR"
+const ADDR = "ADDR"
 export default {
-    state:{
+    state: {
         list: [
             {
                 id: '1',
@@ -52,24 +52,24 @@ export default {
             }
         ],
     },
-    actions:{
-        addr({commit},payload){
+    actions: {
+        addr({ commit }, payload) {
             commit({
-                type:ADDR,
+                type: ADDR,
                 payload
             })
-        }
+        },
     },
-    mutations:{
-        [ADDR](state,action){
-            let address=`${action.payload.province}${action.payload.city}${action.payload.country}${action.payload.addressDetail}`
-            let id=state.list.length
+    mutations: {
+        [ADDR](state, action) {
+            let address = `${action.payload.province}${action.payload.city}${action.payload.country}${action.payload.addressDetail}`
+            let id = state.list.length
             state.list.push({
                 id: id,
                 name: action.payload.name,
                 tel: action.payload.tel,
                 address: address
             })
-        }
+        },
     }
 }

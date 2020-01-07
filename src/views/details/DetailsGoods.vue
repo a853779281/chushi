@@ -11,7 +11,9 @@
       <div class="title-box">
         <!-- <van-tag type="warning">自营</van-tag> -->
         <span class="title">{{ goodsList.d_title }}</span>
-        <span class="share"> <i class="fas fa-share-alt"></i>分享 </span>
+        <span class="share">
+          <i class="fas fa-share-alt"></i>分享
+        </span>
       </div>
       <div class="price-box">
         <span>{{ goodsList.jiage | decimals }}</span>
@@ -26,26 +28,10 @@
     <div class="des">{{ goodsList.miaoshu }}</div>
     <!-- goods-detail end -->
     <van-goods-action>
-      <van-goods-action-icon
-        icon="chat-o"
-        text="客服"
-        @click.native="goService"
-      />
-      <van-goods-action-icon
-        icon="cart-o"
-        text="购物车"
-        @click.native="goShopCar"
-      />
-      <van-goods-action-button
-        type="warning"
-        text="加入购物车"
-        @click.native="addShopCar"
-      />
-      <van-goods-action-button
-        type="danger"
-        text="立即购买"
-        @click.native="goBuyer"
-      />
+      <van-goods-action-icon icon="chat-o" text="客服" @click.native="goService" />
+      <van-goods-action-icon icon="cart-o" text="购物车" @click.native="goShopCar" />
+      <van-goods-action-button type="warning" text="加入购物车" @click.native="addShopCar" />
+      <van-goods-action-button type="danger" text="立即购买" @click.native="goBuyer" />
     </van-goods-action>
   </div>
 </template>
@@ -143,7 +129,7 @@ export default {
         list.goodsList.push({
           ...this.$route.query,
           num: this.num,
-          sum: this.sum,
+          sum: Number(this.sum),
           checked: false
         });
         goods.push(list);

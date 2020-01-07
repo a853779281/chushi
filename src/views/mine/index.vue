@@ -6,7 +6,7 @@
         <img src="../../assets/image/mine/topBg.jpg" alt class="photo" />
         <transition enter-active-class="animated bounceInDown slow">
           <a class="login" v-if="show" @click="goLogin">
-            <span>点击登陆</span>
+            <span>{{user&&user||'点击登陆'}}</span>
           </a>
         </transition>
       </div>
@@ -121,13 +121,18 @@
 import MineTab from "./MineTab";
 import "animate.css";
 import coupon from "./couponStore";
+import { getStorage } from "@/utils/storage";
 export default {
   components: {
     MineTab
   },
   methods: {
     goLogin() {
-      this.$router.push("/login");
+      if (this.user) {
+        this.$router.push("/uCenter");
+      } else {
+        this.$router.push("/login");
+      }
     },
     onChange(index) {
       this.showList = false;
@@ -135,10 +140,14 @@ export default {
     },
     onExchange() {
       this.coupons.push(coupon);
+    },
+    username() {
+      this.user = getStorage("user");
     }
   },
   data() {
     return {
+      user: "",
       chosenCoupon: -1,
       coupons: coupon.coupon,
       disabledCoupons: coupon.coupon,
@@ -186,6 +195,7 @@ export default {
     };
   },
   mounted() {
+    this.username();
     setTimeout(() => {
       this.show = !this.show;
     }, 0);
