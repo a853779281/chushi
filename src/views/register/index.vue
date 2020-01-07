@@ -14,7 +14,7 @@ export default {
     components:{
         RegisterTab,
         RegisterBody
-    }
+    },
 }
 </script>
 <style lang="stylus" scoped>

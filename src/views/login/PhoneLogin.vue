@@ -31,6 +31,7 @@
 <script>
     import Register from './Register'
     import request from '@/utils/request.js'
+    import {setCookie} from '@/utils/cookie.js'
     // import  {mapState,mapActions} from 'vuex'
 
 export default {
@@ -116,8 +117,9 @@ export default {
                     }
                 })
                 if(result.data.state ){
+                    setCookie('username',phone)
                     alert('登录成功')
-                    this.router.push('mine')
+                    this.$router.push('mine')
                 }else{
                     alert('账号或密码错误')
                 }
