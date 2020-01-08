@@ -2,10 +2,15 @@
   <div class="confirm">
     <ComOrder></ComOrder>
     <div class="order_body">
-      <div class="add_address">
+      <div class="add_address" @click="addAddress" v-if="this.defAddr.length">
+        <h1>{{defAddr[0].name}}</h1>
+        <span>{{defAddr[0].address}}</span>
+      </div>
+      <div class="add_address" @click="addAddress" v-else>
         <h1>+</h1>
         <span>添加收货人信息</span>
       </div>
+
       <div class="order_box">
         <div class="order_list" v-for="(item,index) of orderData" :key="index">
           <h3>{{item.name}}</h3>
@@ -56,7 +61,7 @@
 </template>
 
 <script>
-// import request from '@/utils/request'
+import { setStorage, getStorage } from "@/utils/storage";
 import ComOrder from "@/views/orders/ComOrder";
 import SubmitOrderFoot from "@/views/orders/SubmitOrderFoot";
 // import Vue from "vue";
@@ -70,12 +75,18 @@ export default {
   data() {
     return {
       message: "",
-      orderData: JSON.parse(this.$route.params.data),
+      orderData: getStorage("submitOrder"),
       sum: 0,
-      calcP: 0
+      calcP: 0,
+      defAddr: getStorage("selectedAdd")
     };
   },
+
   methods: {
+    addAddress() {
+      this.$router.push("addr");
+    },
+
     updateData() {
       let sName = [];
       let NewData = [];
@@ -117,6 +128,7 @@ export default {
       this.sum = sum;
       this.orderData = NewData;
       this.calcP = allPrice;
+      setStorage("orderRender", this.orderData);
     }
   },
   mounted() {

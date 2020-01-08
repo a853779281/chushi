@@ -11,7 +11,7 @@
 </template>
 <script>
 // import request from "@/utils/request.js";
-import { setStorage, removeStorage } from "@/utils/storage";
+import { setStorage, getStorage } from "@/utils/storage";
 import Vue from "vue";
 import { Toast } from "vant";
 Vue.use(Toast);
@@ -26,26 +26,22 @@ export default {
     submitOrder() {
       setStorage("orderInfo", this.orderInfo);
       Toast.success("购买成功");
-      removeStorage("shopcar");
-      removeStorage(" shopcar");
-      removeStorage("shopcheck");
-
-      // const data = getStorage("shopcar");
-      // data.map(el => {
-      //   console.log("el", el);
-      //   for (const key in el) {
-      //     el[key].map((elm, index) => {
-      //       if (elm.checked) {
-      //         console.log(el[key]);
-      //         el[key].splice(index, 1);
-      //       }
-      //     });
-      //     if (el[key].length == 0) {
-      //       data.splice(el[key], 1);
-      //     }
-      //   }
-      // });
-      // setStorage("shopcar", data);
+      const data = getStorage(" shopcar");
+      data.map((el, i) => {
+        el.goodsList.map((elm, index) => {
+          console.log("ssss", elm);
+          if (elm.checked) {
+            el.goodsList.splice(index, 1);
+            if (el.goodsList.length == 0) {
+              data.splice(i, 1);
+            }
+          }
+        });
+      });
+      setStorage(" shopcar", data);
+      setTimeout(() => {
+        this.$router.push("home");
+      }, 2000);
     }
   }
 };

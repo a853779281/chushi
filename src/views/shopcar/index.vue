@@ -2,74 +2,56 @@
   <div class="shopcar">
     <ShopcarTab></ShopcarTab>
     <div class="shopcar_body">
-      <div class="shopcar">
-        <div v-if="f">
-          <h3>购物车空空如也</h3>
-        </div>
-        <div v-else class="car_container">
-          <ul>
-            <li v-for="(item, index) of goods" :key="item.shopId">
-              <van-checkbox
-                class="shop_name"
-                v-model="item.shopFlag"
-                @change="Checked()"
-              >
-                {{ item.shopname }}
-              </van-checkbox>
+      <div v-if="f">
+        <h3>购物车空空如也</h3>
+      </div>
+      <div v-else class="car_container">
+        <ul>
+          <li v-for="(item, index) of goods" :key="item.shopId">
+            <van-checkbox
+              class="shop_name"
+              v-model="item.shopFlag"
+              @change="Checked()"
+            >{{ item.shopname }}</van-checkbox>
 
-              <van-swipe-cell v-for="el of item.goodsList" :key="el.id">
-                <template slot="left">
-                  <van-button square type="primary" text="选择" />
-                </template>
-                <div class="content">
-                  <van-checkbox
-                    v-model="el.checked"
-                    @change="sigleChecked(index, el.id)"
-                  ></van-checkbox>
-                  <van-card
-                    :num="el.num"
-                    :price="el.jiage"
-                    :desc="el.cate_name"
-                    :title="el.title"
-                    :thumb="el.pic"
-                  >
-                    <div slot="footer">
-                      <van-stepper
-                        v-model="el.num"
-                        integer
-                        @change="changeCount(el.id, el.num, el.jiage, index)"
-                      />
-                    </div>
-                  </van-card>
-                </div>
+            <van-swipe-cell v-for="el of item.goodsList" :key="el.id">
+              <template slot="left">
+                <van-button square type="primary" text="选择" />
+              </template>
+              <div class="content">
+                <van-checkbox v-model="el.checked" @change="sigleChecked(index, el.id)"></van-checkbox>
+                <van-card
+                  :num="el.num"
+                  :price="el.jiage"
+                  :desc="el.cate_name"
+                  :title="el.title"
+                  :thumb="el.pic"
+                >
+                  <div slot="footer">
+                    <van-stepper
+                      v-model="el.num"
+                      integer
+                      @change="changeCount(el.id, el.num, el.jiage, index)"
+                    />
+                  </div>
+                </van-card>
+              </div>
 
-                <template slot="right" class="del-right">
-                  <van-button
-                    square
-                    type="danger"
-                    text="删除"
-                    @click.native="del(el.id, index)"
-                  />
-                  <van-button
-                    square
-                    type="primary"
-                    text="收藏"
-                    @click.native="collection(el.id, index)"
-                  />
-                </template>
-              </van-swipe-cell>
-            </li>
-          </ul>
-          <van-submit-bar
-            :price="sum"
-            button-text="提交订单"
-            @submit="onSubmit"
-          >
-            <van-checkbox v-model="allCK" @change="allChecked"
-              >全选</van-checkbox
-            >
-          </van-submit-bar>
-        </div>
+              <template slot="right" class="del-right">
+                <van-button square type="danger" text="删除" @click.native="del(el.id, index)" />
+                <van-button
+                  square
+                  type="primary"
+                  text="收藏"
+                  @click.native="collection(el.id, index)"
+                />
+              </template>
+            </van-swipe-cell>
+          </li>
+        </ul>
+        <van-submit-bar :price="sum" button-text="提交订单" @submit="onSubmit">
+          <van-checkbox v-model="allCK" @change="allChecked">全选</van-checkbox>
+        </van-submit-bar>
       </div>
     </div>
   </div>
@@ -160,14 +142,15 @@ export default {
           }
         });
       });
-      this.selected = arr;
+      // this.selected = arr;
       this.$router.push({
         name: "CommitOrder",
-        path: "CommitOrder",
-        params: {
-          data: JSON.stringify(this.selected)
-        }
+        path: "CommitOrder"
+        // params: {
+        //   data: JSON.stringify(this.selected)
+        // }
       });
+      setStorage("submitOrder", arr);
 
       // bus.$emit("receiveData", arr);
     },
@@ -259,9 +242,12 @@ export default {
     width: 100%;
     flex: 1;
     overflow: auto;
+    display: flex;
 
     .car_container {
       padding: 0.1rem;
+      flex: 1;
+      overflow: auto;
 
       ul {
         li {
@@ -294,6 +280,10 @@ export default {
             }
           }
         }
+      }
+
+      .van-submit-bar {
+        bottom: 0.5rem !important;
       }
     }
   }
