@@ -6,7 +6,7 @@
         <img src="../../assets/image/mine/topBg.jpg" alt class="photo" />
         <transition enter-active-class="animated bounceInDown slow">
           <a class="login" v-if="show" @click="goLogin">
-            <span>{{user&&'点击登陆'}}</span>
+            <span>{{user.length?user:'点击登陆'}}</span>
           </a>
         </transition>
       </div>
